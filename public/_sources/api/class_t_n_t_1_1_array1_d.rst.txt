@@ -1,0 +1,16 @@
+.. _exhale_class_class_t_n_t_1_1_array1_d:
+
+Template Class Array1D
+======================
+
+- Defined in :ref:`file_src_tnt_tnt_array1d.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: TNT::Array1D
+   :members:
+   :protected-members:
+   :undoc-members:

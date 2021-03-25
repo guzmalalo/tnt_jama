@@ -26,7 +26,7 @@ add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 find_package(Sphinx REQUIRED)
 
 set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR})
-set(SPHINX_BUILD ${CMAKE_CURRENT_SOURCE_DIR}/sphinx)
+set(SPHINX_BUILD ${PROJECT_SOURCE_DIR}/public)
 
 # Only regenerate Sphinx when:
 # - Doxygen has rerun

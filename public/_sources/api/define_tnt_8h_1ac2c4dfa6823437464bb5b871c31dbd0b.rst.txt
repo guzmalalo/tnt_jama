@@ -1,0 +1,13 @@
+.. _exhale_define_tnt_8h_1ac2c4dfa6823437464bb5b871c31dbd0b:
+
+Define TNT_BOUNDS_CHECK
+=======================
+
+- Defined in :ref:`file_src_tnt_tnt.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: TNT_BOUNDS_CHECK

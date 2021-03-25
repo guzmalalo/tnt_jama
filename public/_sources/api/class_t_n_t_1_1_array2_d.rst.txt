@@ -1,0 +1,16 @@
+.. _exhale_class_class_t_n_t_1_1_array2_d:
+
+Template Class Array2D
+======================
+
+- Defined in :ref:`file_src_tnt_tnt_array2d.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: TNT::Array2D
+   :members:
+   :protected-members:
+   :undoc-members:

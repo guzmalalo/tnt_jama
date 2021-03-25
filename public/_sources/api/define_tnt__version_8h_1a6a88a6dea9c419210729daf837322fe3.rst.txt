@@ -1,0 +1,13 @@
+.. _exhale_define_tnt__version_8h_1a6a88a6dea9c419210729daf837322fe3:
+
+Define TNT_MAJOR_VERSION
+========================
+
+- Defined in :ref:`file_src_tnt_tnt_version.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: TNT_MAJOR_VERSION

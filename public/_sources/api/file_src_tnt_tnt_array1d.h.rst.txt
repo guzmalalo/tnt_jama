@@ -1,0 +1,63 @@
+
+.. _file_src_tnt_tnt_array1d.h:
+
+File tnt_array1d.h
+==================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_tnt>` (``src/tnt``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/tnt/tnt_array1d.h``)
+--------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_tnt_tnt_array1d.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``iostream``
+
+- ``tnt_i_refvec.h`` (:ref:`file_src_tnt_tnt_i_refvec.h`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_tnt_tnt.h`
+
+- :ref:`file_src_tnt_tnt_array2d.h`
+
+- :ref:`file_src_tnt_tnt_array3d.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_TNT`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_class_t_n_t_1_1_array1_d`
+

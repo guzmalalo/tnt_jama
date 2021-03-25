@@ -1,0 +1,21 @@
+.. _dir_src:
+
+
+Directory src
+=============
+
+
+*Directory path:* ``src``
+
+Subdirectories
+--------------
+
+- :ref:`dir_src_tnt`
+
+
+Files
+-----
+
+- :ref:`file_src_Main_tnt.cpp`
+
+

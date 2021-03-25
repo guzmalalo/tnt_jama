@@ -1,0 +1,13 @@
+.. _exhale_define_tnt__i__refvec_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4:
+
+Define NULL
+===========
+
+- Defined in :ref:`file_src_tnt_tnt_i_refvec.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: NULL

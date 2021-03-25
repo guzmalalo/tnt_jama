@@ -1,0 +1,29 @@
+.. _dir_src_tnt:
+
+
+Directory tnt
+=============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_src>` (``src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``src/tnt``
+
+
+Files
+-----
+
+- :ref:`file_src_tnt_tnt.h`
+- :ref:`file_src_tnt_tnt_array1d.h`
+- :ref:`file_src_tnt_tnt_array1d_utils.h`
+- :ref:`file_src_tnt_tnt_array2d.h`
+- :ref:`file_src_tnt_tnt_array2d_utils.h`
+- :ref:`file_src_tnt_tnt_array3d.h`
+- :ref:`file_src_tnt_tnt_array3d_utils.h`
+- :ref:`file_src_tnt_tnt_i_refvec.h`
+- :ref:`file_src_tnt_tnt_math_utils.h`
+- :ref:`file_src_tnt_tnt_version.h`
+
+

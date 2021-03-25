@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Template Class Array2D &mdash; TNT NIST 2021  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Template Class Array3D" href="class_t_n_t_1_1_array3_d.html" />
+    <link rel="prev" title="Template Class Array1D" href="class_t_n_t_1_1_array1_d.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TNT NIST 2021
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TNT NIST 2021</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="library_root.html">Library API</a> &raquo;</li>
+        
+      <li>Template Class Array2D</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/class_t_n_t_1_1_array2_d.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="template-class-array2d">
+<span id="exhale-class-class-t-n-t-1-1-array2-d"></span><h1>Template Class Array2D<a class="headerlink" href="#template-class-array2d" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_src_tnt_tnt_array2d.h.html#file-src-tnt-tnt-array2d-h"><span class="std std-ref">File tnt_array2d.h</span></a></p></li>
+</ul>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN3TNT7Array2DE">
+<span id="_CPPv3I0EN3TNT7Array2DE"></span><span id="_CPPv2I0EN3TNT7Array2DE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="class_t_n_t_1_1_array2_d"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Array2D</span></code><a class="headerlink" href="#_CPPv4I0EN3TNT7Array2DE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Ttwo-dimensional numerical array which looks like a conventional C multiarray. Storage corresponds to C (row-major) ordering. Elements are accessed via A[i][j] notation for 0-based indexing, and A(i,j) for 1-based indexing..</p>
+<p>Array assignment is by reference (i.e. shallow assignment). That is, B=A implies that the A and B point to the same array, so modifications to the elements of A will be reflected in B. If an independent copy is required, then B = A.copy() can be used. Note that this facilitates returning arrays from functions without relying on compiler optimizations to eliminate extensive data copying.</p>
+<p>The indexing and layout of this array object makes it compatible with C and C++ algorithms that utilize the familiar C[i][j] notation. This includes numerous</p>
+<p>textbooks, such as Numercial Recipes, and various public domain codes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N3TNT7Array2D10value_typeE">
+<span id="_CPPv3N3TNT7Array2D10value_typeE"></span><span id="_CPPv2N3TNT7Array2D10value_typeE"></span><span id="TNT::Array2D::value_type"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a4b8dd8e113fb40e26d44bc2f7a45cb44"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <code class="sig-name descname"><span class="pre">value_type</span></code><a class="headerlink" href="#_CPPv4N3TNT7Array2D10value_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used to determined the data type of array entries. This is most commonly used when requiring scalar temporaries in templated algorithms that have TNT arrays as input. For example,  </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D7Array2DEv">
+<span id="_CPPv3N3TNT7Array2D7Array2DEv"></span><span id="_CPPv2N3TNT7Array2D7Array2DEv"></span><span id="TNT::Array2D::Array2D"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ab01d5e4b88c04d9e4906e7ea069f9dc0"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a null array. This is <strong>not</strong> the same as Array2D(0,0), which consumes some memory overhead.</p>
+<p>Create a new (m x n) array, WIHOUT initializing array elements. To create an initialized array of constants, see Array2D(m,n,value).</p>
+<p>This version avoids the O(m*n) initialization overhead and is used just before manual assignment.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D7Array2DEii">
+<span id="_CPPv3N3TNT7Array2D7Array2DEii"></span><span id="_CPPv2N3TNT7Array2D7Array2DEii"></span><span id="TNT::Array2D::Array2D__i.i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a80990fd85f6c04956a247d43d23a6af4"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a new (m x n) array, without initalizing elements. (This encurs an O(1) operation cost, rather than a O(m*n) cost.)</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D7Array2DEiiP1T">
+<span id="_CPPv3N3TNT7Array2D7Array2DEiiP1T"></span><span id="_CPPv2N3TNT7Array2D7Array2DEiiP1T"></span><span id="TNT::Array2D::Array2D__i.i.TP"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a7447ecfb709ce78db3c78ff21104f6f2"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em>, <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEiiP1T" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a new (m x n) array, as a view of an existing one-dimensional array stored in row-major order, i.e. right-most dimension varying fastest. Note that the storage for this pre-existing array will never be destroyed by TNT.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: the one dimensional C array to use as data storage for the array. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D7Array2DEiiRK1T">
+<span id="_CPPv3N3TNT7Array2D7Array2DEiiRK1T"></span><span id="_CPPv2N3TNT7Array2D7Array2DEiiRK1T"></span><span id="TNT::Array2D::Array2D__i.i.TCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a9fbc65dced3dcd7428220374fd85f853"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEiiRK1T" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a new (m x n) array, initializing array elements to constant specified by argument. Most often used to create an array of zeros, as in A(m, n, 0.0).</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code>: the constant value to set all elements of the new array to. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D7Array2DERK7Array2D">
+<span id="_CPPv3N3TNT7Array2D7Array2DERK7Array2D"></span><span id="_CPPv2N3TNT7Array2D7Array2DERK7Array2D"></span><span id="TNT::Array2D::Array2D__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a065e795f6f2486ca7ea0bca09200dbd4"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N3TNT7Array2D7Array2DERK7Array2D" title="TNT::Array2D::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy constructor. Array data is NOT copied, but shared. Thus, in <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> B(A), subsequent changes to A will be reflected in B. For an indepent copy of A, use <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> B(A.copy()), or B = A.copy(), instead. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2DcvPP1TEv">
+<span id="_CPPv3N3TNT7Array2DcvPP1TEv"></span><span id="_CPPv2N3TNT7Array2DcvPP1TEv"></span><span id="TNT::Array2D::castto-TPP-operator"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ab0edc94ba076bb743ace676d7717260c"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">operator</span> <span class="pre">T**</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DcvPP1TEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convert 2D array into a regular multidimensional C pointer. Most often called automatically when calling C interfaces that expect things like double** rather than Array2D&lt;dobule&gt;. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK3TNT7Array2DcvPPK1TEv">
+<span id="_CPPv3NK3TNT7Array2DcvPPK1TEv"></span><span id="_CPPv2NK3TNT7Array2DcvPPK1TEv"></span><span id="TNT::Array2D::castto-TCPP-operatorC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ae1a37a9138c2cac250aae786231bce2a"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">operator</span> <span class="pre">const</span> <span class="pre">T**</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2DcvPPK1TEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convert a const 2D array into a const multidimensional C pointer. <p> Most often called automatically when calling C interfaces that expect things like “const double**” rather than “const Array2D&lt;dobule&gt;&amp;”. </p>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2DaSERK1T">
+<span id="_CPPv3N3TNT7Array2DaSERK1T"></span><span id="_CPPv2N3TNT7Array2DaSERK1T"></span><span id="TNT::Array2D::assign-operator__TCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1abdbe60d7b48f6ab11c79099f3eb3e95d"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DaSERK1T" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Assign all elements of array the same value.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code>: the value to assign each element. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2DaSERK7Array2D">
+<span id="_CPPv3N3TNT7Array2DaSERK7Array2D"></span><span id="_CPPv2N3TNT7Array2DaSERK7Array2D"></span><span id="TNT::Array2D::assign-operator__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a291213171560381b270246be0bbe75c0"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DaSERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Assign one <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> to another. (This is a shallow-assignement operation, and it is the identical semantics to ref(A).</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: the array to assign this one to. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D3refERK7Array2D">
+<span id="_CPPv3N3TNT7Array2D3refERK7Array2D"></span><span id="_CPPv2N3TNT7Array2D3refERK7Array2D"></span><span id="TNT::Array2D::ref__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a45629cdcb71db56e68c61721ebd6e1cf"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">ref</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D3refERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK3TNT7Array2D4copyEv">
+<span id="_CPPv3NK3TNT7Array2D4copyEv"></span><span id="_CPPv2NK3TNT7Array2D4copyEv"></span><span id="TNT::Array2D::copyC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a19bbe91d984c88b68ab5d7e53be9e177"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <code class="sig-name descname"><span class="pre">copy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2D4copyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D6injectERK7Array2D">
+<span id="_CPPv3N3TNT7Array2D6injectERK7Array2D"></span><span id="_CPPv2N3TNT7Array2D6injectERK7Array2D"></span><span id="TNT::Array2D::inject__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a24f86f6bf4fd6436946c82e55a12af24"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">inject</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D6injectERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2DixEi">
+<span id="_CPPv3N3TNT7Array2DixEi"></span><span id="_CPPv2N3TNT7Array2DixEi"></span><span id="TNT::Array2D::subscript-operator__i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a472e0ff84ff7767033dc847a7a9c34cd"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DixEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK3TNT7Array2DixEi">
+<span id="_CPPv3NK3TNT7Array2DixEi"></span><span id="_CPPv2NK3TNT7Array2DixEi"></span><span id="TNT::Array2D::subscript-operator__iC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ac1394cbc900adcec3233ff231d9eea4a"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2DixEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK3TNT7Array2D4dim1Ev">
+<span id="_CPPv3NK3TNT7Array2D4dim1Ev"></span><span id="_CPPv2NK3TNT7Array2D4dim1Ev"></span><span id="TNT::Array2D::dim1C"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a84da0cfbe21a838fc85e1bac304e57ba"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">dim1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2D4dim1Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK3TNT7Array2D4dim2Ev">
+<span id="_CPPv3NK3TNT7Array2D4dim2Ev"></span><span id="_CPPv2NK3TNT7Array2D4dim2Ev"></span><span id="TNT::Array2D::dim2C"></span><span class="target" id="class_t_n_t_1_1_array2_d_1adb4020fe0eb3cd695080a9c56a1d7c5c"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">dim2</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2D4dim2Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2DD0Ev">
+<span id="_CPPv3N3TNT7Array2DD0Ev"></span><span id="_CPPv2N3TNT7Array2DD0Ev"></span><span id="TNT::Array2D::~Array2D"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a87c0133fa83755104b75631cfa4d6ab7"></span><code class="sig-name descname"><span class="pre">~Array2D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D9ref_countEv">
+<span id="_CPPv3N3TNT7Array2D9ref_countEv"></span><span id="_CPPv2N3TNT7Array2D9ref_countEv"></span><span id="TNT::Array2D::ref_count"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a1669732a1a744a212c0c23b0cbafb1f1"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D9ref_countEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D14ref_count_dataEv">
+<span id="_CPPv3N3TNT7Array2D14ref_count_dataEv"></span><span id="_CPPv2N3TNT7Array2D14ref_count_dataEv"></span><span id="TNT::Array2D::ref_count_data"></span><span class="target" id="class_t_n_t_1_1_array2_d_1adb80c979d57de1fc4422a683703027b9"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D14ref_count_dataEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D14ref_count_dim1Ev">
+<span id="_CPPv3N3TNT7Array2D14ref_count_dim1Ev"></span><span id="_CPPv2N3TNT7Array2D14ref_count_dim1Ev"></span><span id="TNT::Array2D::ref_count_dim1"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a8f4e8eca39d733e01642f35df5b4484b"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count_dim1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D14ref_count_dim1Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D8subarrayEiiii">
+<span id="_CPPv3N3TNT7Array2D8subarrayEiiii"></span><span id="_CPPv2N3TNT7Array2D8subarrayEiiii"></span><span id="TNT::Array2D::subarray__i.i.i.i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1accf36569414a2570497d2a3f9fe68f52"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <code class="sig-name descname"><span class="pre">subarray</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i0</span></em>, <span class="pre">int</span> <em><span class="pre">i1</span></em>, <span class="pre">int</span> <em><span class="pre">j0</span></em>, <span class="pre">int</span> <em><span class="pre">j1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D8subarrayEiiii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a new view to a subarray defined by the boundaries [i0][i0] and [i1][j1]. The size of the subarray is (i1-i0) by (j1-j0). If either of these lengths are zero or negative, the subarray view is null. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="class_t_n_t_1_1_array3_d.html" class="btn btn-neutral float-right" title="Template Class Array3D" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="class_t_n_t_1_1_array1_d.html" class="btn btn-neutral float-left" title="Template Class Array1D" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

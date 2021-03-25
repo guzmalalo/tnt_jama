@@ -1,0 +1,59 @@
+
+.. _file_src_tnt_tnt_math_utils.h:
+
+File tnt_math_utils.h
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_tnt>` (``src/tnt``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/tnt/tnt_math_utils.h``)
+-----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_tnt_tnt_math_utils.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cmath``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_tnt_tnt.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_std`
+
+- :ref:`namespace_TNT`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_tnt__math__utils_8h_1ae102d1c8992a4fea1cc1b2efeabfcc66`
+

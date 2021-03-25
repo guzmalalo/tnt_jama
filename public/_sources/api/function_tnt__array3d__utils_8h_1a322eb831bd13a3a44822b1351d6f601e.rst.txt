@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array3d__utils_8h_1a322eb831bd13a3a44822b1351d6f601e:
+
+Template Function TNT::operator-(const Array3D<T>&, const Array3D<T>&)
+======================================================================
+
+- Defined in :ref:`file_src_tnt_tnt_array3d_utils.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::operator-(const Array3D<T>&, const Array3D<T>&)

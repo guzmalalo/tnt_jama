@@ -1,0 +1,13 @@
+.. _exhale_define_tnt__version_8h_1ab64cd74122bb83c94bece7d71a9688b8:
+
+Define TNT_SUBMINOR_VERSION
+===========================
+
+- Defined in :ref:`file_src_tnt_tnt_version.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: TNT_SUBMINOR_VERSION

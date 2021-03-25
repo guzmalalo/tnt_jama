@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array2d__utils_8h_1a613b54428f9d71ec88bba64f0b1b2956:
+
+Template Function TNT::operator+=(Array2D<T>&, const Array2D<T>&)
+=================================================================
+
+- Defined in :ref:`file_src_tnt_tnt_array2d_utils.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::operator+=(Array2D<T>&, const Array2D<T>&)

@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array3d__utils_8h_1a6657bdc30991a0a8b4dbd2563f52397c:
+
+Template Function TNT::operator>>(std::istream&, Array3D<T>&)
+=============================================================
+
+- Defined in :ref:`file_src_tnt_tnt_array3d_utils.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::operator>>(std::istream&, Array3D<T>&)

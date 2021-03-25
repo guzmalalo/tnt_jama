@@ -1,0 +1,16 @@
+.. _exhale_class_class_t_n_t_1_1i__refvec:
+
+Template Class i_refvec
+=======================
+
+- Defined in :ref:`file_src_tnt_tnt_i_refvec.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: TNT::i_refvec
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,43 @@
+
+.. _program_listing_file_src_tnt_tnt_math_utils.h:
+
+Program Listing for File tnt_math_utils.h
+=========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_tnt_tnt_math_utils.h>` (``src/tnt/tnt_math_utils.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef MATH_UTILS_H
+   #define MATH_UTILS_H
+   
+   
+   /* needed for abs(), sqrt() below */
+   #include <cmath>
+   
+   
+   
+   namespace TNT
+   {
+   
+   using namespace std;
+   template <class Real>
+   Real hypot(const Real &a, const Real &b)
+   {
+       
+       if (a== 0)
+           return abs(b);
+       else
+       {
+           Real c = b/a;
+           return abs(a) * sqrt(1 + c*c);
+       }
+   }
+   } /* TNT namespace */
+   
+   
+   
+   #endif
+   /* MATH_UTILS_H */
