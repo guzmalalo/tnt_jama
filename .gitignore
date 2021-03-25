@@ -1,0 +1,54 @@
+# ------------------------------------------------------------------------------
+# Ignore files that are generated from the repository sources by either building
+# the code or running it.
+#
+# Also ignore OS-specific files like .DS_Store on Mac
+# ------------------------------------------------------------------------------
+
+# Object and library files
+*.o
+*.exe
+
+# CMake generated files
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+Makefile
+CMakeScripts
+
+# Backup files
+*~
+
+# VPATH builds
+Release
+Debug
+Build
+Bin
+Lib
+build
+lib
+release
+bin
+debug
+
+# Eclipse
+.cproject
+.project
+.metadata
+.settings
+.autotools
+.cproject.cproject
+
+# Visual Studio
+.vs
+*.vcxproj
+*.vcxproj.filters
+*.sln
+.vscode/
+
+# Xcode
+*.xcodeproj
+XCBuildData/
+
+#Other
+.DS_Store
