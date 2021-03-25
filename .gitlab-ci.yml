@@ -8,6 +8,6 @@ pages:
     - mv .public public
   artifacts:
     paths:
-      - public
+      - doc/sphinx
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
