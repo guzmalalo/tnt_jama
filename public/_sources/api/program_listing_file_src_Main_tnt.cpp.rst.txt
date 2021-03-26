@@ -16,6 +16,6 @@ Program Listing for File Main_tnt.cpp
    int main()
    {
    
-           std::cout << "Hello" << std::endl;
+           TNT::cout << "Hello" << std::endl;
            return 0;
    }

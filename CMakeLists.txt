@@ -60,3 +60,8 @@ if(1)
 add_subdirectory(${DOC_DIR})
 endif()
 
+#-----------------------------------------------------------------------------
+# Enable testing using googletest
+#-----------------------------------------------------------------------------
+enable_testing()
+add_subdirectory(${PROJECT_SOURCE_DIR}/test)

@@ -169,16 +169,24 @@
 <dl class="cpp class">
 <dt id="_CPPv4I0EN3TNT7Array2DE">
 <span id="_CPPv3I0EN3TNT7Array2DE"></span><span id="_CPPv2I0EN3TNT7Array2DE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="class_t_n_t_1_1_array2_d"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Array2D</span></code><a class="headerlink" href="#_CPPv4I0EN3TNT7Array2DE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Ttwo-dimensional numerical array which looks like a conventional C multiarray. Storage corresponds to C (row-major) ordering. Elements are accessed via A[i][j] notation for 0-based indexing, and A(i,j) for 1-based indexing..</p>
+<dd><p>Ttwo-dimensional numerical array which looks like a conventional C multiarray. Storage corresponds to C (row-major) ordering. Elements are accessed via A[i][j] notation for 0-based indexing, and A(i,j) for 1-based indexing.. </p>
 <p>Array assignment is by reference (i.e. shallow assignment). That is, B=A implies that the A and B point to the same array, so modifications to the elements of A will be reflected in B. If an independent copy is required, then B = A.copy() can be used. Note that this facilitates returning arrays from functions without relying on compiler optimizations to eliminate extensive data copying.</p>
 <p>The indexing and layout of this array object makes it compatible with C and C++ algorithms that utilize the familiar C[i][j] notation. This includes numerous</p>
-<p>textbooks, such as Numercial Recipes, and various public domain codes. </p>
+<p>textbooks, such as Numerical Recipes, and various public domain codes. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp type">
 <dt id="_CPPv4N3TNT7Array2D10value_typeE">
 <span id="_CPPv3N3TNT7Array2D10value_typeE"></span><span id="_CPPv2N3TNT7Array2D10value_typeE"></span><span id="TNT::Array2D::value_type"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a4b8dd8e113fb40e26d44bc2f7a45cb44"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <code class="sig-name descname"><span class="pre">value_type</span></code><a class="headerlink" href="#_CPPv4N3TNT7Array2D10value_typeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Used to determined the data type of array entries. This is most commonly used when requiring scalar temporaries in templated algorithms that have TNT arrays as input. For example,  </p>
+<dd><p>Used to determined the data type of array entries. This is most commonly used when requiring scalar temporaries in templated algorithms that have TNT arrays as input. For example, <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Array2D</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">foo</span><span class="p">(</span><span class="n">ArrayTwoD</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">A</span><span class="o">::</span><span class="n">value_type</span> <span class="n">first_entry</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
 </dd></dl>
 
 </div>

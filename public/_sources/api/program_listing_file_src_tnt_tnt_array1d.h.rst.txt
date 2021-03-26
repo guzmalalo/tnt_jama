@@ -62,7 +62,6 @@ Program Listing for File tnt_array1d.h
     
    
      public:
-   
        typedef         T   value_type;
    
    
@@ -93,7 +92,6 @@ Program Listing for File tnt_array1d.h
        inline Array1D<T> subarray(int i0, int i1);
    
    };
-   
    
    
    
@@ -148,8 +146,6 @@ Program Listing for File tnt_array1d.h
        return &(v_[0]);
    }
    
-   
-   
    template <class T>
    inline T& Array1D<T>::operator[](int i) 
    { 
@@ -170,14 +166,12 @@ Program Listing for File tnt_array1d.h
        return data_[i]; 
    }
    
-   
-   
    template <class T>
    inline T& Array1D<T>::operator()(int i) 
    { 
    #ifdef TNT_BOUNDS_CHECK
-       assert(i>= 0);
-       assert(i < n_);
+       assert(i > 0);
+       assert(i <= n_);
    #endif
        return data_[i-1]; 
    }
@@ -186,14 +180,11 @@ Program Listing for File tnt_array1d.h
    inline const T& Array1D<T>::operator()(int i) const 
    { 
    #ifdef TNT_BOUNDS_CHECK
-       assert(i>= 0);
-       assert(i < n_);
+       assert(i > 0);
+       assert(i <= n_);
    #endif
        return data_[i-1]; 
    }
-   
-   
-       
    
    template <class T>
    Array1D<T> & Array1D<T>::operator=(const T &a)
@@ -211,7 +202,6 @@ Program Listing for File tnt_array1d.h
        return A;
    }
    
-   
    template <class T>
    Array1D<T> & Array1D<T>::inject(const Array1D &A)
    {
@@ -220,9 +210,6 @@ Program Listing for File tnt_array1d.h
    
        return *this;
    }
-   
-   
-   
    
    
    template <class T>
@@ -254,13 +241,14 @@ Program Listing for File tnt_array1d.h
    Array1D<T>::~Array1D() {}
    
    
-   /* ............................ exented interface ......................*/
+   /* ............................ extended interface ......................*/
    
    template <class T>
    inline int Array1D<T>::ref_count() const
    {
        return v_.ref_count();
    }
+   
    
    template <class T>
    inline Array1D<T> Array1D<T>::subarray(int i0, int i1)

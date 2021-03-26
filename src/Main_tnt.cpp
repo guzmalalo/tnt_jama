@@ -4,6 +4,6 @@
 int main()
 {
 
-        std::cout << "Hello" << std::endl;
+        TNT::cout << "Hello" << std::endl;
         return 0;
 }

@@ -35,7 +35,7 @@ namespace TNT
 
 
 /**
-	Ttwo-dimensional numerical array which
+ * @brief Ttwo-dimensional numerical array which
 	looks like a conventional C multiarray. 
 	Storage corresponds to C (row-major) ordering.
 	Elements are accessed via A[i][j] notation for 0-based indexing,
@@ -56,7 +56,7 @@ namespace TNT
 	it compatible with C and C++ algorithms that utilize
 	the familiar C[i][j] notation.  This includes numerous
 
-	textbooks, such as Numercial Recipes, and various
+	textbooks, such as Numerical Recipes, and various
 	public domain codes.
 
 */
@@ -82,14 +82,14 @@ class Array2D
   Used to determined the data type of array entries.  This is most
   commonly used when requiring scalar temporaries in templated algorithms
   that have TNT arrays as input.  For example,
-  <pre>
-  template &lt class ArrayTwoD &gt
+  @code{.cpp}
+  template <class Array2D>
   void foo(ArrayTwoD &A)
   {
     A::value_type first_entry = A[0][0];
     ...
   }
-  </pre>
+  @endcode
 */
     typedef         T   value_type;
 
