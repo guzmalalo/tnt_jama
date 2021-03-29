@@ -1,6 +1,4 @@
-#include <gtest/gtest.h>
-#include "tnt.h"
-
+#include "A1D_Struct.hpp"
 /// @defgroup all_tests
 /// @defgroup Array1D_tests
 /// @ingroup all_tests
@@ -11,44 +9,6 @@
 * @ingroup Array1D_tests
 * @{
 */
-
-/**
-* @brief General Array 1D test structire
-*/
-struct Array1D_test : public ::testing::Test
-{
-    int a_size_;
-    double init_value_;
-    virtual void SetUp() override
-    {
-        a_size_ = 42;
-        init_value_ = 1.0;
-    }
-    virtual void TearDown() override
-    {
-    }
-};
-
-/**
-* @brief A simple unit test to test size initialization
-*/
-TEST_F(Array1D_test, dim)
-{
-    TNT::Array1D<double> A;
-    TNT::Array1D<double> B(a_size_);
-    TNT::Array1D<double> C(a_size_, 0.);
-    TNT::Array1D<double> D = TNT::Array1D<double>(a_size_);
-
-    // Check dimension of initial array
-    EXPECT_EQ(A.dim(), 0)
-        << "A Size is false using dim";
-    EXPECT_EQ(B.dim(), a_size_)
-        << "B Size is false using dim";
-    EXPECT_EQ(C.dim(), a_size_)
-        << "C Size is false using dim";
-    EXPECT_EQ(D.dim(), a_size_)
-        << "D Size is false using dim";
-}
 
 /**
 * @brief A simple unit test to test size initialization
@@ -439,6 +399,18 @@ TEST_F(Array1D_test, subarray_method)
         EXPECT_EQ(&A[i], &B[i])
             << "B is not equal to A";
     }
+
+    TNT::Array1D<double> C = A.subarray(9, 0);
+    EXPECT_EQ(C.dim(), 0);
+
+    TNT::Array1D<double> D = A.subarray(-1, 40);
+    EXPECT_EQ(D.dim(), 0);
+
+    TNT::Array1D<double> E = A.subarray(0, 43);
+    EXPECT_EQ(E.dim(), 0);
+
+    TNT::Array1D<double> F = A.subarray(1, 1);
+    EXPECT_EQ(F.dim(), 1);
 }
 
 /**

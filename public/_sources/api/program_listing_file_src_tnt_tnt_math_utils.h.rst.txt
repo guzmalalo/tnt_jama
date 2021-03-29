@@ -22,7 +22,7 @@ Program Listing for File tnt_math_utils.h
    namespace TNT
    {
    
-   using namespace std;
+   //using namespace std;
    template <class Real>
    Real hypot(const Real &a, const Real &b)
    {

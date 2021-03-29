@@ -11,7 +11,9 @@ add_executable(${A1D_TARGET} "")
 target_include_directories(${A1D_TARGET} PRIVATE ${SOURCE_DIR}/tnt)
 
 target_sources(${A1D_TARGET} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Struct.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Basic.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Utils.cpp
 )
 
 ## Link libraries 

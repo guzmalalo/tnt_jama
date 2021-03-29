@@ -32,12 +32,8 @@ Program Listing for File tnt_array1d_utils.h
    #ifndef TNT_ARRAY1D_UTILS_H
    #define TNT_ARRAY1D_UTILS_H
    
-   #include <cstdlib>
-   #include <cassert>
-   
    namespace TNT
    {
-   
    
    template <class T>
    std::ostream& operator<<(std::ostream &s, const Array1D<T> &A)
@@ -47,7 +43,8 @@ Program Listing for File tnt_array1d_utils.h
    #ifdef TNT_DEBUG
        s << "addr: " << (void *) &A[0] << "\n";
    #endif
-       s << N << "\n";
+       s << "Dimension: " << N << "\n";
+       s << "Components: \n";
        for (int j=0; j<N; j++)
        {
           s << A[j] << "\n";
@@ -71,7 +68,6 @@ Program Listing for File tnt_array1d_utils.h
    }
    
    
-   
    template <class T>
    Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
    {
@@ -91,7 +87,6 @@ Program Listing for File tnt_array1d_utils.h
            return C;
        }
    }
-   
    
    
    template <class T>
@@ -135,6 +130,24 @@ Program Listing for File tnt_array1d_utils.h
        }
    }
    
+   template <class T>
+   Array1D<T>  operator*(Array1D<T> &A, const T &b)
+   {
+       int n = A.dim1();
+       Array1D<T> C(n);
+   
+       for (int i=0; i<n; i++)
+       {
+           C[i] = A[i]*b;
+       }
+       return C;
+   }
+   
+   template <class T>
+   inline Array1D<T>  operator*(const T &b, Array1D<T> &A)
+   {
+       return A*b;
+   }
    
    template <class T>
    Array1D<T> operator/(const Array1D<T> &A, const Array1D<T> &B)
@@ -156,12 +169,17 @@ Program Listing for File tnt_array1d_utils.h
        }
    }
    
-   
-   
-   
-   
-   
-   
+   template <class T>
+   Array1D<T>  operator/(const Array1D<T> &A, const T &b)
+   {
+       int n = A.dim1();
+       Array1D<T> C(n);
+       for (int i=0; i<n; i++)
+       {
+           C[i] = A[i]/b;
+       }
+       return C;
+   }
    
    
    template <class T>
@@ -179,9 +197,6 @@ Program Listing for File tnt_array1d_utils.h
        return A;
    }
    
-   
-   
-   
    template <class T>
    Array1D<T>&  operator-=(Array1D<T> &A, const Array1D<T> &B)
    {
@@ -196,8 +211,6 @@ Program Listing for File tnt_array1d_utils.h
        }
        return A;
    }
-   
-   
    
    template <class T>
    Array1D<T>&  operator*=(Array1D<T> &A, const Array1D<T> &B)
@@ -215,7 +228,16 @@ Program Listing for File tnt_array1d_utils.h
    }
    
    
-   
+   template <class T>
+   Array1D<T>&  operator*=(Array1D<T> &A, const T &b)
+   {
+       int n = A.dim1();
+           for (int i=0; i<n; i++)
+           {
+                   A[i] *= b;
+           }
+       return A;
+   }
    
    template <class T>
    Array1D<T>&  operator/=(Array1D<T> &A, const Array1D<T> &B)
@@ -233,9 +255,66 @@ Program Listing for File tnt_array1d_utils.h
    }
    
    
+   template <class T>
+   Array1D<T>&  operator/=(Array1D<T> &A, const T &b)
+   {
+       int n = A.dim1();
+           for (int i=0; i<n; i++)
+           {
+                   A[i] /= b;
+           }
+       return A;
+   }
+   
+   /* ........................ extended functions ......................*/
+   
+   template <class T>
+   double norm(const Array1D<T> &A)
+   {
+       int n = A.dim1();
+   
+       double sum = 0.0;
+       for (int i=0; i<n; i++)
+           sum +=  abs(A[i])*abs(A[i]);
+       return sqrt(sum);
+   }
+   
+   template <class T>
+   Array1D<T>  cross(const Array1D<T> &A, const Array1D<T> &B)
+   {
+       int n = A.dim1();
+       int m = B.dim1();
+       
+       if (n != 3 ||  m != 3 )
+           return Array1D<T>();
+       else
+       {
+           Array1D<T> C(n);
+           C[0] = A[1]*B[2] - A[2]*B[1];
+           C[1] = A[2]*B[0] - A[0]*B[2];
+           C[2] = A[0]*B[1] - A[1]*B[0];
+               return C;
+       }
+   }
    
    
+   template <class T>
+   T dot_product(const Array1D<T> &A, const Array1D<T> &B)
+   {
+       int n = A.dim1();
+       int m = B.dim1();
+       
+       if (n != 3 ||  m != 3 )
+           return Array1D<T>();
+       else
+       {
+           T sum = 0; 
+           for (int i=0; i<n; i++)
+               sum += A[i] * B[i];
    
+           return sum;
+       }
+   }
    
    } // namespace TNT
    

@@ -25,14 +25,6 @@ Definition (``src/tnt/tnt_array1d_utils.h``)
 
 
 
-Includes
---------
-
-
-- ``cassert``
-
-- ``cstdlib``
-
 
 
 Included By
@@ -55,9 +47,21 @@ Functions
 ---------
 
 
+- :ref:`exhale_function_tnt__array1d__utils_8h_1acf8b9922b7d26007417d0b1382845edf`
+
+- :ref:`exhale_function_tnt__array1d__utils_8h_1a936df530f86dcc7e41baa242734da049`
+
+- :ref:`exhale_function_tnt__array1d__utils_8h_1a71ca227c5968ac9da6132976e36b5cd3`
+
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a631669334b75ebb846723bf079fd2c8d`
 
+- :ref:`exhale_function_tnt__array1d__utils_8h_1a610be2a4084be71cd11f955e457f4444`
+
+- :ref:`exhale_function_tnt__array1d__utils_8h_1a8bbb86d6a36e39cadacb1ae99d39312f`
+
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a89bc7f14ed053648fc3cccef34955019`
+
+- :ref:`exhale_function_tnt__array1d__utils_8h_1a9fd6ba7f2ff66e355edcb969cb21a1e9`
 
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a25681ebc742c0ffb1fc09d8988a7314c`
 
@@ -69,7 +73,11 @@ Functions
 
 - :ref:`exhale_function_tnt__array1d__utils_8h_1aba09c30731e80420cd42fff00f72b18b`
 
+- :ref:`exhale_function_tnt__array1d__utils_8h_1a13ab4764bfc022c3ea035de1c3d9794f`
+
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a3be75d39e2081a4f4876050b36b29403`
+
+- :ref:`exhale_function_tnt__array1d__utils_8h_1ad31de8251906fc1fec30dd73d70a9052`
 
 - :ref:`exhale_function_tnt__array1d__utils_8h_1ac0bffe1c89cc792a28f37d17afc2ce67`
 

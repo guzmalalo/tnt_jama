@@ -46,8 +46,6 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_std`
-
 - :ref:`namespace_TNT`
 
 
