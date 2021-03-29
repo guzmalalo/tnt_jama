@@ -6,27 +6,35 @@
 #include <cmath>
 
 
-
 namespace TNT
 {
 
-using namespace std;
+
 /**
-	@returns hypotenuse of real (non-complex) scalars a and b by 
+ * @brief Computes the hypotenuse of real (non-complex) scalars a and b by 
 	avoiding underflow/overflow
-	using (a * sqrt( 1 + (b/a) * (b/a))), rather than
-	sqrt(a*a + b*b).
-*/
-template <class Real>
-Real hypot(const Real &a, const Real &b)
-{
+	using:
 	
+	$a * sqrt( 1 + (b/a) * (b/a)))$
+	
+	rather than
+	
+	$sqrt(a*a + b*b)$
+	
+ * @tparam T Input data type, must be the "real" part of a number  
+ * @param a first number
+ * @param b second number 
+ * @return hypotenuse of type T 
+ */
+template <class T>
+T hypot(const T &a, const T &b)
+{
 	if (a== 0)
-		return abs(b);
+		return std::abs(b);
 	else
 	{
-		Real c = b/a;
-		return abs(a) * sqrt(1 + c*c);
+		T c = b/a;
+		return std::abs(a) * std::sqrt(1 + c*c);
 	}
 }
 } /* TNT namespace */

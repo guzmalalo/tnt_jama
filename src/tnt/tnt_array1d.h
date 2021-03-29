@@ -20,18 +20,12 @@
 #ifndef TNT_ARRAY1D_H
 #define TNT_ARRAY1D_H
 
-#include <iostream>
-
-#ifdef TNT_BOUNDS_CHECK
-#include <assert.h>
-#endif
-
 #include "tnt_i_refvec.h"
 
 namespace TNT
 {
 
-/**
+	/**
  * @brief One-dimensional numerical array which
 	looks like a conventional C multiarray. 
 	Storage corresponds to C (row-major) ordering.
@@ -60,63 +54,56 @@ namespace TNT
   }
   @endcode
 */
-template <class T>
-class Array1D 
-{
+	template <class T>
+	class Array1D
+	{
 
-  private:
-
-	  /* ... */
-    i_refvec<T> v_;
-    int n_;
-    T* data_;				/* this normally points to v_.begin(), but
+	private:
+		/* ... */
+		i_refvec<T> v_;
+		int n_;
+		T *data_; /* this normally points to v_.begin(), but
                              * could also point to a portion (subvector)
 							 * of v_.
                             */
 
-    void copy_(T* p, const T*  q, int len) const;
-    void set_(T* begin,  T* end, const T& val);
- 
+		void copy_(T *p, const T *q, int len) const;
+		void set_(T *begin, T *end, const T &val);
 
-  public:
-/**
+	public:
+		/**
  * @brief Used to determined the data type of array entries.
  * 
  */
-    typedef         T   value_type;
+		typedef T value_type;
 
+		Array1D();
+		explicit Array1D(int n);
+		Array1D(int n, const T &a);
+		Array1D(int n, T *a);
+		inline Array1D(const Array1D &A);
+		inline operator T *();
+		inline operator const T *();
+		inline Array1D &operator=(const T &a);
+		inline Array1D &operator=(const Array1D &A);
+		inline Array1D &ref(const Array1D &A);
+		Array1D copy() const;
+		Array1D &inject(const Array1D &A);
+		inline T &operator[](int i);
+		inline T &operator()(int i);
+		inline const T &operator[](int i) const;
+		inline const T &operator()(int i) const;
+		inline int dim1() const;
+		inline int dim() const;
+		~Array1D();
 
-	         Array1D();
-	explicit Array1D(int n);
-	         Array1D(int n, const T &a);
-	         Array1D(int n,  T *a);
-    inline   Array1D(const Array1D &A);
-	inline   operator T*();
-	inline   operator const T*();
-	inline   Array1D & operator=(const T &a);
-	inline   Array1D & operator=(const Array1D &A);
-	inline   Array1D & ref(const Array1D &A);
-	         Array1D copy() const;
-		     Array1D & inject(const Array1D & A);
-	inline   T& operator[](int i);
-	inline   T& operator()(int i);
-	inline   const T& operator[](int i) const;
-	inline   const T& operator()(int i) const;
-	inline 	 int dim1() const;
-	inline   int dim() const;
-              ~Array1D();
+		/* ... extended interface ... */
 
+		inline int ref_count() const;
+		inline Array1D<T> subarray(int i0, int i1);
+	};
 
-	/* ... extended interface ... */
-
-	inline int ref_count() const;
-	inline Array1D<T> subarray(int i0, int i1);
-
-};
-
-
-
-/**
+	/**
  * @brief Construct a new Array 1D<T> without initialization.
  * 
  * @tparam T Type
@@ -127,10 +114,10 @@ class Array1D
  * @endcode
  * 
  */
-template <class T>
-Array1D<T>::Array1D() : v_(), n_(0), data_(0) {}
+	template <class T>
+	Array1D<T>::Array1D() : v_(), n_(0), data_(0) {}
 
-/**
+	/**
  * @brief Construct a new Array1D<T> A from another Array1D B. A and B point to the same data (clone operation).
  * @endcode
  * @tparam T Type of data
@@ -142,17 +129,16 @@ Array1D<T>::Array1D() : v_(), n_(0), data_(0) {}
  * TNT::Array1D<double> C(A);
  * @endcode
  */
-template <class T>
-Array1D<T>::Array1D(const Array1D<T> &A) : v_(A.v_),  n_(A.n_), 
-		data_(A.data_)
-{
+	template <class T>
+	Array1D<T>::Array1D(const Array1D<T> &A) : v_(A.v_), n_(A.n_),
+											   data_(A.data_)
+	{
 #ifdef TNT_DEBUG
-	std::cout << "Created Array1D(const Array1D<T> &A) \n";
+		std::cout << "Created Array1D(const Array1D<T> &A) \n";
 #endif
+	}
 
-}
-
-/**
+	/**
  * @brief Construct a new Array1D of size n
  * @tparam T Type of the array data
  * @param n dimension of the array
@@ -162,15 +148,15 @@ Array1D<T>::Array1D(const Array1D<T> &A) : v_(A.v_),  n_(A.n_),
  * 	TNT::Array1D<double> A(42);
  * @endcode
  */
-template <class T>
-Array1D<T>::Array1D(int n) : v_(n), n_(n), data_(v_.begin())
-{
+	template <class T>
+	Array1D<T>::Array1D(int n) : v_(n), n_(n), data_(v_.begin())
+	{
 #ifdef TNT_DEBUG
-	std::cout << "Created Array1D(int n) \n";
+		std::cout << "Created Array1D(int n) \n";
 #endif
-}
+	}
 
-/**
+	/**
  * @brief Construct a new Array1D of size n with an initial value of n  
  * @tparam T Type of the data
  * @param n size of the array
@@ -181,17 +167,16 @@ Array1D<T>::Array1D(int n) : v_(n), n_(n), data_(v_.begin())
  * TNT::Array1D<double> A(42, 1.0);
  * @endcode
  */
-template <class T>
-Array1D<T>::Array1D(int n, const T &val) : v_(n), n_(n), data_(v_.begin()) 
-{
+	template <class T>
+	Array1D<T>::Array1D(int n, const T &val) : v_(n), n_(n), data_(v_.begin())
+	{
 #ifdef TNT_DEBUG
-	std::cout << "Created Array1D(int n, const T& val) \n";
+		std::cout << "Created Array1D(int n, const T& val) \n";
 #endif
-	set_(data_, data_+ n, val);
+		set_(data_, data_ + n, val);
+	}
 
-}
-
-/**
+	/**
  * @brief Construct a new Array1D from an raw array of doubles of size n
  * (copy the values)  
  * 
@@ -205,15 +190,15 @@ Array1D<T>::Array1D(int n, const T &val) : v_(n), n_(n), data_(v_.begin())
  * TNT::Array1D<double> A(42, *ra);
  * @endcode
  */
-template <class T>
-Array1D<T>::Array1D(int n, T *a) : v_(a), n_(n) , data_(v_.begin())
-{
+	template <class T>
+	Array1D<T>::Array1D(int n, T *a) : v_(a), n_(n), data_(v_.begin())
+	{
 #ifdef TNT_DEBUG
-	std::cout << "Created Array1D(int n, T* a) \n";
+		std::cout << "Created Array1D(int n, T* a) \n";
 #endif
-}
+	}
 
-/**
+	/**
  * @brief Conversion operator function to raw arrays,
  * data is cloned
  * 
@@ -226,13 +211,13 @@ Array1D<T>::Array1D(int n, T *a) : v_(a), n_(n) , data_(v_.begin())
  * double *ra = A;
  * @endcode
  */
-template <class T>
-inline Array1D<T>::operator T*()
-{
-	return &(v_[0]);
-}
+	template <class T>
+	inline Array1D<T>::operator T *()
+	{
+		return &(v_[0]);
+	}
 
-/**
+	/**
  * @brief Conversion operator function to constant raw arrays,
  * data is cloned
  * 
@@ -245,13 +230,13 @@ inline Array1D<T>::operator T*()
  * const double *ra = A;
  * @endcode
  */
-template <class T>
-inline Array1D<T>::operator const T*()
-{
-	return &(v_[0]);
-}
+	template <class T>
+	inline Array1D<T>::operator const T *()
+	{
+		return &(v_[0]);
+	}
 
-/**
+	/**
  * @brief Overload the acces operator [] 
  * 
  * @tparam T Type fo data
@@ -265,17 +250,17 @@ inline Array1D<T>::operator const T*()
  * double last_number  = A[41];
  * @endcode
  */
-template <class T>
-inline T& Array1D<T>::operator[](int i) 
-{ 
+	template <class T>
+	inline T &Array1D<T>::operator[](int i)
+	{
 #ifdef TNT_BOUNDS_CHECK
-	assert(i>= 0);
-	assert(i < n_);
+		assert(i >= 0);
+		assert(i < n_);
 #endif
-	return data_[i]; 
-}
+		return data_[i];
+	}
 
-/**
+	/**
  * @brief Overload the acces operator [] 
  * 
  * @tparam T Type fo data
@@ -289,17 +274,17 @@ inline T& Array1D<T>::operator[](int i)
  * const double last_number  = A[41];
  * @endcode
  */
-template <class T>
-inline const T& Array1D<T>::operator[](int i) const 
-{ 
+	template <class T>
+	inline const T &Array1D<T>::operator[](int i) const
+	{
 #ifdef TNT_BOUNDS_CHECK
-	assert(i>= 0);
-	assert(i < n_);
+		assert(("Index is negative", i >= 0));
+		assert(("Index is out of bonds", i < n_));
 #endif
-	return data_[i]; 
-}
+		return data_[i];
+	}
 
-/**
+	/**
  * @brief Overload the acces operator () 
  * 
  * @tparam T Type fo data
@@ -313,17 +298,17 @@ inline const T& Array1D<T>::operator[](int i) const
  * double last_number  = A(42);
  * @endcode
  */
-template <class T>
-inline T& Array1D<T>::operator()(int i) 
-{ 
+	template <class T>
+	inline T &Array1D<T>::operator()(int i)
+	{
 #ifdef TNT_BOUNDS_CHECK
-	assert(i > 0);
-	assert(i <= n_);
+		assert(("Index is negative", i > 0));
+		assert(("Index is out of bonds", i <= n_));
 #endif
-	return data_[i-1]; 
-}
+		return data_[i - 1];
+	}
 
-/**
+	/**
  * @brief Overload the acces operator () 
  * 
  * @tparam T Type fo data
@@ -337,17 +322,17 @@ inline T& Array1D<T>::operator()(int i)
  * const double last_number  = A(42);
  * @endcode
  */
-template <class T>
-inline const T& Array1D<T>::operator()(int i) const 
-{ 
+	template <class T>
+	inline const T &Array1D<T>::operator()(int i) const
+	{
 #ifdef TNT_BOUNDS_CHECK
-	assert(i > 0);
-	assert(i <= n_);
+		assert(("Index is negative", i > 0));
+		assert(("Index is out of bonds", i <= n_));
 #endif
-	return data_[i-1]; 
-}
+		return data_[i - 1];
+	}
 
-/**
+	/**
  * @brief Initialaize all members af the array to a given value. 
  * Overload the operator =
  * 
@@ -361,14 +346,14 @@ inline const T& Array1D<T>::operator()(int i) const
  * A = 1.0;
  * @endcode
  */
-template <class T>
-Array1D<T> & Array1D<T>::operator=(const T &a)
-{
-	set_(data_, data_+n_, a);
-	return *this;
-}
+	template <class T>
+	Array1D<T> &Array1D<T>::operator=(const T &a)
+	{
+		set_(data_, data_ + n_, a);
+		return *this;
+	}
 
-/**
+	/**
  * @brief Make a copy of the current array to a different one. Avoid a
  * cloning operation.
  * 
@@ -381,16 +366,16 @@ Array1D<T> & Array1D<T>::operator=(const T &a)
  * TNT::Array1D<double> B(A.copy()); 
  * @endcode
  */
-template <class T>
-Array1D<T> Array1D<T>::copy() const
-{
-	Array1D A( n_);
-	copy_(A.data_, data_, n_);
+	template <class T>
+	Array1D<T> Array1D<T>::copy() const
+	{
+		Array1D A(n_);
+		copy_(A.data_, data_, n_);
 
-	return A;
-}
+		return A;
+	}
 
-/**
+	/**
  * @brief Inject the values of an array A into another array B
  * of the same size. The values are copied (not cloning).
  * 
@@ -405,17 +390,16 @@ Array1D<T> Array1D<T>::copy() const
  * B.inject(A);
  * @endcode
  */
-template <class T>
-Array1D<T> & Array1D<T>::inject(const Array1D &A)
-{
-	if (A.n_ == n_)
-		copy_(data_, A.data_, n_);
+	template <class T>
+	Array1D<T> &Array1D<T>::inject(const Array1D &A)
+	{
+		if (A.n_ == n_)
+			copy_(data_, A.data_, n_);
 
-	return *this;
-}
+		return *this;
+	}
 
-
-/**
+	/**
  * @brief Change the reference of one array B to another array B,
  * if B has only one reference the data is destroyed, if not the
  * reference counter is decreased.
@@ -438,20 +422,19 @@ Array1D<T> & Array1D<T>::inject(const Array1D &A)
  *  D->ref(A); //  D is now a reference to A
  * @endcode
  */
-template <class T>
-Array1D<T> & Array1D<T>::ref(const Array1D<T> &A)
-{
-	if (this != &A)
+	template <class T>
+	Array1D<T> &Array1D<T>::ref(const Array1D<T> &A)
 	{
-		v_ = A.v_;		/* operator= handles the reference counting. */
-		n_ = A.n_;
-		data_ = A.data_; 
-		
+		if (this != &A)
+		{
+			v_ = A.v_; /* operator= handles the reference counting. */
+			n_ = A.n_;
+			data_ = A.data_;
+		}
+		return *this;
 	}
-	return *this;
-}
 
-/**
+	/**
  * @brief Overload the = operator. Use the method Array1D<T>::ref .
  * This means that "=" performs a clone operation not a copy operation.
  * 
@@ -473,13 +456,13 @@ Array1D<T> & Array1D<T>::ref(const Array1D<T> &A)
  *  (*D) = ref(A); // D is now a reference to A
  * @endcode
  */
-template <class T>
-Array1D<T> & Array1D<T>::operator=(const Array1D<T> &A)
-{
-	return ref(A);
-}
+	template <class T>
+	Array1D<T> &Array1D<T>::operator=(const Array1D<T> &A)
+	{
+		return ref(A);
+	}
 
-/**
+	/**
  * @brief Returns the dimension of the Array
  * 
  * @tparam T Type of data
@@ -491,10 +474,10 @@ Array1D<T> & Array1D<T>::operator=(const Array1D<T> &A)
  * int size = B.dim() // equal to 42
  * @endcode
  */
-template <class T>
-inline int Array1D<T>::dim1() const { return n_; }
+	template <class T>
+	inline int Array1D<T>::dim1() const { return n_; }
 
-/**
+	/**
  * @brief Returns the dimension of the Array
  * 
  * @tparam T Type of data
@@ -506,10 +489,10 @@ inline int Array1D<T>::dim1() const { return n_; }
  * int size = B.dim1() // equal to 42
  * @endcode
  */
-template <class T>
-inline int Array1D<T>::dim() const { return n_; }
+	template <class T>
+	inline int Array1D<T>::dim() const { return n_; }
 
-/**
+	/**
  * @brief Destroy the Array1D<T> object
  * 
  * @tparam T Type of data
@@ -520,13 +503,12 @@ inline int Array1D<T>::dim() const { return n_; }
  * int size = B.dim1() // equal to 42
  * @endcode
  */
-template <class T>
-Array1D<T>::~Array1D() {}
+	template <class T>
+	Array1D<T>::~Array1D() {}
 
+	/* ............................ extended interface ......................*/
 
-/* ............................ extended interface ......................*/
-
-/**
+	/**
  * @brief Return the number of reference to *this array
  * 
  * @tparam T Type of data
@@ -548,14 +530,13 @@ Array1D<T>::~Array1D() {}
  * int num_ref = A.ref_count() // equal to 4
  * @endcode
  */
-template <class T>
-inline int Array1D<T>::ref_count() const
-{
-	return v_.ref_count();
-}
+	template <class T>
+	inline int Array1D<T>::ref_count() const
+	{
+		return v_.ref_count();
+	}
 
-
-/**
+	/**
  * @brief Creates an Array1B B composed by a REFERENCE to a subarray of this 
  * between the index i0 and i1
  * 
@@ -574,47 +555,41 @@ inline int Array1D<T>::ref_count() const
  * bool a = (&A[i]==&B[i]) // true 
  * @endcode
  */
-template <class T>
-inline Array1D<T> Array1D<T>::subarray(int i0, int i1)
-{
-	if ((i0 >= 0) && (i1 < n_) && (i0 <= i1))
+	template <class T>
+	inline Array1D<T> Array1D<T>::subarray(int i0, int i1)
 	{
-		Array1D<T> X(*this);  /* create a new instance of this array. */
-		X.n_ = i1-i0+1;
-		X.data_ += i0;
+		if ((i0 >= 0) && (i1 < n_) && (i0 <= i1))
+		{
+			Array1D<T> X(*this); /* create a new instance of this array. */
+			X.n_ = i1 - i0 + 1;
+			X.data_ += i0;
 
-		return X;
+			return X;
+		}
+		else
+		{
+			return Array1D<T>();
+		}
 	}
-	else
+
+	/* private internal functions */
+
+	template <class T>
+	void Array1D<T>::set_(T *begin, T *end, const T &a)
 	{
-		return Array1D<T>();
+		for (T *p = begin; p < end; p++)
+			*p = a;
 	}
-}
 
-
-/* private internal functions */
-
-
-template <class T>
-void Array1D<T>::set_(T* begin, T* end, const T& a)
-{
-	for (T* p=begin; p<end; p++)
-		*p = a;
-
-}
-
-template <class T>
-void Array1D<T>::copy_(T* p, const T* q, int len) const
-{
-	T *end = p + len;
-	while (p<end )
-		*p++ = *q++;
-
-}
-
+	template <class T>
+	void Array1D<T>::copy_(T *p, const T *q, int len) const
+	{
+		T *end = p + len;
+		while (p < end)
+			*p++ = *q++;
+	}
 
 } /* namespace TNT */
 
 #endif
 /* TNT_ARRAY1D_H */
-

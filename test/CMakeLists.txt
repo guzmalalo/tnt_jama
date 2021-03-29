@@ -25,3 +25,4 @@ endif()
 
 ## Include the test cases 
 add_subdirectory(Array1D)
+add_subdirectory(TNT_General)

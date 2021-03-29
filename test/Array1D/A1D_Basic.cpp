@@ -63,7 +63,7 @@ TEST_F(Array1D_test, init_values)
     }
 
     EXPECT_FALSE(&ad[0] == &C[0])
-        << "C point to the same adress of raw array";
+        << "C point to the same address of raw array";
 }
 
 /**
@@ -83,12 +83,12 @@ TEST_F(Array1D_test, clone)
     // A and B are different objets pointing to the same
     // data
     EXPECT_FALSE(&A == &B)
-        << "B has the same adress of A ";
+        << "B has the same address of A ";
 
     // B and C are different objets pointing to the same
     // data
     EXPECT_FALSE(&B == &C)
-        << "B has the same adress of C ";
+        << "B has the same address of C ";
 
     // Checking if A, B anc C point to the same data
     for (int i = 0; i < A.dim(); i++)
@@ -178,12 +178,12 @@ TEST_F(Array1D_test, copy_method)
             << "B is not equal to A";
     }
 
-    // Check the pointed adress for data
+    // Check the pointed address for data
     // Check if ad is equal to the init value
     for (int i = 0; i < A.dim(); i++)
     {
         EXPECT_FALSE(&A[i] == &B[i])
-            << "B adress equal to A";
+            << "B address equal to A";
     }
 }
 
@@ -204,12 +204,12 @@ TEST_F(Array1D_test, inject_method)
             << "B is not equal to A";
     }
 
-    // Check the pointed adress for data
+    // Check the pointed address for data
     // Check if ad is equal to the init value
     for (int i = 0; i < A.dim(); i++)
     {
         EXPECT_FALSE(&A[i] == &B[i])
-            << "B adress equal to A";
+            << "B address equal to A";
     }
 }
 
@@ -393,7 +393,7 @@ TEST_F(Array1D_test, subarray_method)
 
     EXPECT_EQ(B.dim(), 10);
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 10; i++)
     {
         EXPECT_EQ(&A[i], &B[i])

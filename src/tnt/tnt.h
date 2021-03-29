@@ -25,7 +25,7 @@
 
 //---------------------------------------------------------------------
 // Define this macro if you want  TNT to track some of the out-of-bounds
-// indexing. This can encur a small run-time overhead, but is recommended 
+// indexing. This can incur a small run-time overhead, but is recommended 
 // while developing code.  It can be turned off for production runs.
 // 
 //       #define TNT_BOUNDS_CHECK
@@ -35,14 +35,14 @@
 #define TNT_BOUNDS_CHECK
 
 #include "tnt_version.h"
-#include "tnt_math_utils.h" // to check
+#include "tnt_math_utils.h"
 
 #include "tnt_array1d.h"
-#include "tnt_array2d.h"
-#include "tnt_array3d.h"
+//#include "tnt_array2d.h"
+//#include "tnt_array3d.h"
 #include "tnt_array1d_utils.h"
-#include "tnt_array2d_utils.h"
-#include "tnt_array3d_utils.h"
+//#include "tnt_array2d_utils.h"
+//#include "tnt_array3d_utils.h"
 
 #endif
 // TNT_H

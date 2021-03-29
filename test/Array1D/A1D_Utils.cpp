@@ -34,7 +34,9 @@ TEST_F(Array1D_test, addition_operator)
     TNT::Array1D<double> B(5, scalar_);
     TNT::Array1D<double> C = A + B;
 
-    // Verify the adress
+    ASSERT_TRUE(C.dim() > 0) << "C is null";
+
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(C[i], (i + 1) + scalar_)
@@ -227,6 +229,28 @@ TEST_F(Array1D_test, division_assignement_scalar)
         EXPECT_EQ(B[i], (i + 1) / scalar_)
             << "B is not equal to A/scalar";
     }
+}
+
+/**
+* @brief Testing the l2 norm of an Array1D 
+*/
+TEST_F(Array1D_test, l2_norm)
+{
+    double a_values[5] = {1.1, 2.1, 3.1, 4.1, 5.1};
+    double res = 0.0;
+    TNT::Array1D<double> A(5, a_values);
+	for (int i=0; i<5; i++)
+		res +=  a_values[i] * a_values[i];
+
+    // Testing double values
+    EXPECT_EQ(TNT::norm(A), std::sqrt(res));
+
+    int b_values[5] = {1, 2, 3, 4, 5};
+    TNT::Array1D<int> B(5, b_values);
+
+    // Testing int values 
+    EXPECT_EQ(TNT::norm(B), static_cast<int>(std::sqrt(55)));
+
 }
 
 /**

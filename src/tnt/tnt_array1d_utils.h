@@ -20,9 +20,6 @@
 #ifndef TNT_ARRAY1D_UTILS_H
 #define TNT_ARRAY1D_UTILS_H
 
-#include <cstdlib>
-#include <cassert>
-
 namespace TNT
 {
 
@@ -104,9 +101,13 @@ Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
 {
 	int n = A.dim1();
 
+	// Add assert instead of if for release
+/*#ifdef TNT_BOUNDS_CHECK
+		assert(("dim B is no equal to dim A",B.dim1() == n) );
+#endif*/
+
 	if (B.dim1() != n )
 		return Array1D<T>();
-
 	else
 	{
 		Array1D<T> C(n);
@@ -140,7 +141,6 @@ Array1D<T> operator-(const Array1D<T> &A, const Array1D<T> &B)
 
 	if (B.dim1() != n )
 		return Array1D<T>();
-
 	else
 	{
 		Array1D<T> C(n);
@@ -175,7 +175,6 @@ Array1D<T> operator*(const Array1D<T> &A, const Array1D<T> &B)
 
 	if (B.dim1() != n )
 		return Array1D<T>();
-
 	else
 	{
 		Array1D<T> C(n);
@@ -467,25 +466,29 @@ Array1D<T>&  operator/=(Array1D<T> &A, const T &b)
 /* ........................ extended functions ......................*/
 
 /**
- * @brief Compute the norm
+ * @brief Computes the l2​-norm of an Array1d
  * 
- * @tparam T 
- * @param A 
- * @return double 
+ * @tparam T Type od data
+ * @param A Input array 
+ * @return T the norm of the array 
+ * 
+ * Example: 
+ * @code{cpp}
+	
  */
 template <class T>
-double norm(const Array1D<T> &A)
+T norm(const Array1D<T> &A)
 {
 	int n = A.dim1();
 
-	double sum = 0.0;
+	T sum = 0.;
 	for (int i=0; i<n; i++)
-		sum +=  abs(A[i])*abs(A[i]);
-	return sqrt(sum);
+		sum +=  A[i] * A[i];
+	return std::sqrt(sum);
 }
 
 /**
- * @brief  Computes A^B
+ * @brief  Computes the cross product of A and B 
  * 
  * @param A an Array1D
  * @param B an Array1D

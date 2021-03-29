@@ -22,11 +22,10 @@
 #ifndef TNT_I_REFVEC_H
 #define TNT_I_REFVEC_H
 
-#include <cstdlib>
 #include <iostream>
 
 #ifdef TNT_BOUNDS_CHECK
-#include <assert.h>
+#include <cassert>
 #endif
 
 #ifndef NULL
@@ -35,8 +34,8 @@
 
 namespace TNT
 {
-/*
-	Internal representation of ref-counted array.  The TNT
+/**
+	@brief Internal representation of ref-counted array.  The TNT
 	arrays all use this building block.
 
 	<p>
