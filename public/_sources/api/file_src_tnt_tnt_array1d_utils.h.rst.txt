@@ -25,6 +25,12 @@ Definition (``src/tnt/tnt_array1d_utils.h``)
 
 
 
+Includes
+--------
+
+
+- ``iostream``
+
 
 
 Included By
@@ -51,7 +57,7 @@ Functions
 
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a936df530f86dcc7e41baa242734da049`
 
-- :ref:`exhale_function_tnt__array1d__utils_8h_1a71ca227c5968ac9da6132976e36b5cd3`
+- :ref:`exhale_function_tnt__array1d__utils_8h_1af23aa59cc4c98541d7bbb341cf42de37`
 
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a631669334b75ebb846723bf079fd2c8d`
 

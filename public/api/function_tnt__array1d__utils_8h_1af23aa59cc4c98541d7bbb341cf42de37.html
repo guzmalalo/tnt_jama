@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Template Function TNT::dot_product &mdash; TNT NIST 2021  documentation</title>
+  <title>Template Function TNT::norm &mdash; TNT NIST 2021  documentation</title>
   
 
   
@@ -35,15 +35,14 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
         <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Template Function TNT::hypot" href="function_tnt__math__utils_8h_1aeaf87cecaaef1826473073b723c178c5.html" />
-    <link rel="prev" title="Template Function TNT::cross" href="function_tnt__array1d__utils_8h_1acf8b9922b7d26007417d0b1382845edf.html" /> 
+    <link rel="next" title="Template Function TNT::operator*(const Array1D&lt;T&gt;&amp;, const Array1D&lt;T&gt;&amp;)" href="function_tnt__array1d__utils_8h_1a631669334b75ebb846723bf079fd2c8d.html" />
+    <link rel="prev" title="Template Function TNT::matmult" href="function_tnt__array2d__utils_8h_1a4c23204963622fcd58b1f5e0753a9a96.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -141,13 +140,13 @@
         
           <li><a href="library_root.html">Library API</a> &raquo;</li>
         
-      <li>Template Function TNT::dot_product</li>
+      <li>Template Function TNT::norm</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/api/function_tnt__array1d__utils_8h_1a936df530f86dcc7e41baa242734da049.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/function_tnt__array1d__utils_8h_1af23aa59cc4c98541d7bbb341cf42de37.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -160,33 +159,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="template-function-tnt-dot-product">
-<span id="exhale-function-tnt-array1d-utils-8h-1a936df530f86dcc7e41baa242734da049"></span><h1>Template Function TNT::dot_product<a class="headerlink" href="#template-function-tnt-dot-product" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="template-function-tnt-norm">
+<span id="exhale-function-tnt-array1d-utils-8h-1af23aa59cc4c98541d7bbb341cf42de37"></span><h1>Template Function TNT::norm<a class="headerlink" href="#template-function-tnt-norm" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Defined in <a class="reference internal" href="file_src_tnt_tnt_array1d_utils.h.html#file-src-tnt-tnt-array1d-utils-h"><span class="std std-ref">File tnt_array1d_utils.h</span></a></p></li>
 </ul>
 <div class="section" id="function-documentation">
 <h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp function">
-<dt id="_CPPv4I0EN3TNT11dot_productE1TRK7Array1DI1TERK7Array1DI1TE">
-<span id="_CPPv3I0EN3TNT11dot_productERK7Array1DI1TERK7Array1DI1TE"></span><span id="_CPPv2I0EN3TNT11dot_productERK7Array1DI1TERK7Array1DI1TE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="tnt__array1d__utils_8h_1a936df530f86dcc7e41baa242734da049"></span><a class="reference internal" href="#_CPPv4I0EN3TNT11dot_productE1TRK7Array1DI1TERK7Array1DI1TE" title="TNT::dot_product::T"><span class="pre">T</span></a> <code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">dot_product</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT11dot_productE1TRK7Array1DI1TERK7Array1DI1TE" title="TNT::dot_product::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">A</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT11dot_productE1TRK7Array1DI1TERK7Array1DI1TE" title="TNT::dot_product::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">B</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN3TNT11dot_productE1TRK7Array1DI1TERK7Array1DI1TE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Computes the dot product of two <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D</span></a> A and B. </p>
+<dt id="_CPPv4I0EN3TNT4normE1TRK7Array1DI1TE">
+<span id="_CPPv3I0EN3TNT4normERK7Array1DI1TE"></span><span id="_CPPv2I0EN3TNT4normERK7Array1DI1TE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="tnt__array1d__utils_8h_1af23aa59cc4c98541d7bbb341cf42de37"></span><a class="reference internal" href="function_tnt__array1d__utils_8h_1a71ca227c5968ac9da6132976e36b5cd3.html#_CPPv4I0EN3TNT4normE1TRK7Array1DI1TE" title="TNT::norm::T"><span class="pre">T</span></a> <code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">norm</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="function_tnt__array1d__utils_8h_1a71ca227c5968ac9da6132976e36b5cd3.html#_CPPv4I0EN3TNT4normE1TRK7Array1DI1TE" title="TNT::norm::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Computes the l2​-norm of an Array1d. </p>
 <p><p>Example: </p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">();</span> <span class="c1">// + Initialization </span>
-<span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">();</span> <span class="c1">// + Initialization </span>
-<span class="kt">double</span> <span class="n">C</span> <span class="o">=</span> <span class="n">TNT</span><span class="o">::</span><span class="n">dot_product</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+<span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="n">TNT</span><span class="o">::</span><span class="n">norm</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
 </pre></div>
 </div>
  <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>&lt;T&gt; C = <span class="math notranslate nohighlight">\( A \cdot B \)</span></p>
+<dt><strong>Return</strong></dt><dd><p>T the norm of the array</p>
 </dd>
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type od data </p></li>
 </ul>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: an input <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D</span></a> </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code>: an input <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D</span></a> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: Input array </p></li>
 </ul>
 </dd>
 </dl>
@@ -202,8 +199,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="function_tnt__math__utils_8h_1aeaf87cecaaef1826473073b723c178c5.html" class="btn btn-neutral float-right" title="Template Function TNT::hypot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="function_tnt__array1d__utils_8h_1acf8b9922b7d26007417d0b1382845edf.html" class="btn btn-neutral float-left" title="Template Function TNT::cross" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="function_tnt__array1d__utils_8h_1a631669334b75ebb846723bf079fd2c8d.html" class="btn btn-neutral float-right" title="Template Function TNT::operator*(const Array1D&lt;T&gt;&amp;, const Array1D&lt;T&gt;&amp;)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="function_tnt__array2d__utils_8h_1a4c23204963622fcd58b1f5e0753a9a96.html" class="btn btn-neutral float-left" title="Template Function TNT::matmult" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -35,6 +35,7 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
         <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -169,9 +170,15 @@
 <dl class="cpp function">
 <dt id="_CPPv4I0EN3TNT5crossE7Array1DI1TERK7Array1DI1TERK7Array1DI1TE">
 <span id="_CPPv3I0EN3TNT5crossERK7Array1DI1TERK7Array1DI1TE"></span><span id="_CPPv2I0EN3TNT5crossERK7Array1DI1TERK7Array1DI1TE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="tnt__array1d__utils_8h_1acf8b9922b7d26007417d0b1382845edf"></span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT5crossE7Array1DI1TERK7Array1DI1TERK7Array1DI1TE" title="TNT::cross::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">cross</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT5crossE7Array1DI1TERK7Array1DI1TERK7Array1DI1TE" title="TNT::cross::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">A</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT5crossE7Array1DI1TERK7Array1DI1TERK7Array1DI1TE" title="TNT::cross::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">B</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN3TNT5crossE7Array1DI1TERK7Array1DI1TERK7Array1DI1TE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Computes A^B. </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>Array1D&lt;T&gt; A^B </p>
+<dd><p>Computes the cross product of A and B, this operation is only defined in a three-dimensional space. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">();</span> <span class="c1">// + Initialization </span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">();</span> <span class="c1">// + Initialization </span>
+<span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="n">TNT</span><span class="o">::</span><span class="n">cross</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array1D&lt;T&gt; C = <span class="math notranslate nohighlight">\( A \times B \)</span></p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: an <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D</span></a> </p></li>

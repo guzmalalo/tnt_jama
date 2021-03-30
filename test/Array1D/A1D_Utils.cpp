@@ -239,8 +239,8 @@ TEST_F(Array1D_test, l2_norm)
     double a_values[5] = {1.1, 2.1, 3.1, 4.1, 5.1};
     double res = 0.0;
     TNT::Array1D<double> A(5, a_values);
-	for (int i=0; i<5; i++)
-		res +=  a_values[i] * a_values[i];
+    for (int i = 0; i < 5; i++)
+        res += a_values[i] * a_values[i];
 
     // Testing double values
     EXPECT_EQ(TNT::norm(A), std::sqrt(res));
@@ -248,9 +248,42 @@ TEST_F(Array1D_test, l2_norm)
     int b_values[5] = {1, 2, 3, 4, 5};
     TNT::Array1D<int> B(5, b_values);
 
-    // Testing int values 
+    // Testing int values
     EXPECT_EQ(TNT::norm(B), static_cast<int>(std::sqrt(55)));
+}
 
+/**
+* @brief Testing the cross product of two Array1D 
+*/
+TEST_F(Array1D_test, cross_product)
+{
+    double a_values[3] = {2, 3, 4};
+    double b_values[3] = {5, 6, 7};
+    TNT::Array1D<double> A(3, a_values);
+    TNT::Array1D<double> B(3, b_values);
+
+    TNT::Array1D<double> C = TNT::cross(A, B);
+
+    // Testing int values
+    EXPECT_EQ(C(1), -3.);
+    EXPECT_EQ(C(2), 6.);
+    EXPECT_EQ(C(3), -3.);
+}
+
+/**
+* @brief Testing the dot product of two Array1D 
+*/
+TEST_F(Array1D_test, dot_product)
+{
+    double a_values[3] = {-2, 3, 4};
+    double b_values[3] = {4, 6, 7};
+    TNT::Array1D<double> A(3, a_values);
+    TNT::Array1D<double> B(3, b_values);
+
+    double C = TNT::dot_product(A, B);
+
+    // Testing int values
+    EXPECT_EQ(C, -8 + 18 + 28);
 }
 
 /**

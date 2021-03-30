@@ -169,7 +169,9 @@
 <dl class="cpp class">
 <dt id="_CPPv4I0EN3TNT8i_refvecE">
 <span id="_CPPv3I0EN3TNT8i_refvecE"></span><span id="_CPPv2I0EN3TNT8i_refvecE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="class_t_n_t_1_1i__refvec"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">i_refvec</span></code><a class="headerlink" href="#_CPPv4I0EN3TNT8i_refvecE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Internal representation of ref-counted array. The TNT arrays all use this building block. </p>
+<p>If an array block is created by TNT, then every time an assignment is made, the left-hand-side reference is decreased by one, and the right-hand-side refernce count is increased by one. If the array block was external to TNT, the refernce count is a NULL pointer regardless of how many references are made, since the memory is not freed by TNT. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec8i_refvecEv">

@@ -29,8 +29,6 @@ Includes
 --------
 
 
-- ``iostream``
-
 - ``tnt_i_refvec.h`` (:ref:`file_src_tnt_tnt_i_refvec.h`)
 
 

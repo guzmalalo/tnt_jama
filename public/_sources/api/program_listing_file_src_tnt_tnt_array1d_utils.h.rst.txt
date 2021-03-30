@@ -32,6 +32,8 @@ Program Listing for File tnt_array1d_utils.h
    #ifndef TNT_ARRAY1D_UTILS_H
    #define TNT_ARRAY1D_UTILS_H
    
+   #include <iostream>
+   
    namespace TNT
    {
    
@@ -73,9 +75,13 @@ Program Listing for File tnt_array1d_utils.h
    {
        int n = A.dim1();
    
+       // Add assert instead of if for release
+   /*#ifdef TNT_BOUNDS_CHECK
+           assert(("dim B is no equal to dim A",B.dim1() == n) );
+   #endif*/
+   
        if (B.dim1() != n )
            return Array1D<T>();
-   
        else
        {
            Array1D<T> C(n);
@@ -96,7 +102,6 @@ Program Listing for File tnt_array1d_utils.h
    
        if (B.dim1() != n )
            return Array1D<T>();
-   
        else
        {
            Array1D<T> C(n);
@@ -117,7 +122,6 @@ Program Listing for File tnt_array1d_utils.h
    
        if (B.dim1() != n )
            return Array1D<T>();
-   
        else
        {
            Array1D<T> C(n);
@@ -269,14 +273,14 @@ Program Listing for File tnt_array1d_utils.h
    /* ........................ extended functions ......................*/
    
    template <class T>
-   double norm(const Array1D<T> &A)
+   T norm(const Array1D<T> &A)
    {
        int n = A.dim1();
    
-       double sum = 0.0;
+       T sum = 0.;
        for (int i=0; i<n; i++)
-           sum +=  abs(A[i])*abs(A[i]);
-       return sqrt(sum);
+           sum +=  A[i] * A[i];
+       return std::sqrt(sum);
    }
    
    template <class T>
@@ -293,10 +297,9 @@ Program Listing for File tnt_array1d_utils.h
            C[0] = A[1]*B[2] - A[2]*B[1];
            C[1] = A[2]*B[0] - A[0]*B[2];
            C[2] = A[0]*B[1] - A[1]*B[0];
-               return C;
+           return C;
        }
    }
-   
    
    template <class T>
    T dot_product(const Array1D<T> &A, const Array1D<T> &B)
@@ -305,7 +308,7 @@ Program Listing for File tnt_array1d_utils.h
        int m = B.dim1();
        
        if (n != 3 ||  m != 3 )
-           return Array1D<T>();
+           return 0;
        else
        {
            T sum = 0; 

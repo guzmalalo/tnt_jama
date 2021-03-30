@@ -20,6 +20,8 @@
 #ifndef TNT_ARRAY1D_UTILS_H
 #define TNT_ARRAY1D_UTILS_H
 
+#include <iostream>
+
 namespace TNT
 {
 
@@ -472,9 +474,11 @@ Array1D<T>&  operator/=(Array1D<T> &A, const T &b)
  * @param A Input array 
  * @return T the norm of the array 
  * 
- * Example: 
- * @code{cpp}
-	
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(); // + Initialization 
+ * double res = TNT::norm(A);
+ * @endcode
  */
 template <class T>
 T norm(const Array1D<T> &A)
@@ -488,11 +492,19 @@ T norm(const Array1D<T> &A)
 }
 
 /**
- * @brief  Computes the cross product of A and B 
+ * @brief  Computes the cross product of A and B, this
+ * operation is  only defined in a three-dimensional space.
  * 
  * @param A an Array1D
  * @param B an Array1D
- * @return Array1D<T>  A^B
+ * @return Array1D<T> C  = \f$ A \times B \f$
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(); // + Initialization 
+ * TNT::Array1D<double> B(); // + Initialization 
+ * double res = TNT::cross(A,B);
+ * @endcode
  */
 template <class T>
 Array1D<T>  cross(const Array1D<T> &A, const Array1D<T> &B)
@@ -508,17 +520,24 @@ Array1D<T>  cross(const Array1D<T> &A, const Array1D<T> &B)
         C[0] = A[1]*B[2] - A[2]*B[1];
         C[1] = A[2]*B[0] - A[0]*B[2];
         C[2] = A[0]*B[1] - A[1]*B[0];
-            return C;
+    	return C;
     }
 }
 
-
 /**
- * @brief  Computes the dot product A.B
+ * @brief Computes the dot product of two Array1D A and B.
  * 
- * @param A an Array1D
- * @param B an Array1D
- * @return <T>  sum(Ai*Bi)
+ * @tparam T Data type
+ * @param A an input Array1D
+ * @param B an input Array1D
+ * @return <T> C  = \f$ A \cdot B \f$
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(); // + Initialization 
+ * TNT::Array1D<double> B(); // + Initialization 
+ * double C = TNT::dot_product(A, B);
+ * @endcode
  */
 template <class T>
 T dot_product(const Array1D<T> &A, const Array1D<T> &B)
@@ -527,7 +546,7 @@ T dot_product(const Array1D<T> &A, const Array1D<T> &B)
     int m = B.dim1();
     
     if (n != 3 ||  m != 3 )
-        return Array1D<T>();
+        return 0;
     else
     {
 		T sum = 0; 

@@ -18,21 +18,19 @@ Program Listing for File tnt_math_utils.h
    #include <cmath>
    
    
-   
    namespace TNT
    {
    
-   //using namespace std;
-   template <class Real>
-   Real hypot(const Real &a, const Real &b)
+   
+   template <class T>
+   T hypot(const T &a, const T &b)
    {
-       
        if (a== 0)
-           return abs(b);
+           return std::abs(b);
        else
        {
-           Real c = b/a;
-           return abs(a) * sqrt(1 + c*c);
+           T c = b/a;
+           return std::abs(a) * std::sqrt(1 + c*c);
        }
    }
    } /* TNT namespace */

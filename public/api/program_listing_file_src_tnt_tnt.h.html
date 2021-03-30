@@ -185,7 +185,7 @@
 
 <span class="c1">//---------------------------------------------------------------------</span>
 <span class="c1">// Define this macro if you want  TNT to track some of the out-of-bounds</span>
-<span class="c1">// indexing. This can encur a small run-time overhead, but is recommended</span>
+<span class="c1">// indexing. This can incur a small run-time overhead, but is recommended</span>
 <span class="c1">// while developing code.  It can be turned off for production runs.</span>
 <span class="c1">//</span>
 <span class="c1">//       #define TNT_BOUNDS_CHECK</span>
@@ -195,14 +195,14 @@
 <span class="cp">#define TNT_BOUNDS_CHECK</span>
 
 <span class="cp">#include</span> <span class="cpf">&quot;tnt_version.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;tnt_math_utils.h&quot;</span><span class="c1"> // to check</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;tnt_math_utils.h&quot;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&quot;tnt_array1d.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;tnt_array2d.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;tnt_array3d.h&quot;</span><span class="cp"></span>
+<span class="c1">//#include &quot;tnt_array2d.h&quot;</span>
+<span class="c1">//#include &quot;tnt_array3d.h&quot;</span>
 <span class="cp">#include</span> <span class="cpf">&quot;tnt_array1d_utils.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;tnt_array2d_utils.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;tnt_array3d_utils.h&quot;</span><span class="cp"></span>
+<span class="c1">//#include &quot;tnt_array2d_utils.h&quot;</span>
+<span class="c1">//#include &quot;tnt_array3d_utils.h&quot;</span>
 
 <span class="cp">#endif</span>
 <span class="c1">// TNT_H</span>

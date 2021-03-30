@@ -34,11 +34,10 @@ Program Listing for File tnt_i_refvec.h
    #ifndef TNT_I_REFVEC_H
    #define TNT_I_REFVEC_H
    
-   #include <cstdlib>
    #include <iostream>
    
    #ifdef TNT_BOUNDS_CHECK
-   #include <assert.h>
+   #include <cassert>
    #endif
    
    #ifndef NULL
@@ -47,22 +46,6 @@ Program Listing for File tnt_i_refvec.h
    
    namespace TNT
    {
-   /*
-       Internal representation of ref-counted array.  The TNT
-       arrays all use this building block.
-   
-       <p>
-       If an array block is created by TNT, then every time 
-       an assignment is made, the left-hand-side reference 
-       is decreased by one, and the right-hand-side refernce
-       count is increased by one.  If the array block was
-       external to TNT, the refernce count is a NULL pointer
-       regardless of how many references are made, since the 
-       memory is not freed by TNT.
-   
-   
-       
-   */
    template <class T>
    class i_refvec
    {

@@ -182,11 +182,10 @@
 <span class="cp">#ifndef TNT_I_REFVEC_H</span>
 <span class="cp">#define TNT_I_REFVEC_H</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="cp">#ifdef TNT_BOUNDS_CHECK</span>
-<span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
 <span class="cp">#endif</span>
 
 <span class="cp">#ifndef NULL</span>
@@ -195,22 +194,6 @@
 
 <span class="k">namespace</span> <span class="n">TNT</span>
 <span class="p">{</span>
-<span class="cm">/*</span>
-<span class="cm">    Internal representation of ref-counted array.  The TNT</span>
-<span class="cm">    arrays all use this building block.</span>
-
-<span class="cm">    &lt;p&gt;</span>
-<span class="cm">    If an array block is created by TNT, then every time</span>
-<span class="cm">    an assignment is made, the left-hand-side reference</span>
-<span class="cm">    is decreased by one, and the right-hand-side refernce</span>
-<span class="cm">    count is increased by one.  If the array block was</span>
-<span class="cm">    external to TNT, the refernce count is a NULL pointer</span>
-<span class="cm">    regardless of how many references are made, since the</span>
-<span class="cm">    memory is not freed by TNT.</span>
-
-
-
-<span class="cm">*/</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">i_refvec</span>
 <span class="p">{</span>

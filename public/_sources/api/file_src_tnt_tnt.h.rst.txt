@@ -33,14 +33,6 @@ Includes
 
 - ``tnt_array1d_utils.h`` (:ref:`file_src_tnt_tnt_array1d_utils.h`)
 
-- ``tnt_array2d.h`` (:ref:`file_src_tnt_tnt_array2d.h`)
-
-- ``tnt_array2d_utils.h`` (:ref:`file_src_tnt_tnt_array2d_utils.h`)
-
-- ``tnt_array3d.h`` (:ref:`file_src_tnt_tnt_array3d.h`)
-
-- ``tnt_array3d_utils.h`` (:ref:`file_src_tnt_tnt_array3d_utils.h`)
-
 - ``tnt_math_utils.h`` (:ref:`file_src_tnt_tnt_math_utils.h`)
 
 - ``tnt_version.h`` (:ref:`file_src_tnt_tnt_version.h`)

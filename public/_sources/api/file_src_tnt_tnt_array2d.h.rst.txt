@@ -41,8 +41,6 @@ Included By
 -----------
 
 
-- :ref:`file_src_tnt_tnt.h`
-
 - :ref:`file_src_tnt_tnt_array3d.h`
 
 

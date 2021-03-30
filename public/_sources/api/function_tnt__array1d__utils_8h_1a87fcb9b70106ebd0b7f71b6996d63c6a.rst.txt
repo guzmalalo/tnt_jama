@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array1d__utils_8h_1a87fcb9b70106ebd0b7f71b6996d63c6a:
+
+Template Function TNT::operator<<(std::ostream&, const TNT::Array1D<T>&)
+========================================================================
+
+- Defined in :ref:`file_src_tnt_tnt_array1d_utils.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::operator<<(std::ostream&, const TNT::Array1D<T>&)

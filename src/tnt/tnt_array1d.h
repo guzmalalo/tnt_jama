@@ -278,8 +278,8 @@ namespace TNT
 	inline const T &Array1D<T>::operator[](int i) const
 	{
 #ifdef TNT_BOUNDS_CHECK
-		assert(("Index is negative", i >= 0));
-		assert(("Index is out of bonds", i < n_));
+		assert(i >= 0 && "Index is negative");
+		assert(i < n_ && "Index is out of bonds");
 #endif
 		return data_[i];
 	}
@@ -302,8 +302,8 @@ namespace TNT
 	inline T &Array1D<T>::operator()(int i)
 	{
 #ifdef TNT_BOUNDS_CHECK
-		assert(("Index is negative", i > 0));
-		assert(("Index is out of bonds", i <= n_));
+		assert( i > 0 && "Index is negative");
+		assert( i <= n_ && "Index is out of bonds");
 #endif
 		return data_[i - 1];
 	}
@@ -326,8 +326,8 @@ namespace TNT
 	inline const T &Array1D<T>::operator()(int i) const
 	{
 #ifdef TNT_BOUNDS_CHECK
-		assert(("Index is negative", i > 0));
-		assert(("Index is out of bonds", i <= n_));
+		assert(i > 0 && "Index is negative");
+		assert(i <= n_ && "Index is out of bonds");
 #endif
 		return data_[i - 1];
 	}
