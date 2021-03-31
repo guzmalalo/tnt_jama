@@ -170,6 +170,7 @@
 <dt id="_CPPv4I0EN3TNT7Array2DE">
 <span id="_CPPv3I0EN3TNT7Array2DE"></span><span id="_CPPv2I0EN3TNT7Array2DE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="class_t_n_t_1_1_array2_d"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Array2D</span></code><a class="headerlink" href="#_CPPv4I0EN3TNT7Array2DE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ttwo-dimensional numerical array which looks like a conventional C multiarray. Storage corresponds to C (row-major) ordering. Elements are accessed via A[i][j] notation for 0-based indexing, and A(i,j) for 1-based indexing.. </p>
+<p>Data layout in memory is in Row Major Order. This means that all of row 0’s elements are first, followed by all of row 1’s, ..</p>
 <p>Array assignment is by reference (i.e. shallow assignment). That is, B=A implies that the A and B point to the same array, so modifications to the elements of A will be reflected in B. If an independent copy is required, then B = A.copy() can be used. Note that this facilitates returning arrays from functions without relying on compiler optimizations to eliminate extensive data copying.</p>
 <p>The indexing and layout of this array object makes it compatible with C and C++ algorithms that utilize the familiar C[i][j] notation. This includes numerous</p>
 <p>textbooks, such as Numerical Recipes, and various public domain codes. </p>
@@ -195,13 +196,14 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D7Array2DEv">
 <span id="_CPPv3N3TNT7Array2D7Array2DEv"></span><span id="_CPPv2N3TNT7Array2D7Array2DEv"></span><span id="TNT::Array2D::Array2D"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ab01d5e4b88c04d9e4906e7ea069f9dc0"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a null array. This is <strong>not</strong> the same as Array2D(0,0), which consumes some memory overhead.</p>
-<p>Create a new (m x n) array, WIHOUT initializing array elements. To create an initialized array of constants, see Array2D(m,n,value).</p>
-<p>This version avoids the O(m*n) initialization overhead and is used just before manual assignment.</p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
+<dd><p>Create a null array. This is <strong>not</strong> the same as Array2D(0,0), which consumes some memory overhead. This version avoids the O(m*n) initialization overhead and is used just before manual assignment. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">;</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type</p></li>
 </ul>
 </dd>
 </dl>
@@ -211,11 +213,20 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D7Array2DEii">
 <span id="_CPPv3N3TNT7Array2D7Array2DEii"></span><span id="_CPPv2N3TNT7Array2D7Array2DEii"></span><span id="TNT::Array2D::Array2D__i.i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a80990fd85f6c04956a247d43d23a6af4"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEii" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a new (m x n) array, without initalizing elements. (This encurs an O(1) operation cost, rather than a O(m*n) cost.)</p>
-<p><dl class="simple">
+<dd><p>Create a new (m x n) array, WITHOUT initializing array elements. To create an initialized array of constants, see Array2D(m,n,value). </p>
+<p>This version avoids the O(m*n) initialization overhead and is used just before manual assignment.</p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
+</ul>
+</dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix.</p></li>
 </ul>
 </dd>
 </dl>
@@ -225,12 +236,16 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D7Array2DEiiP1T">
 <span id="_CPPv3N3TNT7Array2D7Array2DEiiP1T"></span><span id="_CPPv2N3TNT7Array2D7Array2DEiiP1T"></span><span id="TNT::Array2D::Array2D__i.i.TP"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a7447ecfb709ce78db3c78ff21104f6f2"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em>, <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEiiP1T" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a new (m x n) array, as a view of an existing one-dimensional array stored in row-major order, i.e. right-most dimension varying fastest. Note that the storage for this pre-existing array will never be destroyed by TNT.</p>
-<p><dl class="simple">
+<dd><p>Create a new (m x n) array, as a view of an existing one-dimensional array stored in row-major order, i.e. right-most dimension varying fastest. This means that all of row 0’s elements are first, followed by all of row 1’s,.. Note that the storage for this pre-existing array will never be destroyed by TNT. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: the one dimensional C array to use as data storage for the array. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: the one dimensional C array to use as data storage for the array.</p></li>
 </ul>
 </dd>
 </dl>
@@ -240,12 +255,20 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D7Array2DEiiRK1T">
 <span id="_CPPv3N3TNT7Array2D7Array2DEiiRK1T"></span><span id="_CPPv2N3TNT7Array2D7Array2DEiiRK1T"></span><span id="TNT::Array2D::Array2D__i.i.TCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a9fbc65dced3dcd7428220374fd85f853"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEiiRK1T" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a new (m x n) array, initializing array elements to constant specified by argument. Most often used to create an array of zeros, as in A(m, n, 0.0).</p>
-<p><dl class="simple">
+<dd><p>Create a new (m x n) array, initializing array elements to constant specified by argument. Most often used to create an array of zeros, as in A(m, n, 0.0). </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
+</ul>
+</dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: the first (row) dimension of the new matrix. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the second (column) dimension of the new matrix. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code>: the constant value to set all elements of the new array to. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code>: the constant value to set all elements of the new array to.</p></li>
 </ul>
 </dd>
 </dl>
@@ -255,29 +278,73 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D7Array2DERK7Array2D">
 <span id="_CPPv3N3TNT7Array2D7Array2DERK7Array2D"></span><span id="_CPPv2N3TNT7Array2D7Array2DERK7Array2D"></span><span id="TNT::Array2D::Array2D__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a065e795f6f2486ca7ea0bca09200dbd4"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N3TNT7Array2D7Array2DERK7Array2D" title="TNT::Array2D::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Copy constructor. Array data is NOT copied, but shared. Thus, in <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> B(A), subsequent changes to A will be reflected in B. For an indepent copy of A, use <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> B(A.copy()), or B = A.copy(), instead. </p>
+<dd><p>Copy constructor. Array data is NOT copied, but shared. Thus, in <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> B(A), subsequent changes to A will be reflected in B. For an indepent copy of A, use : </p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Array2D</span> <span class="n">B</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="c1">// or </span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">copy</span><span class="p">(),</span>
+</pre></div>
+</div>
+</p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">B</span><span class="p">);</span> 
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> to be shared</p></li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2DcvPP1TEv">
 <span id="_CPPv3N3TNT7Array2DcvPP1TEv"></span><span id="_CPPv2N3TNT7Array2DcvPP1TEv"></span><span id="TNT::Array2D::castto-TPP-operator"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ab0edc94ba076bb743ace676d7717260c"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">operator</span> <span class="pre">T**</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DcvPP1TEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Convert 2D array into a regular multidimensional C pointer. Most often called automatically when calling C interfaces that expect things like double** rather than Array2D&lt;dobule&gt;. </p>
+<dd><p>Convert 2D array into a regular multidimensional C pointer. Most often called automatically when calling C interfaces that expect things like double** rather than Array2D&lt;double&gt;. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T** Regular multidimensional C pointer. </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2DcvPPK1TEv">
 <span id="_CPPv3NK3TNT7Array2DcvPPK1TEv"></span><span id="_CPPv2NK3TNT7Array2DcvPPK1TEv"></span><span id="TNT::Array2D::castto-TCPP-operatorC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ae1a37a9138c2cac250aae786231bce2a"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">operator</span> <span class="pre">const</span> <span class="pre">T**</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2DcvPPK1TEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Convert a const 2D array into a const multidimensional C pointer. <p> Most often called automatically when calling C interfaces that expect things like “const double**” rather than “const Array2D&lt;dobule&gt;&amp;”. </p>
+<dd><p>Convert 2D array into a constant regular multidimensional C pointer. Most often called automatically when calling C interfaces that expect things like “const double**” rather than “const Array2D&lt;double&gt;&amp;”. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T** Constant regular multidimensional C pointer. </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2DaSERK1T">
 <span id="_CPPv3N3TNT7Array2DaSERK1T"></span><span id="_CPPv2N3TNT7Array2DaSERK1T"></span><span id="TNT::Array2D::assign-operator__TCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1abdbe60d7b48f6ab11c79099f3eb3e95d"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DaSERK1T" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Assign all elements of array the same value.</p>
+<dd><p>Assign all elements of array the same value. </p>
 <p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt;&amp; *this, the same array with initialization </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
+</ul>
+</dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code>: the value to assign each element. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: the value to assign each element. </p></li>
 </ul>
 </dd>
 </dl>
@@ -287,8 +354,14 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2DaSERK7Array2D">
 <span id="_CPPv3N3TNT7Array2DaSERK7Array2D"></span><span id="_CPPv2N3TNT7Array2DaSERK7Array2D"></span><span id="TNT::Array2D::assign-operator__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a291213171560381b270246be0bbe75c0"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DaSERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Assign one <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> to another. (This is a shallow-assignement operation, and it is the identical semantics to ref(A).</p>
+<dd><p>Assign one <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> to another. (This is a shallow-assignement operation, and it is the identical semantics to ref(A). </p>
 <p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt;&amp; *this array with reference to A </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
+</ul>
+</dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: the array to assign this one to. </p></li>
 </ul>
@@ -300,7 +373,21 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D3refERK7Array2D">
 <span id="_CPPv3N3TNT7Array2D3refERK7Array2D"></span><span id="_CPPv2N3TNT7Array2D3refERK7Array2D"></span><span id="TNT::Array2D::ref__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a45629cdcb71db56e68c61721ebd6e1cf"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">ref</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D3refERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Change the reference of one array B to another array B, if B has only one reference the data is destroyed, if not the reference counter is decreased. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt;&amp; *this with the same reference of A </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: A reference to an <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2D4copyEv">
@@ -325,17 +412,55 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2D4dim1Ev">
 <span id="_CPPv3NK3TNT7Array2D4dim1Ev"></span><span id="_CPPv2NK3TNT7Array2D4dim1Ev"></span><span id="TNT::Array2D::dim1C"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a84da0cfbe21a838fc85e1bac304e57ba"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">dim1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2D4dim1Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Returns the dimension 1 (rows) of the <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a>. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">dim1</span><span class="p">()</span> <span class="c1">// equal to 3</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int the size of dimension 1(rows)</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2D4dim2Ev">
 <span id="_CPPv3NK3TNT7Array2D4dim2Ev"></span><span id="_CPPv2NK3TNT7Array2D4dim2Ev"></span><span id="TNT::Array2D::dim2C"></span><span class="target" id="class_t_n_t_1_1_array2_d_1adb4020fe0eb3cd695080a9c56a1d7c5c"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">dim2</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2D4dim2Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Returns the dimension 2 (columns) of the <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a>. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">dim2</span><span class="p">()</span> <span class="c1">// equal to 4</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int the size of dimension 2(columns)</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2DD0Ev">
 <span id="_CPPv3N3TNT7Array2DD0Ev"></span><span id="_CPPv2N3TNT7Array2DD0Ev"></span><span id="TNT::Array2D::~Array2D"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a87c0133fa83755104b75631cfa4d6ab7"></span><code class="sig-name descname"><span class="pre">~Array2D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DD0Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Destroy the Array2D&lt;T&gt; object. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D9ref_countEv">

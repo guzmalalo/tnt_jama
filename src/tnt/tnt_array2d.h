@@ -30,7 +30,7 @@
 
 #include "tnt_array1d.h"
 
-namespace TNT
+namespace TNT 
 {
 
 
@@ -40,6 +40,9 @@ namespace TNT
 	Storage corresponds to C (row-major) ordering.
 	Elements are accessed via A[i][j] notation for 0-based indexing,
 	and A(i,j) for 1-based indexing.. 
+
+	Data layout in memory is in Row Major Order. 
+	This means that all of row 0's elements are first, followed by all of row 1's, ..
 	
 	<p>
 	Array assignment is by reference (i.e. shallow assignment).
@@ -63,11 +66,7 @@ namespace TNT
 template <class T>
 class Array2D 
 {
-
-
   private:
-
-
 
   	Array1D<T> data_;
 	Array1D<T*> v_;
@@ -75,8 +74,6 @@ class Array2D
     int n_;
 
   public:
-
-
 
 /**
   Used to determined the data type of array entries.  This is most
@@ -93,53 +90,36 @@ class Array2D
 */
     typedef         T   value_type;
 
-/**
+/*
   Create a null array.  This is <b>not</b> the same
   as Array2D(0,0), which consumes some memory overhead.
 */
-
 	       Array2D();
 
-
-/**
-	Create a new (m x n) array, without initalizing elements.  (This
-	encurs an O(1) operation cost, rather than a O(m*n) cost.)
-
-  @param m the first (row) dimension of the new matrix.
-  @param n the second (column) dimension of the new matrix.
+/*
+	Create a new (m x n) array, without initalizing elements.
+	(This incurs an O(1) operation cost, rather than a O(m*n) cost.)
 */
 	       Array2D(int m, int n);
 
-
-/**
+/*
   Create a new (m x n) array,  as a view of an existing one-dimensional
   array stored in row-major order, i.e. right-most dimension varying fastest.
   Note that the storage for this pre-existing array will
   never be destroyed by TNT.
-
-  @param m the first (row) dimension of the new matrix.
-  @param n the second (column) dimension of the new matrix.
-  @param a the one dimensional C array to use as data storage for
-    the array.
 */
 	       Array2D(int m, int n,  T *a);
 
-
-
-/**
+/*
   Create a new (m x n) array,  initializing array elements to
   constant specified by argument.  Most often used to
   create an array of zeros, as in A(m, n, 0.0).
-
-  @param m the first (row) dimension of the new matrix.
-  @param n the second (column) dimension of the new matrix.
-  @param val the constant value to set all elements of the new array to.
 */
 
 	       Array2D(int m, int n, const T &val);
 
 
-/**
+/*
   Copy constructor. Array data is NOT copied, but shared.
   Thus, in Array2D B(A), subsequent changes to A will
   be reflected in B.  For an indepent copy of A, use
@@ -148,41 +128,37 @@ class Array2D
     inline Array2D(const Array2D &A);
 
 
-/**
+/*
 	Convert 2D array into a regular multidimensional C pointer.  Most often
 	called automatically when calling C interfaces that expect things like
-	double** rather than Array2D<dobule>.
-	
+	double** rather than Array2D<double>.
 */
 	inline operator T**();
 
-/**
+/*
 	Convert a const 2D array into a const multidimensional C pointer.  
 	Most often called automatically when calling C interfaces that expect 
-	things like "const double**" rather than "const Array2D<dobule>&".
-	
+	things like "const double**" rather than "const Array2D<double>&".
 */
-
 	inline operator const T**() const;
 
-
-/**
+/*
 	Assign all elements of array the same value.
-
-	@param val the value to assign each element.
 */
 	inline Array2D & operator=(const T &val);
 
-
-/**
+/*
 	Assign one Array2D to another.  (This is a shallow-assignement operation,
 	and it is the identical semantics to ref(A).
-
-	@param A the array to assign this one to.
 */
 	inline Array2D & operator=(const Array2D &A);
 
 
+/*
+ * Change the reference of one array B to another array B,
+ * if B has only one reference the data is destroyed, if not the
+ * reference counter is decreased.
+*/
 	inline Array2D & ref(const Array2D &A);
 	       Array2D copy() const;
 		   Array2D & inject(const Array2D & A);
@@ -204,27 +180,59 @@ class Array2D
 
 
 /**
-  Create a new (m x n) array, WIHOUT initializing array elements.
-  To create an initialized array of constants, see Array2D(m,n,value).
-
-  <p>
+ * @brief Create a null array.  This is **not** the same
+  as Array2D(0,0), which consumes some memory overhead.
   This version avoids the O(m*n) initialization overhead and
   is used just before manual assignment.
-
-  @param m the first (row) dimension of the new matrix.
-  @param n the second (column) dimension of the new matrix.
-*/
+ * @tparam T Type
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array2D<double> A;
+ * @endcode
+ */
 template <class T>
 Array2D<T>::Array2D() : data_(), v_(), m_(0), n_(0) {} 
 
-
+/**
+ * @brief Copy constructor. Array data is NOT copied, but shared.
+  Thus, in Array2D B(A), subsequent changes to A will
+  be reflected in B.  For an indepent copy of A, use :
+  @code{cpp}
+  Array2D B(A.copy())
+  // or 
+  B = A.copy(),
+  @endcode
+ * 
+ * @tparam T Data type 
+ * @param A Array2D to be shared
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array2D<double> A(B); 
+ * @endcode
+ */
 template <class T>
 Array2D<T>::Array2D(const Array2D<T> &A) : data_(A.data_), v_(A.v_), 
 	m_(A.m_), n_(A.n_) {}
 
 
+/**
+ * @brief Create a new (m x n) array, WITHOUT initializing array elements.
+  To create an initialized array of constants, see Array2D(m,n,value).
 
+  This version avoids the O(m*n) initialization overhead and
+  is used just before manual assignment.
 
+ * @tparam T Data type
+ * @param m the first (row) dimension of the new matrix.
+ * @param n the second (column) dimension of the new matrix.
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array2D<double> A(3,3);
+ * @endcode
+ */
 template <class T>
 Array2D<T>::Array2D(int m, int n) : data_(m*n), v_(m), m_(m), n_(n)
 {
@@ -240,7 +248,21 @@ Array2D<T>::Array2D(int m, int n) : data_(m*n), v_(m), m_(m), n_(n)
 }
 
 
-
+/**
+ * @brief Create a new (m x n) array,  initializing array elements to
+  constant specified by argument.  Most often used to
+  create an array of zeros, as in A(m, n, 0.0).
+ *
+ * @tparam T Data type 
+ * @param m the first (row) dimension of the new matrix.
+ * @param n the second (column) dimension of the new matrix.
+ * @param val the constant value to set all elements of the new array to.
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array2D<double> A(3,3,1.0);
+ * @endcode
+ */
 template <class T>
 Array2D<T>::Array2D(int m, int n, const T &val) : data_(m*n), v_(m), 
 													m_(m), n_(n) 
@@ -257,6 +279,23 @@ Array2D<T>::Array2D(int m, int n, const T &val) : data_(m*n), v_(m),
   }
 }
 
+/**
+ * @brief Create a new (m x n) array, as a view of an existing one-dimensional
+  array stored in row-major order, i.e. right-most dimension varying fastest.
+  This means that all of row 0's elements are first, followed by all of row 1's,..
+  Note that the storage for this pre-existing array will
+  never be destroyed by TNT.
+ *
+  @param m the first (row) dimension of the new matrix.
+  @param n the second (column) dimension of the new matrix.
+  @param a the one dimensional C array to use as data storage for
+    the array.
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array2D<double> A(3,3,1.0);
+ * @endcode
+ */
 template <class T>
 Array2D<T>::Array2D(int m, int n, T *a) : data_(m*n, a), v_(m), m_(m), n_(n)
 {
@@ -298,18 +337,22 @@ return v_[i];
 
 }
 
+/**
+ * @brief Assign all elements of array the same value.
+ * 
+ * @tparam T Data type
+ * @param a the value to assign each element.
+ * @return Array2D<T>& *this, the same array with initialization
+ */
 template <class T>
 Array2D<T> & Array2D<T>::operator=(const T &a)
 {
-	/* non-optimzied, but will work with subarrays in future verions */
-
+	/* non-optimized, but will work with subarrays in future verions */
 	for (int i=0; i<m_; i++)
 		for (int j=0; j<n_; j++)
 		v_[i][j] = a;
 	return *this;
 }
-
-
 
 
 template <class T>
@@ -340,7 +383,16 @@ Array2D<T> & Array2D<T>::inject(const Array2D &A)
 
 
 
-
+/**
+ * @brief Change the reference of one array B to another array B,
+ * if B has only one reference the data is destroyed, if not the
+ * reference counter is decreased.
+ * 
+ * @tparam T Type of data
+ * @param A A reference to an Array2D
+ * @return Array2D<T>& *this with the same reference of A
+ *
+ */
 template <class T>
 Array2D<T> & Array2D<T>::ref(const Array2D<T> &A)
 {
@@ -355,32 +407,81 @@ Array2D<T> & Array2D<T>::ref(const Array2D<T> &A)
 	return *this;
 }
 
-
-
+/**
+ * @brief Assign one Array2D to another.  (This is a shallow-assignement operation,
+	and it is the identical semantics to ref(A).
+ *
+ * @tparam T Data type
+ * @param A the array to assign this one to.
+ * @return Array2D<T>& *this array with reference to A
+ */
 template <class T>
 Array2D<T> & Array2D<T>::operator=(const Array2D<T> &A)
 {
 	return ref(A);
 }
 
+/**
+ * @brief Returns the dimension 1 (rows) of the Array2D
+ * 
+ * @tparam T Type of data
+ * @return int the size of dimension 1(rows)
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> B(3,4);
+ * int size = B.dim1() // equal to 3
+ * @endcode
+ */
 template <class T>
 inline int Array2D<T>::dim1() const { return m_; }
 
+/**
+ * @brief Returns the dimension 2 (columns) of the Array2D
+ * 
+ * @tparam T Type of data
+ * @return int the size of dimension 2(columns)
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> B(3,4);
+ * int size = B.dim2() // equal to 4
+ * @endcode
+ */
 template <class T>
 inline int Array2D<T>::dim2() const { return n_; }
 
-
+/**
+ * @brief Destroy the Array2D<T> object
+ * 
+ * @tparam T Type of data
+ */
 template <class T>
 Array2D<T>::~Array2D() {}
 
 
-
-
+/**
+ * @brief Convert 2D array into a regular multidimensional C pointer.  Most often
+	called automatically when calling C interfaces that expect things like
+	double** rather than Array2D<double>.
+ * 
+ * @tparam T data type
+ * @return T** Regular multidimensional C pointer.
+ */
 template <class T>
 inline Array2D<T>::operator T**()
 {
 	return &(v_[0]);
 }
+
+/**
+ * @brief Convert 2D array into a constant regular multidimensional C pointer.
+ * Most often called automatically when calling C interfaces that expect 
+ * things like 	"const double**" rather than "const Array2D<double>&".
+ *
+ * @tparam T data type
+ * @return T** Constant regular multidimensional C pointer.
+ */
 template <class T>
 inline Array2D<T>::operator const T**() const
 {

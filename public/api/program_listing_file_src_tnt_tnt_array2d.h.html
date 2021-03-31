@@ -197,11 +197,7 @@
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">Array2D</span>
 <span class="p">{</span>
-
-
   <span class="k">private</span><span class="o">:</span>
-
-
 
     <span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">data_</span><span class="p">;</span>
     <span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span> <span class="n">v_</span><span class="p">;</span>
@@ -210,37 +206,77 @@
 
   <span class="k">public</span><span class="o">:</span>
 
-
-
     <span class="k">typedef</span>         <span class="n">T</span>   <span class="n">value_type</span><span class="p">;</span>
 
+<span class="cm">/*</span>
+<span class="cm">  Create a null array.  This is &lt;b&gt;not&lt;/b&gt; the same</span>
+<span class="cm">  as Array2D(0,0), which consumes some memory overhead.</span>
+<span class="cm">*/</span>
            <span class="n">Array2D</span><span class="p">();</span>
 
-
+<span class="cm">/*</span>
+<span class="cm">    Create a new (m x n) array, without initalizing elements.</span>
+<span class="cm">    (This incurs an O(1) operation cost, rather than a O(m*n) cost.)</span>
+<span class="cm">*/</span>
            <span class="n">Array2D</span><span class="p">(</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
 
-
+<span class="cm">/*</span>
+<span class="cm">  Create a new (m x n) array,  as a view of an existing one-dimensional</span>
+<span class="cm">  array stored in row-major order, i.e. right-most dimension varying fastest.</span>
+<span class="cm">  Note that the storage for this pre-existing array will</span>
+<span class="cm">  never be destroyed by TNT.</span>
+<span class="cm">*/</span>
            <span class="n">Array2D</span><span class="p">(</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span>  <span class="n">T</span> <span class="o">*</span><span class="n">a</span><span class="p">);</span>
 
-
+<span class="cm">/*</span>
+<span class="cm">  Create a new (m x n) array,  initializing array elements to</span>
+<span class="cm">  constant specified by argument.  Most often used to</span>
+<span class="cm">  create an array of zeros, as in A(m, n, 0.0).</span>
+<span class="cm">*/</span>
 
            <span class="n">Array2D</span><span class="p">(</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
 
 
+<span class="cm">/*</span>
+<span class="cm">  Copy constructor. Array data is NOT copied, but shared.</span>
+<span class="cm">  Thus, in Array2D B(A), subsequent changes to A will</span>
+<span class="cm">  be reflected in B.  For an indepent copy of A, use</span>
+<span class="cm">  Array2D B(A.copy()), or B = A.copy(), instead.</span>
+<span class="cm">*/</span>
     <span class="kr">inline</span> <span class="nf">Array2D</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">);</span>
 
 
+<span class="cm">/*</span>
+<span class="cm">    Convert 2D array into a regular multidimensional C pointer.  Most often</span>
+<span class="cm">    called automatically when calling C interfaces that expect things like</span>
+<span class="cm">    double** rather than Array2D&lt;double&gt;.</span>
+<span class="cm">*/</span>
     <span class="kr">inline</span> <span class="k">operator</span> <span class="n">T</span><span class="o">**</span><span class="p">();</span>
 
+<span class="cm">/*</span>
+<span class="cm">    Convert a const 2D array into a const multidimensional C pointer.</span>
+<span class="cm">    Most often called automatically when calling C interfaces that expect</span>
+<span class="cm">    things like &quot;const double**&quot; rather than &quot;const Array2D&lt;double&gt;&amp;&quot;.</span>
+<span class="cm">*/</span>
     <span class="kr">inline</span> <span class="k">operator</span> <span class="k">const</span> <span class="n">T</span><span class="o">**</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-
+<span class="cm">/*</span>
+<span class="cm">    Assign all elements of array the same value.</span>
+<span class="cm">*/</span>
     <span class="kr">inline</span> <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
 
-
+<span class="cm">/*</span>
+<span class="cm">    Assign one Array2D to another.  (This is a shallow-assignement operation,</span>
+<span class="cm">    and it is the identical semantics to ref(A).</span>
+<span class="cm">*/</span>
     <span class="kr">inline</span> <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">);</span>
 
 
+<span class="cm">/*</span>
+<span class="cm"> * Change the reference of one array B to another array B,</span>
+<span class="cm"> * if B has only one reference the data is destroyed, if not the</span>
+<span class="cm"> * reference counter is decreased.</span>
+<span class="cm">*/</span>
     <span class="kr">inline</span> <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="n">ref</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">);</span>
            <span class="n">Array2D</span> <span class="nf">copy</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
            <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="nf">inject</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="n">A</span><span class="p">);</span>
@@ -264,12 +300,9 @@
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Array2D</span><span class="p">()</span> <span class="o">:</span> <span class="n">data_</span><span class="p">(),</span> <span class="n">v_</span><span class="p">(),</span> <span class="n">m_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
 
-
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Array2D</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="o">:</span> <span class="n">data_</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">data_</span><span class="p">),</span> <span class="n">v_</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">v_</span><span class="p">),</span>
     <span class="n">m_</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">m_</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">n_</span><span class="p">)</span> <span class="p">{}</span>
-
-
 
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
@@ -285,7 +318,6 @@
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-
 
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
@@ -348,15 +380,12 @@
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="cm">/* non-optimzied, but will work with subarrays in future verions */</span>
-
+    <span class="cm">/* non-optimized, but will work with subarrays in future verions */</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">m_</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">n_</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
         <span class="n">v_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
     <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
 <span class="p">}</span>
-
-
 
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
@@ -387,7 +416,6 @@
 
 
 
-
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">ref</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span>
 <span class="p">{</span>
@@ -402,8 +430,6 @@
     <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
 <span class="p">}</span>
 
-
-
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span>
 <span class="p">{</span>
@@ -416,11 +442,8 @@
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="kt">int</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">dim2</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">n_</span><span class="p">;</span> <span class="p">}</span>
 
-
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::~</span><span class="n">Array2D</span><span class="p">()</span> <span class="p">{}</span>
-
-
 
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
@@ -428,6 +451,7 @@
 <span class="p">{</span>
     <span class="k">return</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">v_</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 <span class="p">}</span>
+
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span> <span class="k">const</span> <span class="n">T</span><span class="o">**</span><span class="p">()</span> <span class="k">const</span>
 <span class="p">{</span>

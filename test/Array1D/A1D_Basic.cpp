@@ -36,21 +36,29 @@ TEST_F(Array1D_test, dim1)
 TEST_F(Array1D_test, init_values)
 {
     // An array of doubles
-    double ad[42] = {init_value_};
+    double ad[a_size_];
+    for (int i = 0; i < a_size_; ++i)
+    {
+        ad[i] = i;
+    }
+
+    // Initialize with a constat value
     TNT::Array1D<double> A(a_size_, init_value_);
+    // Initialize with out a value
     TNT::Array1D<double> B(a_size_);
-    TNT::Array1D<double> C(a_size_, *ad);
+    // Initialize using an array as an entry
+    TNT::Array1D<double> C(a_size_, ad);
 
     B = 1.0;
 
-    for (int i = 0; i < A.dim(); i++)
+    for (int i = 0; i < a_size_; i++)
     {
         EXPECT_EQ(A[i], init_value_)
             << "A is not equal to init value []";
         EXPECT_EQ(A[i], B[i])
             << "A is not equal to B []";
-        EXPECT_EQ(B[i], C[i])
-            << "B is not equal to C []";
+        EXPECT_EQ(C[i], ad[i])
+            << "C is not equal to raw array []";
     }
     for (int i = 1; i <= A.dim(); i++)
     {
@@ -58,12 +66,9 @@ TEST_F(Array1D_test, init_values)
             << "A is not equal to init value ()";
         EXPECT_EQ(A(i), B(i))
             << "A is not equal to B ()";
-        EXPECT_EQ(B(i), C(i))
-            << "B is not equal to C ()";
+        EXPECT_EQ(C(i), ad[i - 1])
+            << "C is not equal to raw array ()";
     }
-
-    EXPECT_FALSE(&ad[0] == &C[0])
-        << "C point to the same address of raw array";
 }
 
 /**
@@ -118,6 +123,38 @@ TEST_F(Array1D_test, clone)
             << "A is not zero";
         EXPECT_EQ(B[i], 0.0)
             << "B is not zero";
+    }
+}
+
+/**
+* @brief A simple unit test for clone operations
+    using an array
+*/
+TEST_F(Array1D_test, clone_raw_array)
+{
+    // An array of doubles
+    double ad[a_size_];
+    for (int i = 0; i < a_size_; ++i)
+    {
+        ad[i] = i;
+    }
+    { // Scope of Array1D
+        // Initialize with a constat value
+        TNT::Array1D<double> A(a_size_, ad);
+
+        // Checking if A, B anc C point to the same data
+        for (int i = 0; i < a_size_; i++)
+        {
+            EXPECT_EQ(&A[i], &ad[i])
+                << "A is not a clone of ad []";
+        }
+    } // Array1D is destroyed
+
+    // Check if the raw array is still here
+    for (int i = 0; i < a_size_; i++)
+    {
+        EXPECT_EQ(ad[i], i)
+            << "ad has been destroyed ";
     }
 }
 

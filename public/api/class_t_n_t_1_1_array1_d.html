@@ -260,13 +260,13 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array1D7Array1DEiP1T">
 <span id="_CPPv3N3TNT7Array1D7Array1DEiP1T"></span><span id="_CPPv2N3TNT7Array1D7Array1DEiP1T"></span><span id="TNT::Array1D::Array1D__i.TP"></span><span class="target" id="class_t_n_t_1_1_array1_d_1a1db0c6d3a77baacb01cd6fd89e86f342"></span><code class="sig-name descname"><span class="pre">Array1D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">n</span></em>, <a class="reference internal" href="#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array1D7Array1DEiP1T" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Construct a new <a class="reference internal" href="#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D</span></a> from an raw array of doubles of size n (copy the values) </p>
+<dd><p>Construct a new <a class="reference internal" href="#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D</span></a> from an raw array of doubles of size n (cloning operation) </p>
 <p><p>Example: </p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">ra</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">};</span>
 <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="o">*</span><span class="n">ra</span><span class="p">);</span>
 </pre></div>
 </div>
- <dl class="simple">
+<dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: type of the input array </p></li>
 </ul>
@@ -278,6 +278,16 @@
 </dd>
 </dl>
 </p>
+<p><p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><p>The storage for this pre-existing array will never be destroyed by TNT</p>
+</div></blockquote>
+<p>because the referece is set to 0, this information is propaged to other
+cloning operations. So reference is reference_count is always 0.</p>
+</div>
+</p>
+ </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -311,7 +321,7 @@
 <span class="kt">double</span> <span class="o">*</span><span class="n">ra</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
 </pre></div>
 </div>
- <dl class="simple">
+<dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the adresse to the first member of the array</p>
 </dd>
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -320,6 +330,13 @@
 </dd>
 </dl>
 </p>
+<p><p><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The raw array information is erased after the Array1D destruction because
+the cloning operation. Only for local operations.</p>
+</div>
+</p>
+ </p>
 </dd></dl>
 
 <dl class="cpp function">

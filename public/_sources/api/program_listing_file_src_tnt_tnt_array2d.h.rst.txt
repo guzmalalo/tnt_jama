@@ -42,18 +42,14 @@ Program Listing for File tnt_array2d.h
    
    #include "tnt_array1d.h"
    
-   namespace TNT
+   namespace TNT 
    {
    
    
    template <class T>
    class Array2D 
    {
-   
-   
      private:
-   
-   
    
        Array1D<T> data_;
        Array1D<T*> v_;
@@ -62,37 +58,77 @@ Program Listing for File tnt_array2d.h
    
      public:
    
-   
-   
        typedef         T   value_type;
    
+   /*
+     Create a null array.  This is <b>not</b> the same
+     as Array2D(0,0), which consumes some memory overhead.
+   */
               Array2D();
    
-   
+   /*
+       Create a new (m x n) array, without initalizing elements.
+       (This incurs an O(1) operation cost, rather than a O(m*n) cost.)
+   */
               Array2D(int m, int n);
    
-   
+   /*
+     Create a new (m x n) array,  as a view of an existing one-dimensional
+     array stored in row-major order, i.e. right-most dimension varying fastest.
+     Note that the storage for this pre-existing array will
+     never be destroyed by TNT.
+   */
               Array2D(int m, int n,  T *a);
    
-   
+   /*
+     Create a new (m x n) array,  initializing array elements to
+     constant specified by argument.  Most often used to
+     create an array of zeros, as in A(m, n, 0.0).
+   */
    
               Array2D(int m, int n, const T &val);
    
    
+   /*
+     Copy constructor. Array data is NOT copied, but shared.
+     Thus, in Array2D B(A), subsequent changes to A will
+     be reflected in B.  For an indepent copy of A, use
+     Array2D B(A.copy()), or B = A.copy(), instead.
+   */
        inline Array2D(const Array2D &A);
    
    
+   /*
+       Convert 2D array into a regular multidimensional C pointer.  Most often
+       called automatically when calling C interfaces that expect things like
+       double** rather than Array2D<double>.
+   */
        inline operator T**();
    
+   /*
+       Convert a const 2D array into a const multidimensional C pointer.  
+       Most often called automatically when calling C interfaces that expect 
+       things like "const double**" rather than "const Array2D<double>&".
+   */
        inline operator const T**() const;
    
-   
+   /*
+       Assign all elements of array the same value.
+   */
        inline Array2D & operator=(const T &val);
    
-   
+   /*
+       Assign one Array2D to another.  (This is a shallow-assignement operation,
+       and it is the identical semantics to ref(A).
+   */
        inline Array2D & operator=(const Array2D &A);
    
    
+   /*
+    * Change the reference of one array B to another array B,
+    * if B has only one reference the data is destroyed, if not the
+    * reference counter is decreased.
+   */
        inline Array2D & ref(const Array2D &A);
               Array2D copy() const;
               Array2D & inject(const Array2D & A);
@@ -116,12 +152,9 @@ Program Listing for File tnt_array2d.h
    template <class T>
    Array2D<T>::Array2D() : data_(), v_(), m_(0), n_(0) {} 
    
-   
    template <class T>
    Array2D<T>::Array2D(const Array2D<T> &A) : data_(A.data_), v_(A.v_), 
        m_(A.m_), n_(A.n_) {}
-   
-   
    
    
    template <class T>
@@ -137,7 +170,6 @@ Program Listing for File tnt_array2d.h
            }
        }
    }
-   
    
    
    template <class T>
@@ -200,15 +232,12 @@ Program Listing for File tnt_array2d.h
    template <class T>
    Array2D<T> & Array2D<T>::operator=(const T &a)
    {
-       /* non-optimzied, but will work with subarrays in future verions */
-   
+       /* non-optimized, but will work with subarrays in future verions */
        for (int i=0; i<m_; i++)
            for (int j=0; j<n_; j++)
            v_[i][j] = a;
        return *this;
    }
-   
-   
    
    
    template <class T>
@@ -239,7 +268,6 @@ Program Listing for File tnt_array2d.h
    
    
    
-   
    template <class T>
    Array2D<T> & Array2D<T>::ref(const Array2D<T> &A)
    {
@@ -254,8 +282,6 @@ Program Listing for File tnt_array2d.h
        return *this;
    }
    
-   
-   
    template <class T>
    Array2D<T> & Array2D<T>::operator=(const Array2D<T> &A)
    {
@@ -268,11 +294,8 @@ Program Listing for File tnt_array2d.h
    template <class T>
    inline int Array2D<T>::dim2() const { return n_; }
    
-   
    template <class T>
    Array2D<T>::~Array2D() {}
-   
-   
    
    
    template <class T>
@@ -280,6 +303,7 @@ Program Listing for File tnt_array2d.h
    {
        return &(v_[0]);
    }
+   
    template <class T>
    inline Array2D<T>::operator const T**() const
    {

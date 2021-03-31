@@ -117,7 +117,7 @@ namespace TNT
 	template <class T>
 	Array1D<T>::Array1D() : v_(), n_(0), data_(0) {}
 
-	/**
+/**
  * @brief Construct a new Array1D<T> A from another Array1D B. A and B point to the same data (clone operation).
  * @endcode
  * @tparam T Type of data
@@ -176,9 +176,9 @@ namespace TNT
 		set_(data_, data_ + n, val);
 	}
 
-	/**
+/**
  * @brief Construct a new Array1D from an raw array of doubles of size n
- * (copy the values)  
+ * (cloning operation)  
  * 
  * @tparam T type of the input array
  * @param n size of the array
@@ -189,6 +189,13 @@ namespace TNT
  * double ra[42] = {1.0};
  * TNT::Array1D<double> A(42, *ra);
  * @endcode
+ *
+ * @rst
+ .. note:: 
+ 	The storage for this pre-existing array will never be destroyed by TNT
+	because the referece is set to 0, this information is propaged to other
+	cloning operations. So reference is reference_count is always 0.
+ * @endrst
  */
 	template <class T>
 	Array1D<T>::Array1D(int n, T *a) : v_(a), n_(n), data_(v_.begin())
@@ -210,6 +217,12 @@ namespace TNT
  * TNT::Array1D<double> A(42, 1.0);
  * double *ra = A;
  * @endcode
+ *
+ * @rst
+ .. warning:: 
+ 	The raw array information is erased after the Array1D destruction because
+ 	the cloning operation. Only for local operations. 
+ * @endrst
  */
 	template <class T>
 	inline Array1D<T>::operator T *()
@@ -492,7 +505,7 @@ namespace TNT
 	template <class T>
 	inline int Array1D<T>::dim() const { return n_; }
 
-	/**
+/**
  * @brief Destroy the Array1D<T> object
  * 
  * @tparam T Type of data
