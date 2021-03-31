@@ -16,7 +16,7 @@ TEST_F(Array1D_test, extraction_operator)
 
     EXPECT_EQ(A.dim(), 5);
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(A[i], i + 1)
@@ -36,7 +36,7 @@ TEST_F(Array1D_test, addition_operator)
 
     ASSERT_TRUE(C.dim() > 0) << "C is null";
 
-    // Verify the address
+    // Verify the sum
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(C[i], (i + 1) + scalar_)
@@ -55,7 +55,7 @@ TEST_F(Array1D_test, subtraction_operator)
     TNT::Array1D<double> B(5, scalar_);
     TNT::Array1D<double> C = A - B;
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(C[i], (i + 1) - scalar_)
@@ -74,7 +74,7 @@ TEST_F(Array1D_test, multiplication_operator)
     TNT::Array1D<double> B(5, scalar_);
     TNT::Array1D<double> C = A * B;
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(C[i], (i + 1.0) * scalar_)
@@ -93,7 +93,7 @@ TEST_F(Array1D_test, division_operator)
     TNT::Array1D<double> B(5, scalar_);
     TNT::Array1D<double> C = A / B;
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(C[i], (i + 1.0) / scalar_)
@@ -114,7 +114,7 @@ TEST_F(Array1D_test, addition_assignement)
     // Addition assignement
     A += B;
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(A[i], (i + 1) + scalar_)
@@ -135,7 +135,7 @@ TEST_F(Array1D_test, substraction_assignement)
     // Addition assignement
     A -= B;
 
-    // Verify the adress
+    // Verify the adresse
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(A[i], (i + 1) - scalar_)
@@ -200,7 +200,7 @@ TEST_F(Array1D_test, division_assignement)
 
     A /= B;
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < 5; i++)
     {
         EXPECT_EQ(A[i], (i + 1.0) / scalar_)

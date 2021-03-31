@@ -17,25 +17,31 @@
 *
 */
 
-
 #ifndef TNT_ARRAY2D_UTILS_H
 #define TNT_ARRAY2D_UTILS_H
 
-#include <cstdlib>
-#include <cassert>
+#include <iostream>
 
 namespace TNT
 {
 
-
+/**
+ * @brief Overload the ouput operator.
+ * Print the array on the ostream
+ * 
+ * @tparam T Type of data
+ * @param s outstream
+ * @param A input Array to print (this)
+ * @return std::ostream& 
+ */
 template <class T>
 std::ostream& operator<<(std::ostream &s, const Array2D<T> &A)
 {
     int M=A.dim1();
     int N=A.dim2();
 
-    s << M << " " << N << "\n";
-
+    s << "Dimensions: " << M << " " << N << "\n";
+	s << "Components: \n";
     for (int i=0; i<M; i++)
     {
         for (int j=0; j<N; j++)
@@ -44,11 +50,30 @@ std::ostream& operator<<(std::ostream &s, const Array2D<T> &A)
         }
         s << "\n";
     }
-
+	s << "\n";
 
     return s;
 }
 
+/**
+ * @brief Overload the extraction operator. This beauty allows 
+ to initialize the array2d from an istream. The first two values must be 
+ integers an define the size of the array. The following values 
+ initialize the array, if not value is given, value is set to zero. 
+ * 
+ * @tparam T Type of data
+ * @param s input istream
+ * @param A Array2D to be created from the istream
+ * @return std::istream& input istream
+ *
+ * Example:
+ * @code{.cpp}
+   TNT::Array2D<double> A;
+   std::istringstream is("3 3 0 1 2 1 2 3 2 3 4");
+   is >> A;
+ * @endcode
+ * 
+ */
 template <class T>
 std::istream& operator>>(std::istream &s, Array2D<T> &A)
 {
@@ -70,6 +95,19 @@ std::istream& operator>>(std::istream &s, Array2D<T> &A)
 }
 
 
+/**
+ * @brief  Adds two Array2D A and B and creates a *new* Array2D C.
+ * 
+ * @tparam T 
+ * @param A First array to be added
+ * @param B Second array to be added
+ * @return Array2D<T> C = A + B , a new array.
+ *
+ * Example:
+ * @code{.cpp}
+ * C = A + B;
+ * @endcode
+ */
 template <class T>
 Array2D<T> operator+(const Array2D<T> &A, const Array2D<T> &B)
 {
@@ -92,6 +130,19 @@ Array2D<T> operator+(const Array2D<T> &A, const Array2D<T> &B)
 	}
 }
 
+/**
+ * @brief  Substracts two Array2D A and B and creates a new Array2D C.
+ * 
+ * @tparam T 
+ * @param A First array 
+ * @param B Second array 
+ * @return Array2D<T> C = A - B , a new array.
+  *
+ * Example:
+ * @code{.cpp}
+ * C = A - B;
+ * @endcode
+ */
 template <class T>
 Array2D<T> operator-(const Array2D<T> &A, const Array2D<T> &B)
 {
@@ -114,7 +165,20 @@ Array2D<T> operator-(const Array2D<T> &A, const Array2D<T> &B)
 	}
 }
 
-
+/**
+ * @brief  Multiplies two Array2D A and B, element by element 
+ * and creates a new Array2D C.
+ * 
+ * @tparam T Type of data
+ * @param A First array 
+ * @param B Second array 
+ * @return Array2D<T> C = A * B , a new array.
+ *
+ * Example:
+ * @code{.cpp}
+ * C = A * B;
+ * @endcode
+ */
 template <class T>
 Array2D<T> operator*(const Array2D<T> &A, const Array2D<T> &B)
 {

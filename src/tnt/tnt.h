@@ -41,7 +41,7 @@
 #include "tnt_array2d.h"
 //#include "tnt_array3d.h"
 #include "tnt_array1d_utils.h"
-//#include "tnt_array2d_utils.h"
+#include "tnt_array2d_utils.h"
 //#include "tnt_array3d_utils.h"
 
 #endif
