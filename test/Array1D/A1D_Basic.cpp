@@ -285,7 +285,7 @@ TEST_F(Array1D_test, ref_method)
             << "D is not equal to A";
     }
 
-    // Verify the adress
+    // Verify the address
     for (int i = 0; i < A.dim(); i++)
     {
         EXPECT_EQ(&A[i], &B[i])

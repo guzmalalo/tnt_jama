@@ -117,9 +117,9 @@ namespace TNT
 	template <class T>
 	Array1D<T>::Array1D() : v_(), n_(0), data_(0) {}
 
-/**
+	/**
  * @brief Construct a new Array1D<T> A from another Array1D B. A and B point to the same data (clone operation).
- * @endcode
+ * 
  * @tparam T Type of data
  * @param A input Array1D<T> to be cloned
  *
@@ -176,7 +176,7 @@ namespace TNT
 		set_(data_, data_ + n, val);
 	}
 
-/**
+	/**
  * @brief Construct a new Array1D from an raw array of doubles of size n
  * (cloning operation)  
  * 
@@ -315,11 +315,11 @@ namespace TNT
 	inline T &Array1D<T>::operator()(int i)
 	{
 #ifdef TNT_BOUNDS_CHECK
-		assert( i > 0 && "Index is negative");
-		assert( i <= n_ && "Index is out of bonds");
+		assert(i > 0 && "Index is negative");
+		assert(i <= n_ && "Index is out of bonds");
 #endif
 		return data_[i - 1];
-	}
+	};
 
 	/**
  * @brief Overload the acces operator () 
@@ -505,7 +505,7 @@ namespace TNT
 	template <class T>
 	inline int Array1D<T>::dim() const { return n_; }
 
-/**
+	/**
  * @brief Destroy the Array1D<T> object
  * 
  * @tparam T Type of data

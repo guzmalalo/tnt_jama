@@ -211,6 +211,19 @@ Array2D<T>::Array2D() : data_(), v_(), m_(0), n_(0) {}
  * @code{.cpp}
  * TNT::Array2D<double> A(B); 
  * @endcode
+ *
+ @rst
+ .. warning:: 
+ 
+ 	Array data is NOT copied, but shared.  Thus, in Array2D B(A), 
+ 	subsequent changes to A will  be reflected in B.  
+	For an indepent copy of A, use :
+	@code{cpp}
+	Array2D B(A.copy())
+	// or 
+	B = A.copy(),
+	@endcode
+@endrst
  */
 template <class T>
 Array2D<T>::Array2D(const Array2D<T> &A) : data_(A.data_), v_(A.v_), 
@@ -312,6 +325,42 @@ Array2D<T>::Array2D(int m, int n, T *a) : data_(m*n, a), v_(m), m_(m), n_(n)
 }
 
 
+/**
+ * @brief Overload the acces operator [] 
+ * 
+ * @tparam T Type fo data
+ * @param i index value for the row (must start at 0 and end at dim1-1)
+ * @return A pointer to the first element of the row (dimension dim2) (raw array)
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(42,42, 1.0);
+ * double first_number = A[0][0];
+ * double last_number  = A[41][41];
+   TNT::Array1D<double> row_0(n_, A[0]); // first row of A
+   TNT::Array1D<double> row_1(n_, A[1]); // second row of A
+   TNT::Array1D<double> row_2(n_, A[2]); // third row of A
+   // or using raw arrays
+   double *p_row0 = A[0];
+   double *p_row1 = A[1];
+   double *p_row2 = A[2];
+
+   bool test = (row_0[i] == A[0][i]); // must be true
+ * @endcode
+ *
+@rst
+..note:: 
+
+	This is tricky, the acces operator [] returns a one dimensional array. When creating 
+	a two dimensional array, TNT builds three one dimensional array for each line.
+	The index i defines which row needs to be returned. After that the second [] acces the
+	second member of that array. 
+
+	M[a][i] == A[j] // A is returned with A[a] 
+	M[b][j] == B[j] // B is returned with A[b] 
+	M[c][k] == C[j] // C is returned with A[c] 
+@endrst
+ */
 template <class T>
 inline T* Array2D<T>::operator[](int i) 
 { 
@@ -324,7 +373,42 @@ return v_[i];
 
 }
 
+/**
+ * @brief Overload the acces operator [] 
+ * 
+ * @tparam T Type fo data
+ * @param i index value for the row (must start at 0 and end at dim1-1)
+ * @return A constant pointer to the first element of the row (dimension dim2) (raw array)
+ *
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(42,42, 1.0);
+ * const double first_number = A[0][0];
+ * const double last_number  = A[41][41];
+   const TNT::Array1D<double> row_0(n_, A[0]); // first row of A
+   const TNT::Array1D<double> row_1(n_, A[1]); // second row of A
+   const TNT::Array1D<double> row_2(n_, A[2]); // third row of A
+   // or using raw arrays
+   const double *p_row0 = A[0];
+   const double *p_row1 = A[1];
+   const double *p_row2 = A[2];
 
+   bool test = (row_0[i] == A[0][i]); // must be true
+ * @endcode
+ *
+@rst
+..note:: 
+
+	This is tricky, the acces operator [] returns a one dimensional array. When creating 
+	a two dimensional array, TNT builds three one dimensional array for each line.
+	The index i defines which row needs to be returned. After that the second [] acces the
+	second member of that array. 
+
+	M[a][i] == A[j] // A is returned with A[a] 
+	M[b][j] == B[j] // B is returned with A[b] 
+	M[c][k] == C[j] // C is returned with A[c] 
+@endrst
+ */
 template <class T>
 inline const T* Array2D<T>::operator[](int i) const
 { 
@@ -343,6 +427,12 @@ return v_[i];
  * @tparam T Data type
  * @param a the value to assign each element.
  * @return Array2D<T>& *this, the same array with initialization
+ *
+ * Example:
+ * @code{.cpp}
+   TNT::Array2D<double> A(3, 3);
+   A = 1.0;
+ * @endcode
  */
 template <class T>
 Array2D<T> & Array2D<T>::operator=(const T &a)
@@ -354,7 +444,19 @@ Array2D<T> & Array2D<T>::operator=(const T &a)
 	return *this;
 }
 
-
+	/**
+ * @brief Make a copy of the current Array2D to a different one. 
+ * Avoid a cloning operation.
+ * 
+ * @tparam T Type of data
+ * @return Array2D<T> A copy of the Array
+ *
+ * Example:
+ * @code{.cpp}
+   TNT::Array2D<double> A(3, 3, 1.0);
+   TNT::Array2D<double> B(A.copy());
+ * @endcode
+ */
 template <class T>
 Array2D<T> Array2D<T>::copy() const
 {
@@ -368,7 +470,22 @@ Array2D<T> Array2D<T>::copy() const
 	return A;
 }
 
-
+/**
+ * @brief Inject the values of an array2D A into another array2D B
+ * of the same size. The values are copied (not cloning).
+ * 
+ * @tparam T Data type of the array
+ * @param A Input Array2D, must be the same size of *this
+ * @return ArrayD<T>& *this array 2D with the new values
+ *
+ * Example:
+ * @code{.cpp}
+   // Reference array
+   TNT::Array2D<double> A(m_, n_, init_value_);
+   TNT::Array2D<double> B(m_, n_);
+   B.inject(A);
+ * @endcode
+ */
 template <class T>
 Array2D<T> & Array2D<T>::inject(const Array2D &A)
 {
@@ -380,8 +497,6 @@ Array2D<T> & Array2D<T>::inject(const Array2D &A)
 	}
 	return *this;
 }
-
-
 
 /**
  * @brief Change the reference of one array B to another array B,
@@ -467,6 +582,13 @@ Array2D<T>::~Array2D() {}
  * 
  * @tparam T data type
  * @return T** Regular multidimensional C pointer.
+ *
+ @rst
+..warning:: 
+
+	The reference is not increased, if the Array2D is destroyed, the raw array is a 
+	dangling pointer. 
+@endrst
  */
 template <class T>
 inline Array2D<T>::operator T**()
@@ -489,17 +611,48 @@ inline Array2D<T>::operator const T**() const
 }
 
 /* ............... extended interface ............... */
+
 /**
-	Create a new view to a subarray defined by the boundaries
+ * @brief 	Create a new view to a subarray defined by the boundaries
 	[i0][i0] and [i1][j1].  The size of the subarray is
 	(i1-i0) by (j1-j0).  If either of these lengths are zero
-	or negative, the subarray view is null.
-
-*/
+	or negative, the subarray view is null. Is a REFERENCE to a subarray 
+	of this
+ * 
+ * @tparam T Type of data
+ * @param i0 start index row
+ * @param i1 end index row
+ * @param i0 start index column
+ * @param i1 end index column
+ * @return Array2D<T> A reference subarray.  
+ *
+ * Examples:
+ * @code{.cpp}
+ *
+ * TNT::Array2D<double> A(m_, n_, init_value_);
+ *
+   // Create an array from a subarray A
+   TNT::Array2D<double> B = A.subarray(0, 1, 0, 1);
+   // Scalar array
+   TNT::Array2D<double> F = A.subarray(1, 1, 1, 1);   
+   // Row array
+   TNT::Array2D<double> G = A.subarray(0, 0, 0, 2);
+   // Column array
+   TNT::Array2D<double> H = A.subarray(0, 2, 0, 0);
+ * @endcode
+ */
 template <class T>
 Array2D<T> Array2D<T>::subarray(int i0, int i1, int j0, int j1) 
 {
 	Array2D<T> A;
+
+	if (!((i0 >= 0) && (i1 < m_) && (i0 <= i1)))
+		return A;
+
+	if (!((j0 >= 0) && (j1 < n_) && (j0 <= j1)))
+		return A;
+	 
+
 	int m = i1-i0+1;
 	int n = j1-j0+1;
 
@@ -522,6 +675,30 @@ Array2D<T> Array2D<T>::subarray(int i0, int i1, int j0, int j1)
 	return A;
 }
 
+/**
+ * @brief Return the number of reference to *this array
+ * 
+ * @tparam T Type of data
+ * @return int The number of references
+ *
+ * Examples:
+ * @code{.cpp}
+ *
+   // Definition des arrays
+   TNT::Array2D<double> A(m_, n_, init_value_);
+   TNT::Array2D<double> Z(m_, n_, init_value_);
+   TNT::Array2D<double> B(4, 4, init_value_);
+   TNT::Array2D<double> C;
+   TNT::Array2D<double> *D = new TNT::Array2D<double>(2, 2);
+
+   // B and C must be now a reference to A.
+   B.ref(A);
+   C.ref(A);
+   D->ref(A);
+ 
+   int num_ref = A.ref_count() // equal to 4
+ * @endcode
+ */
 template <class T>
 inline int Array2D<T>::ref_count()
 {
