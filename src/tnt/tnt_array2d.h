@@ -17,15 +17,12 @@
 *
 */
 
-
-
 #ifndef TNT_ARRAY2D_H
 #define TNT_ARRAY2D_H
 
-#include <cstdlib>
 #include <iostream>
 #ifdef TNT_BOUNDS_CHECK
-#include <assert.h>
+#include <cassert>
 #endif
 
 #include "tnt_array1d.h"
@@ -705,8 +702,6 @@ inline int Array2D<T>::ref_count()
 	return ref_count_data();
 }
 
-
-
 template <class T>
 inline int Array2D<T>::ref_count_data()
 {
@@ -718,9 +713,6 @@ inline int Array2D<T>::ref_count_dim1()
 {
 	return v_.ref_count();
 }
-
-
-
 
 } /* namespace TNT */
 

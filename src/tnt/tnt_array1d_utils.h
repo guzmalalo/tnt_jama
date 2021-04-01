@@ -25,7 +25,7 @@
 namespace TNT
 {
 
-/**
+  /**
  * @brief Overload the ouput operator.
  * Print the array on the ostream
  * 
@@ -34,26 +34,26 @@ namespace TNT
  * @param A input Array to print (this)
  * @return std::ostream& 
  */
-template <class T>
-std::ostream& operator<<(std::ostream &s, const Array1D<T> &A)
-{
-    int N=A.dim1();
+  template <class T>
+  std::ostream &operator<<(std::ostream &s, const Array1D<T> &A)
+  {
+    int N = A.dim1();
 
 #ifdef TNT_DEBUG
-	s << "addr: " << (void *) &A[0] << "\n";
+    s << "addr: " << (void *)&A[0] << "\n";
 #endif
     s << "Dimension: " << N << "\n";
-	s << "Components: \n";
-    for (int j=0; j<N; j++)
+    s << "Components: \n";
+    for (int j = 0; j < N; j++)
     {
-       s << A[j] << "\n";
+      s << A[j] << "\n";
     }
     s << "\n";
 
     return s;
-}
+  }
 
-/**
+  /**
  * @brief Overload the extraction operator. This beauty allows to initialize the array from an istream. The first value must be 
  an integer an defines the size of the array. The following values 
  initialize the array, if not value is given, value is set to zero. 
@@ -71,21 +71,20 @@ std::ostream& operator<<(std::ostream &s, const Array1D<T> &A)
  * @endcode
  * 
  */
-template <class T>
-std::istream& operator>>(std::istream &s, Array1D<T> &A)
-{
-	int N;
-	s >> N;
+  template <class T>
+  std::istream &operator>>(std::istream &s, Array1D<T> &A)
+  {
+    int N;
+    s >> N;
 
-	Array1D<T> B(N);
-	for (int i=0; i<N; i++)
-		s >> B[i];
-	A = B;
-	return s;
-}
+    Array1D<T> B(N);
+    for (int i = 0; i < N; i++)
+      s >> B[i];
+    A = B;
+    return s;
+  }
 
-
-/**
+  /**
  * @brief  Adds two Array1D A and B and creates a new Array1D C.
  * 
  * @tparam T 
@@ -98,32 +97,31 @@ std::istream& operator>>(std::istream &s, Array1D<T> &A)
  * C = A + B;
  * @endcode
  */
-template <class T>
-Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	// Add assert instead of if for release
-/*#ifdef TNT_BOUNDS_CHECK
+    // Add assert instead of if for release
+    /*#ifdef TNT_BOUNDS_CHECK
 		assert(("dim B is no equal to dim A",B.dim1() == n) );
 #endif*/
 
-	if (B.dim1() != n )
-		return Array1D<T>();
-	else
-	{
-		Array1D<T> C(n);
+    if (B.dim1() != n)
+      return Array1D<T>();
+    else
+    {
+      Array1D<T> C(n);
 
-		for (int i=0; i<n; i++)
-		{
-			C[i] = A[i] + B[i];
-		}
-		return C;
-	}
-}
+      for (int i = 0; i < n; i++)
+      {
+        C[i] = A[i] + B[i];
+      }
+      return C;
+    }
+  }
 
-
-/**
+  /**
  * @brief  Substracts two Array1D A and B and creates a new Array1D C.
  * 
  * @tparam T 
@@ -136,27 +134,26 @@ Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
  * C = A - B;
  * @endcode
  */
-template <class T>
-Array1D<T> operator-(const Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> operator-(const Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() != n )
-		return Array1D<T>();
-	else
-	{
-		Array1D<T> C(n);
+    if (B.dim1() != n)
+      return Array1D<T>();
+    else
+    {
+      Array1D<T> C(n);
 
-		for (int i=0; i<n; i++)
-		{
-			C[i] = A[i] - B[i];
-		}
-		return C;
-	}
-}
+      for (int i = 0; i < n; i++)
+      {
+        C[i] = A[i] - B[i];
+      }
+      return C;
+    }
+  }
 
-
-/**
+  /**
  * @brief  Multiplies two Array1D A and B, element by element 
  * and creates a new Array1D C.
  * 
@@ -170,26 +167,26 @@ Array1D<T> operator-(const Array1D<T> &A, const Array1D<T> &B)
  * C = A * B;
  * @endcode
  */
-template <class T>
-Array1D<T> operator*(const Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> operator*(const Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() != n )
-		return Array1D<T>();
-	else
-	{
-		Array1D<T> C(n);
+    if (B.dim1() != n)
+      return Array1D<T>();
+    else
+    {
+      Array1D<T> C(n);
 
-		for (int i=0; i<n; i++)
-		{
-			C[i] = A[i] * B[i];
-		}
-		return C;
-	}
-}
+      for (int i = 0; i < n; i++)
+      {
+        C[i] = A[i] * B[i];
+      }
+      return C;
+    }
+  }
 
-/**
+  /**
  * @brief  Multiplies an Array1D A by a scalar 
  * and creates a new Array1D C.
  * 
@@ -203,20 +200,20 @@ Array1D<T> operator*(const Array1D<T> &A, const Array1D<T> &B)
  * C = A * b;
  * @endcode
  */
-template <class T>
-Array1D<T>  operator*(Array1D<T> &A, const T &b)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> operator*(Array1D<T> &A, const T &b)
+  {
+    int n = A.dim1();
     Array1D<T> C(n);
 
-	for (int i=0; i<n; i++)
-	{
-		C[i] = A[i]*b;
-	}
-	return C;
-}
+    for (int i = 0; i < n; i++)
+    {
+      C[i] = A[i] * b;
+    }
+    return C;
+  }
 
-/**
+  /**
  * @brief  Multiplies a scalar by an Array1D
  * and creates a new Array1D C.
  * 
@@ -230,13 +227,13 @@ Array1D<T>  operator*(Array1D<T> &A, const T &b)
  * C = b * A;
  * @endcode
  */
-template <class T>
-inline Array1D<T>  operator*(const T &b, Array1D<T> &A)
-{
-	return A*b;
-}
+  template <class T>
+  inline Array2D<T> operator*(const T &b, Array2D<T> &A)
+  {
+    return A * b;
+  }
 
-/**
+  /**
  * @brief  Divides two Array1D A and B, element by element 
  * and creates a new Array1D C.
  * 
@@ -250,27 +247,27 @@ inline Array1D<T>  operator*(const T &b, Array1D<T> &A)
  * C = A / B;
  * @endcode
  */
-template <class T>
-Array1D<T> operator/(const Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> operator/(const Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() != n )
-		return Array1D<T>();
+    if (B.dim1() != n)
+      return Array1D<T>();
 
-	else
-	{
-		Array1D<T> C(n);
+    else
+    {
+      Array1D<T> C(n);
 
-		for (int i=0; i<n; i++)
-		{
-			C[i] = A[i] / B[i];
-		}
-		return C;
-	}
-}
+      for (int i = 0; i < n; i++)
+      {
+        C[i] = A[i] / B[i];
+      }
+      return C;
+    }
+  }
 
-/**
+  /**
  * @brief  Divides an Array1D A by a scalar b, element by element 
  * and creates a new Array1D C.
  * 
@@ -284,20 +281,19 @@ Array1D<T> operator/(const Array1D<T> &A, const Array1D<T> &B)
  * C = A / b;
  * @endcode
  */
-template <class T>
-Array1D<T>  operator/(const Array1D<T> &A, const T &b)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> operator/(const Array1D<T> &A, const T &b)
+  {
+    int n = A.dim1();
     Array1D<T> C(n);
-	for (int i=0; i<n; i++)
-	{
-		C[i] = A[i]/b;
-	}
-	return C;
-}
+    for (int i = 0; i < n; i++)
+    {
+      C[i] = A[i] / b;
+    }
+    return C;
+  }
 
-
-/**
+  /**
  * @brief  Adds  A and B, element by element 
  * and save the result into A. Avoid to construct a new Array C
  * 
@@ -311,22 +307,22 @@ Array1D<T>  operator/(const Array1D<T> &A, const T &b)
  * A += B;
  * @endcode
  */
-template <class T>
-Array1D<T>&  operator+=(Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> &operator+=(Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() == n)
-	{
-		for (int i=0; i<n; i++)
-		{
-				A[i] += B[i];
-		}
-	}
-	return A;
-}
+    if (B.dim1() == n)
+    {
+      for (int i = 0; i < n; i++)
+      {
+        A[i] += B[i];
+      }
+    }
+    return A;
+  }
 
-/**
+  /**
  * @brief  Adds  A and B, element by element 
  * and save the result into A. Avoid to construct a new Array C
  * 
@@ -340,22 +336,22 @@ Array1D<T>&  operator+=(Array1D<T> &A, const Array1D<T> &B)
  * A -= B;
  * @endcode
  */
-template <class T>
-Array1D<T>&  operator-=(Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> &operator-=(Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() == n)
-	{
-		for (int i=0; i<n; i++)
-		{
-				A[i] -= B[i];
-		}
-	}
-	return A;
-}
+    if (B.dim1() == n)
+    {
+      for (int i = 0; i < n; i++)
+      {
+        A[i] -= B[i];
+      }
+    }
+    return A;
+  }
 
-/**
+  /**
  * @brief  Multiplies A and B, element by element 
  * and save the result into A. Avoid to construct a new Array C
  * 
@@ -369,23 +365,22 @@ Array1D<T>&  operator-=(Array1D<T> &A, const Array1D<T> &B)
  * A *= B;
  * @endcode
  */
-template <class T>
-Array1D<T>&  operator*=(Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> &operator*=(Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() == n)
-	{
-		for (int i=0; i<n; i++)
-		{
-				A[i] *= B[i];
-		}
-	}
-	return A;
-}
+    if (B.dim1() == n)
+    {
+      for (int i = 0; i < n; i++)
+      {
+        A[i] *= B[i];
+      }
+    }
+    return A;
+  }
 
-
-/**
+  /**
  * @brief  Multiplies A by a sacalar, element by element 
  * and save the result into A. Avoid to construct a new Array C
  * 
@@ -399,18 +394,18 @@ Array1D<T>&  operator*=(Array1D<T> &A, const Array1D<T> &B)
  * A *= b;
  * @endcode
  */
-template <class T>
-Array1D<T>&  operator*=(Array1D<T> &A, const T &b)
-{
-	int n = A.dim1();
-		for (int i=0; i<n; i++)
-		{
-				A[i] *= b;
-		}
-	return A;
-}
+  template <class T>
+  Array1D<T> &operator*=(Array1D<T> &A, const T &b)
+  {
+    int n = A.dim1();
+    for (int i = 0; i < n; i++)
+    {
+      A[i] *= b;
+    }
+    return A;
+  }
 
-/**
+  /**
  * @brief  Divides A and B, element by element 
  * and save the result into A. Avoid to construct a new Array C
  * 
@@ -424,23 +419,22 @@ Array1D<T>&  operator*=(Array1D<T> &A, const T &b)
  * A /= B;
  * @endcode
  */
-template <class T>
-Array1D<T>&  operator/=(Array1D<T> &A, const Array1D<T> &B)
-{
-	int n = A.dim1();
+  template <class T>
+  Array1D<T> &operator/=(Array1D<T> &A, const Array1D<T> &B)
+  {
+    int n = A.dim1();
 
-	if (B.dim1() == n)
-	{
-		for (int i=0; i<n; i++)
-		{
-				A[i] /= B[i];
-		}
-	}
-	return A;
-}
+    if (B.dim1() == n)
+    {
+      for (int i = 0; i < n; i++)
+      {
+        A[i] /= B[i];
+      }
+    }
+    return A;
+  }
 
-
-/**
+  /**
  * @brief  Divides an Array1D A by a sacalar b (element by element)
  * and save the result into A. Avoid to construct a new Array C
  * 
@@ -454,20 +448,20 @@ Array1D<T>&  operator/=(Array1D<T> &A, const Array1D<T> &B)
  * A /= b;
  * @endcode
  */
-template <class T>
-Array1D<T>&  operator/=(Array1D<T> &A, const T &b)
-{
-	int n = A.dim1();
-		for (int i=0; i<n; i++)
-		{
-				A[i] /= b;
-		}
-	return A;
-}
+  template <class T>
+  Array1D<T> &operator/=(Array1D<T> &A, const T &b)
+  {
+    int n = A.dim1();
+    for (int i = 0; i < n; i++)
+    {
+      A[i] /= b;
+    }
+    return A;
+  }
 
-/* ........................ extended functions ......................*/
+  /* ........................ extended functions ......................*/
 
-/**
+  /**
  * @brief Computes the l2​-norm of an Array1d
  * 
  * @tparam T Type od data
@@ -480,18 +474,18 @@ Array1D<T>&  operator/=(Array1D<T> &A, const T &b)
  * double res = TNT::norm(A);
  * @endcode
  */
-template <class T>
-T norm(const Array1D<T> &A)
-{
-	int n = A.dim1();
+  template <class T>
+  T norm(const Array1D<T> &A)
+  {
+    int n = A.dim1();
 
-	T sum = 0.;
-	for (int i=0; i<n; i++)
-		sum +=  A[i] * A[i];
-	return std::sqrt(sum);
-}
+    T sum = 0.;
+    for (int i = 0; i < n; i++)
+      sum += A[i] * A[i];
+    return std::sqrt(sum);
+  }
 
-/**
+  /**
  * @brief  Computes the cross product of A and B, this
  * operation is  only defined in a three-dimensional space.
  * 
@@ -506,25 +500,25 @@ T norm(const Array1D<T> &A)
  * double res = TNT::cross(A,B);
  * @endcode
  */
-template <class T>
-Array1D<T>  cross(const Array1D<T> &A, const Array1D<T> &B)
-{
+  template <class T>
+  Array1D<T> cross(const Array1D<T> &A, const Array1D<T> &B)
+  {
     int n = A.dim1();
     int m = B.dim1();
-    
-    if (n != 3 ||  m != 3 )
-        return Array1D<T>();
+
+    if (n != 3 || m != 3)
+      return Array1D<T>();
     else
     {
-        Array1D<T> C(n);
-        C[0] = A[1]*B[2] - A[2]*B[1];
-        C[1] = A[2]*B[0] - A[0]*B[2];
-        C[2] = A[0]*B[1] - A[1]*B[0];
-    	return C;
+      Array1D<T> C(n);
+      C[0] = A[1] * B[2] - A[2] * B[1];
+      C[1] = A[2] * B[0] - A[0] * B[2];
+      C[2] = A[0] * B[1] - A[1] * B[0];
+      return C;
     }
-}
+  }
 
-/**
+  /**
  * @brief Computes the dot product of two Array1D A and B.
  * 
  * @tparam T Data type
@@ -539,23 +533,23 @@ Array1D<T>  cross(const Array1D<T> &A, const Array1D<T> &B)
  * double C = TNT::dot_product(A, B);
  * @endcode
  */
-template <class T>
-T dot_product(const Array1D<T> &A, const Array1D<T> &B)
-{
+  template <class T>
+  T dot_product(const Array1D<T> &A, const Array1D<T> &B)
+  {
     int n = A.dim1();
     int m = B.dim1();
-    
-    if (n != 3 ||  m != 3 )
-        return 0;
+
+    if (n != 3 || m != 3)
+      return 0;
     else
     {
-		T sum = 0; 
-		for (int i=0; i<n; i++)
-			sum += A[i] * B[i];
+      T sum = 0;
+      for (int i = 0; i < n; i++)
+        sum += A[i] * B[i];
 
-        return sum;
+      return sum;
     }
-}
+  }
 
 } // namespace TNT
 
