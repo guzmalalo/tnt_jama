@@ -833,7 +833,7 @@ namespace TNT
  * @return T the determinant of the matrix
  */
   template <class T>
-  TNT::Array2D<T> det(const TNT::Array2D<T> &M)
+  T det(const TNT::Array2D<T> &M)
   {
     // square matrices only
     assert(M.dim1() == M.dim2());

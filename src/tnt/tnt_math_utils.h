@@ -2,9 +2,8 @@
 #define MATH_UTILS_H
 
 
-/* needed for abs(), sqrt() below */
-#include <cmath>
-
+#include <cmath> // std::abs(), std::sqrt()
+#include <algorithm> // std::min(), std=::max()
 
 namespace TNT
 {

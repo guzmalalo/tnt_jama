@@ -172,7 +172,7 @@ class Array2D
 	inline int ref_count_data();
 	inline int ref_count_dim1();
 	Array2D subarray(int i0, int i1, int j0, int j1);
-
+  Array2D subarray(const Array1D<int> &r, int j0, int j1);
 };
 
 
@@ -619,8 +619,8 @@ inline Array2D<T>::operator const T**() const
  * @tparam T Type of data
  * @param i0 start index row
  * @param i1 end index row
- * @param i0 start index column
- * @param i1 end index column
+ * @param j0 start index column
+ * @param j1 end index column
  * @return Array2D<T> A reference subarray.  
  *
  * Examples:
@@ -670,6 +670,44 @@ Array2D<T> Array2D<T>::subarray(int i0, int i1, int j0, int j1)
 
 	}	
 	return A;
+}
+
+/**
+ * @brief 	Create a subarray based  on the row indices given
+ * on a Array1D<int> r and a range of columns [j0] [j1].  The 
+ * size of the submatrix is r.dim() x (j1-j0).  If either of 
+ * these lengths are zero	or negative, the submatrix view is 
+ * null. Copy the values in a new array
+ * 
+ * @tparam T Type of data
+ * @param i0 start index row
+ * @param j0 start index column
+ * @param j1 end index column
+ * @return Array2D<T> A reference subarray.  
+ *
+ */
+template <class T>
+Array2D<T> Array2D<T>::subarray(const Array1D<int> &r, int j0, int j1)
+{
+ 
+  if (!((r.dim() > 0) && (r.dim() <= m_)))
+    return Array2D<T>();
+
+  if (!((j0 >= 0) && (j1 < n_) && (j0 <= j1)))
+    return Array2D<T>();
+
+  int m = r.dim();
+  int n = j1 - j0 + 1;
+
+  Array2D<T> A(m,n);
+  for (int i = 0; i < m; i++)
+  {
+    for (int j = j0; j <= j1; j++)
+    {
+      A[i][j - j0] = v_[r[i]][j];
+    }
+  }
+  return A;
 }
 
 /**

@@ -7,11 +7,5 @@
 ######################################################################
 cmake_minimum_required(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tnt)
-target_include_directories(${EXE_TARGET} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tnt)
-
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/jama)
-target_include_directories(${EXE_TARGET} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/jama)
-
-target_sources(${EXE_TARGET} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Main_tnt.cpp)
-
+target_sources(${EXE_TARGET} PRIVATE 
+${CMAKE_CURRENT_SOURCE_DIR}/jama_lu.h)

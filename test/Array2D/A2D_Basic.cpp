@@ -513,5 +513,51 @@ TEST_F(Array2D_test, subarray_method)
 }
 
 /**
+* @brief Test the subarray method with vector
+*/
+TEST_F(Array2D_test, subarray_method_rows)
+{
+  double a_values[3][3] = {{0, 1, 2},
+                           {1, 2, 3},
+                           {2, 3, 4}};
+  TNT::Array2D<double> A(3, 3, *a_values);
+
+  // Define the rows index to use in the new subarray
+  TNT::Array1D<int> rows(2);
+  rows[0] = 0;
+  rows[1] = 2;
+
+  // Extracting the values from the first and last line 
+  // and from the second to the third colum 
+  TNT::Array2D<double> B = A.subarray(rows, 1, 2);
+  EXPECT_EQ(B.dim1(), 2);
+  EXPECT_EQ(B.dim2(), 2);
+  EXPECT_EQ(B[0][0], 1);
+  EXPECT_EQ(B[0][1], 2);
+  EXPECT_EQ(B[1][0], 3);
+  EXPECT_EQ(B[1][1], 4);
+
+  // Extracting all the values
+  TNT::Array1D<int> rows2(3);
+  rows2[0] = 0;
+  rows2[1] = 1;
+  rows2[2] = 2;
+
+  B = A.subarray(rows2, 0, 2);
+
+  EXPECT_TRUE(A == B);
+
+  // Extract the last value of A
+  // Extracting all the values
+  TNT::Array1D<int> rows3(1);
+  rows3[0] = 2;
+  B = A.subarray(rows3, 2, 2);
+  EXPECT_EQ(B.dim1(), 1);
+  EXPECT_EQ(B.dim2(), 1);
+
+  EXPECT_TRUE(A[2][2] == B[0][0]);
+}
+
+/**
 * @}
 */
