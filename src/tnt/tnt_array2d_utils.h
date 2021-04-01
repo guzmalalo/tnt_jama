@@ -20,7 +20,8 @@
 #ifndef TNT_ARRAY2D_UTILS_H
 #define TNT_ARRAY2D_UTILS_H
 
-#include <iostream>
+// local includes
+#include "tnt_array2d.h"
 
 namespace TNT
 {
@@ -245,7 +246,7 @@ namespace TNT
  * @endcode
  */
   template <class T>
-  inline Array1D<T> operator*(const T &b, Array1D<T> &A)
+  inline Array2D<T> operator*(const T &b, Array2D<T> &A)
   {
     return A * b;
   }
