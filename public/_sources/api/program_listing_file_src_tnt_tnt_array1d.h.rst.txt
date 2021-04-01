@@ -155,11 +155,11 @@ Program Listing for File tnt_array1d.h
        inline T &Array1D<T>::operator()(int i)
        {
    #ifdef TNT_BOUNDS_CHECK
-           assert( i > 0 && "Index is negative");
-           assert( i <= n_ && "Index is out of bonds");
+           assert(i > 0 && "Index is negative");
+           assert(i <= n_ && "Index is out of bonds");
    #endif
            return data_[i - 1];
-       }
+       };
    
        template <class T>
        inline const T &Array1D<T>::operator()(int i) const

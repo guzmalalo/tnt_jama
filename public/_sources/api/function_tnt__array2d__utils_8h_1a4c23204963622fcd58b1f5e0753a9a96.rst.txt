@@ -1,7 +1,7 @@
 .. _exhale_function_tnt__array2d__utils_8h_1a4c23204963622fcd58b1f5e0753a9a96:
 
-Template Function TNT::matmult
-==============================
+Template Function TNT::matmult(const Array2D<T>&, const Array2D<T>&)
+====================================================================
 
 - Defined in :ref:`file_src_tnt_tnt_array2d_utils.h`
 

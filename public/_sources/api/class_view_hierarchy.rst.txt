@@ -8,7 +8,7 @@ Class Hierarchy
    <ul class="treeView" id="class-treeView">
      <li>
        <ul class="collapsibleList">
-         <li class="lastChild">Namespace <a href="namespace_TNT.html#namespace-TNT">TNT</a><ul><li>Template Class <a href="class_t_n_t_1_1_array1_d.html#exhale-class-class-t-n-t-1-1-array1-d">Array1D</a></li><li>Template Class <a href="class_t_n_t_1_1_array2_d.html#exhale-class-class-t-n-t-1-1-array2-d">Array2D</a></li><li>Template Class <a href="class_t_n_t_1_1_array3_d.html#exhale-class-class-t-n-t-1-1-array3-d">Array3D</a></li><li class="lastChild">Template Class <a href="class_t_n_t_1_1i__refvec.html#exhale-class-class-t-n-t-1-1i-refvec">i_refvec</a></li></ul></li>
+         <li>Namespace <a href="namespace_JAMA.html#namespace-JAMA">JAMA</a><ul><li class="lastChild">Template Class <a href="class_j_a_m_a_1_1_l_u.html#exhale-class-class-j-a-m-a-1-1-l-u">LU</a></li></ul></li><li class="lastChild">Namespace <a href="namespace_TNT.html#namespace-TNT">TNT</a><ul><li>Template Class <a href="class_t_n_t_1_1_array1_d.html#exhale-class-class-t-n-t-1-1-array1-d">Array1D</a></li><li>Template Class <a href="class_t_n_t_1_1_array2_d.html#exhale-class-class-t-n-t-1-1-array2-d">Array2D</a></li><li class="lastChild">Template Class <a href="class_t_n_t_1_1i__refvec.html#exhale-class-class-t-n-t-1-1i-refvec">i_refvec</a></li></ul></li>
        </ul>
      </li><!-- only tree view element -->
    </ul><!-- /treeView class-treeView -->

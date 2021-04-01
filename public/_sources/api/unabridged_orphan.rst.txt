@@ -16,11 +16,21 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_src_jama.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_src_tnt.rst
 
 Files
 *****
 
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_jama_jama_lu.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -51,16 +61,6 @@ Files
    :maxdepth: 5
 
    file_src_tnt_tnt_array2d_utils.h.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_src_tnt_tnt_array3d.h.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_src_tnt_tnt_array3d_utils.h.rst
 
 .. toctree::
    :maxdepth: 5

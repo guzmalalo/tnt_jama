@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Template Function TNT::operator&gt;&gt;(std::istream&amp;, Array3D&lt;T&gt;&amp;)" href="function_tnt__array3d__utils_8h_1a6657bdc30991a0a8b4dbd2563f52397c.html" />
+    <link rel="next" title="Template Function TNT::transpose" href="function_tnt__array2d__utils_8h_1ab66428c1dd4beec69bd9df96fa66d9bf.html" />
     <link rel="prev" title="Template Function TNT::operator&gt;&gt;(std::istream&amp;, Array1D&lt;T&gt;&amp;)" href="function_tnt__array1d__utils_8h_1ac85e172cd409433504bb3a8a6df3ac9f.html" /> 
 </head>
 
@@ -169,7 +169,28 @@
 <dl class="cpp function">
 <dt id="_CPPv4I0EN3TNTrsERNSt7istreamERNSt7istreamER7Array2DI1TE">
 <span id="_CPPv3I0EN3TNTrsERNSt7istreamER7Array2DI1TE"></span><span id="_CPPv2I0EN3TNTrsERNSt7istreamER7Array2DI1TE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="tnt__array2d__utils_8h_1a2856dd71c9307b44e65cc69a98a3b102"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">istream</span> <span class="pre">&amp;</span><code class="sig-prename descclassname"><span class="pre">TNT</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">operator&gt;&gt;</span></code><span class="sig-paren">(</span><span class="pre">std</span><span class="pre">::</span><span class="pre">istream</span> <span class="pre">&amp;</span><em><span class="pre">s</span></em>, <a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNTrsERNSt7istreamERNSt7istreamER7Array2DI1TE" title="TNT::operator&gt;&gt;::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN3TNTrsERNSt7istreamERNSt7istreamER7Array2DI1TE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Overload the extraction operator. This beauty allows to initialize the array2d from an istream. The first two values must be integers an define the size of the array. The following values initialize the array, if not value is given, value is set to zero. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">istringstream</span> <span class="n">is</span><span class="p">(</span><span class="s">&quot;3 3 0 1 2 1 2 3 2 3 4&quot;</span><span class="p">);</span>
+<span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">A</span><span class="p">;</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>std::istream&amp; input istream</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: input istream </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: <a class="reference internal" href="class_t_n_t_1_1_array2_d.html#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> to be created from the istream </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 </div>
 </div>
@@ -180,7 +201,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="function_tnt__array3d__utils_8h_1a6657bdc30991a0a8b4dbd2563f52397c.html" class="btn btn-neutral float-right" title="Template Function TNT::operator&gt;&gt;(std::istream&amp;, Array3D&lt;T&gt;&amp;)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="function_tnt__array2d__utils_8h_1ab66428c1dd4beec69bd9df96fa66d9bf.html" class="btn btn-neutral float-right" title="Template Function TNT::transpose" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="function_tnt__array1d__utils_8h_1ac85e172cd409433504bb3a8a6df3ac9f.html" class="btn btn-neutral float-left" title="Template Function TNT::operator&gt;&gt;(std::istream&amp;, Array1D&lt;T&gt;&amp;)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

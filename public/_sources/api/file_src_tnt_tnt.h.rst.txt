@@ -35,6 +35,8 @@ Includes
 
 - ``tnt_array2d.h`` (:ref:`file_src_tnt_tnt_array2d.h`)
 
+- ``tnt_array2d_utils.h`` (:ref:`file_src_tnt_tnt_array2d_utils.h`)
+
 - ``tnt_math_utils.h`` (:ref:`file_src_tnt_tnt_math_utils.h`)
 
 - ``tnt_version.h`` (:ref:`file_src_tnt_tnt_version.h`)
@@ -44,6 +46,8 @@ Includes
 Included By
 -----------
 
+
+- :ref:`file_src_jama_jama_lu.h`
 
 - :ref:`file_src_Main_tnt.cpp`
 

@@ -32,292 +32,287 @@ Program Listing for File tnt_array1d_utils.h
    #ifndef TNT_ARRAY1D_UTILS_H
    #define TNT_ARRAY1D_UTILS_H
    
-   #include <iostream>
+   // local includes
+   #include "tnt_array1d.h"
    
    namespace TNT
    {
    
-   template <class T>
-   std::ostream& operator<<(std::ostream &s, const Array1D<T> &A)
-   {
-       int N=A.dim1();
+     template <class T>
+     std::ostream &operator<<(std::ostream &s, const Array1D<T> &A)
+     {
+       int N = A.dim1();
    
    #ifdef TNT_DEBUG
-       s << "addr: " << (void *) &A[0] << "\n";
+       s << "addr: " << (void *)&A[0] << "\n";
    #endif
        s << "Dimension: " << N << "\n";
        s << "Components: \n";
-       for (int j=0; j<N; j++)
+       for (int j = 0; j < N; j++)
        {
-          s << A[j] << "\n";
+         s << A[j] << "\n";
        }
        s << "\n";
    
        return s;
-   }
+     }
    
-   template <class T>
-   std::istream& operator>>(std::istream &s, Array1D<T> &A)
-   {
+     template <class T>
+     std::istream &operator>>(std::istream &s, Array1D<T> &A)
+     {
        int N;
        s >> N;
    
        Array1D<T> B(N);
-       for (int i=0; i<N; i++)
-           s >> B[i];
+       for (int i = 0; i < N; i++)
+         s >> B[i];
        A = B;
        return s;
-   }
+     }
    
-   
-   template <class T>
-   Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> operator+(const Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
        // Add assert instead of if for release
-   /*#ifdef TNT_BOUNDS_CHECK
+       /*#ifdef TNT_BOUNDS_CHECK
            assert(("dim B is no equal to dim A",B.dim1() == n) );
    #endif*/
    
-       if (B.dim1() != n )
-           return Array1D<T>();
+       if (B.dim1() != n)
+         return Array1D<T>();
        else
        {
-           Array1D<T> C(n);
+         Array1D<T> C(n);
    
-           for (int i=0; i<n; i++)
-           {
-               C[i] = A[i] + B[i];
-           }
-           return C;
+         for (int i = 0; i < n; i++)
+         {
+           C[i] = A[i] + B[i];
+         }
+         return C;
        }
-   }
+     }
    
-   
-   template <class T>
-   Array1D<T> operator-(const Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> operator-(const Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
-       if (B.dim1() != n )
-           return Array1D<T>();
+       if (B.dim1() != n)
+         return Array1D<T>();
        else
        {
-           Array1D<T> C(n);
+         Array1D<T> C(n);
    
-           for (int i=0; i<n; i++)
-           {
-               C[i] = A[i] - B[i];
-           }
-           return C;
+         for (int i = 0; i < n; i++)
+         {
+           C[i] = A[i] - B[i];
+         }
+         return C;
        }
-   }
+     }
    
-   
-   template <class T>
-   Array1D<T> operator*(const Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> operator*(const Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
-       if (B.dim1() != n )
-           return Array1D<T>();
+       if (B.dim1() != n)
+         return Array1D<T>();
        else
        {
-           Array1D<T> C(n);
+         Array1D<T> C(n);
    
-           for (int i=0; i<n; i++)
-           {
-               C[i] = A[i] * B[i];
-           }
-           return C;
+         for (int i = 0; i < n; i++)
+         {
+           C[i] = A[i] * B[i];
+         }
+         return C;
        }
-   }
+     }
    
-   template <class T>
-   Array1D<T>  operator*(Array1D<T> &A, const T &b)
-   {
+     template <class T>
+     Array1D<T> operator*(Array1D<T> &A, const T &b)
+     {
        int n = A.dim1();
        Array1D<T> C(n);
    
-       for (int i=0; i<n; i++)
+       for (int i = 0; i < n; i++)
        {
-           C[i] = A[i]*b;
+         C[i] = A[i] * b;
        }
        return C;
-   }
+     }
    
-   template <class T>
-   inline Array1D<T>  operator*(const T &b, Array1D<T> &A)
-   {
-       return A*b;
-   }
+     template <class T>
+     inline Array1D<T> operator*(const T &b, Array1D<T> &A)
+     {
+       return A * b;
+     }
    
-   template <class T>
-   Array1D<T> operator/(const Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> operator/(const Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
-       if (B.dim1() != n )
-           return Array1D<T>();
+       if (B.dim1() != n)
+         return Array1D<T>();
    
        else
        {
-           Array1D<T> C(n);
+         Array1D<T> C(n);
    
-           for (int i=0; i<n; i++)
-           {
-               C[i] = A[i] / B[i];
-           }
-           return C;
+         for (int i = 0; i < n; i++)
+         {
+           C[i] = A[i] / B[i];
+         }
+         return C;
        }
-   }
+     }
    
-   template <class T>
-   Array1D<T>  operator/(const Array1D<T> &A, const T &b)
-   {
+     template <class T>
+     Array1D<T> operator/(const Array1D<T> &A, const T &b)
+     {
        int n = A.dim1();
        Array1D<T> C(n);
-       for (int i=0; i<n; i++)
+       for (int i = 0; i < n; i++)
        {
-           C[i] = A[i]/b;
+         C[i] = A[i] / b;
        }
        return C;
-   }
+     }
    
-   
-   template <class T>
-   Array1D<T>&  operator+=(Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> &operator+=(Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
        if (B.dim1() == n)
        {
-           for (int i=0; i<n; i++)
-           {
-                   A[i] += B[i];
-           }
+         for (int i = 0; i < n; i++)
+         {
+           A[i] += B[i];
+         }
        }
        return A;
-   }
+     }
    
-   template <class T>
-   Array1D<T>&  operator-=(Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> &operator-=(Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
        if (B.dim1() == n)
        {
-           for (int i=0; i<n; i++)
-           {
-                   A[i] -= B[i];
-           }
+         for (int i = 0; i < n; i++)
+         {
+           A[i] -= B[i];
+         }
        }
        return A;
-   }
+     }
    
-   template <class T>
-   Array1D<T>&  operator*=(Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> &operator*=(Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
        if (B.dim1() == n)
        {
-           for (int i=0; i<n; i++)
-           {
-                   A[i] *= B[i];
-           }
+         for (int i = 0; i < n; i++)
+         {
+           A[i] *= B[i];
+         }
        }
        return A;
-   }
+     }
    
-   
-   template <class T>
-   Array1D<T>&  operator*=(Array1D<T> &A, const T &b)
-   {
+     template <class T>
+     Array1D<T> &operator*=(Array1D<T> &A, const T &b)
+     {
        int n = A.dim1();
-           for (int i=0; i<n; i++)
-           {
-                   A[i] *= b;
-           }
+       for (int i = 0; i < n; i++)
+       {
+         A[i] *= b;
+       }
        return A;
-   }
+     }
    
-   template <class T>
-   Array1D<T>&  operator/=(Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> &operator/=(Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
    
        if (B.dim1() == n)
        {
-           for (int i=0; i<n; i++)
-           {
-                   A[i] /= B[i];
-           }
+         for (int i = 0; i < n; i++)
+         {
+           A[i] /= B[i];
+         }
        }
        return A;
-   }
+     }
    
-   
-   template <class T>
-   Array1D<T>&  operator/=(Array1D<T> &A, const T &b)
-   {
+     template <class T>
+     Array1D<T> &operator/=(Array1D<T> &A, const T &b)
+     {
        int n = A.dim1();
-           for (int i=0; i<n; i++)
-           {
-                   A[i] /= b;
-           }
+       for (int i = 0; i < n; i++)
+       {
+         A[i] /= b;
+       }
        return A;
-   }
+     }
    
-   /* ........................ extended functions ......................*/
+     /* ........................ extended functions ......................*/
    
-   template <class T>
-   T norm(const Array1D<T> &A)
-   {
+     template <class T>
+     T norm(const Array1D<T> &A)
+     {
        int n = A.dim1();
    
        T sum = 0.;
-       for (int i=0; i<n; i++)
-           sum +=  A[i] * A[i];
+       for (int i = 0; i < n; i++)
+         sum += A[i] * A[i];
        return std::sqrt(sum);
-   }
+     }
    
-   template <class T>
-   Array1D<T>  cross(const Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     Array1D<T> cross(const Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
        int m = B.dim1();
-       
-       if (n != 3 ||  m != 3 )
-           return Array1D<T>();
+   
+       if (n != 3 || m != 3)
+         return Array1D<T>();
        else
        {
-           Array1D<T> C(n);
-           C[0] = A[1]*B[2] - A[2]*B[1];
-           C[1] = A[2]*B[0] - A[0]*B[2];
-           C[2] = A[0]*B[1] - A[1]*B[0];
-           return C;
+         Array1D<T> C(n);
+         C[0] = A[1] * B[2] - A[2] * B[1];
+         C[1] = A[2] * B[0] - A[0] * B[2];
+         C[2] = A[0] * B[1] - A[1] * B[0];
+         return C;
        }
-   }
+     }
    
-   template <class T>
-   T dot_product(const Array1D<T> &A, const Array1D<T> &B)
-   {
+     template <class T>
+     T dot_product(const Array1D<T> &A, const Array1D<T> &B)
+     {
        int n = A.dim1();
        int m = B.dim1();
-       
-       if (n != 3 ||  m != 3 )
-           return 0;
+   
+       if (n != 3 || m != 3)
+         return 0;
        else
        {
-           T sum = 0; 
-           for (int i=0; i<n; i++)
-               sum += A[i] * B[i];
+         T sum = 0;
+         for (int i = 0; i < n; i++)
+           sum += A[i] * B[i];
    
-           return sum;
+         return sum;
        }
-   }
+     }
    
    } // namespace TNT
    

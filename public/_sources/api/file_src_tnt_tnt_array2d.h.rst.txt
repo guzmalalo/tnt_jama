@@ -29,8 +29,6 @@ Includes
 --------
 
 
-- ``cstdlib``
-
 - ``iostream``
 
 - ``tnt_array1d.h`` (:ref:`file_src_tnt_tnt_array1d.h`)
@@ -43,7 +41,7 @@ Included By
 
 - :ref:`file_src_tnt_tnt.h`
 
-- :ref:`file_src_tnt_tnt_array3d.h`
+- :ref:`file_src_tnt_tnt_array2d_utils.h`
 
 
 

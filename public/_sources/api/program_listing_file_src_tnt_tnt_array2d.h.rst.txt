@@ -29,15 +29,12 @@ Program Listing for File tnt_array2d.h
    *
    */
    
-   
-   
    #ifndef TNT_ARRAY2D_H
    #define TNT_ARRAY2D_H
    
-   #include <cstdlib>
    #include <iostream>
    #ifdef TNT_BOUNDS_CHECK
-   #include <assert.h>
+   #include <cassert>
    #endif
    
    #include "tnt_array1d.h"
@@ -145,7 +142,7 @@ Program Listing for File tnt_array2d.h
        inline int ref_count_data();
        inline int ref_count_dim1();
        Array2D subarray(int i0, int i1, int j0, int j1);
-   
+     Array2D subarray(const Array1D<int> &r, int j0, int j1);
    };
    
    
@@ -216,7 +213,6 @@ Program Listing for File tnt_array2d.h
    
    }
    
-   
    template <class T>
    inline const T* Array2D<T>::operator[](int i) const
    { 
@@ -239,7 +235,6 @@ Program Listing for File tnt_array2d.h
        return *this;
    }
    
-   
    template <class T>
    Array2D<T> Array2D<T>::copy() const
    {
@@ -253,7 +248,6 @@ Program Listing for File tnt_array2d.h
        return A;
    }
    
-   
    template <class T>
    Array2D<T> & Array2D<T>::inject(const Array2D &A)
    {
@@ -265,8 +259,6 @@ Program Listing for File tnt_array2d.h
        }
        return *this;
    }
-   
-   
    
    template <class T>
    Array2D<T> & Array2D<T>::ref(const Array2D<T> &A)
@@ -311,10 +303,19 @@ Program Listing for File tnt_array2d.h
    }
    
    /* ............... extended interface ............... */
+   
    template <class T>
    Array2D<T> Array2D<T>::subarray(int i0, int i1, int j0, int j1) 
    {
        Array2D<T> A;
+   
+       if (!((i0 >= 0) && (i1 < m_) && (i0 <= i1)))
+           return A;
+   
+       if (!((j0 >= 0) && (j1 < n_) && (j0 <= j1)))
+           return A;
+        
+   
        int m = i1-i0+1;
        int n = j1-j0+1;
    
@@ -338,12 +339,34 @@ Program Listing for File tnt_array2d.h
    }
    
    template <class T>
+   Array2D<T> Array2D<T>::subarray(const Array1D<int> &r, int j0, int j1)
+   {
+    
+     if (!((r.dim() > 0) && (r.dim() <= m_)))
+       return Array2D<T>();
+   
+     if (!((j0 >= 0) && (j1 < n_) && (j0 <= j1)))
+       return Array2D<T>();
+   
+     int m = r.dim();
+     int n = j1 - j0 + 1;
+   
+     Array2D<T> A(m,n);
+     for (int i = 0; i < m; i++)
+     {
+       for (int j = j0; j <= j1; j++)
+       {
+         A[i][j - j0] = v_[r[i]][j];
+       }
+     }
+     return A;
+   }
+   
+   template <class T>
    inline int Array2D<T>::ref_count()
    {
        return ref_count_data();
    }
-   
-   
    
    template <class T>
    inline int Array2D<T>::ref_count_data()
@@ -356,9 +379,6 @@ Program Listing for File tnt_array2d.h
    {
        return v_.ref_count();
    }
-   
-   
-   
    
    } /* namespace TNT */
    

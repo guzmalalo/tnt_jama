@@ -303,11 +303,11 @@
     <span class="kr">inline</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
     <span class="p">{</span>
 <span class="cp">#ifdef TNT_BOUNDS_CHECK</span>
-        <span class="n">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Index is negative&quot;</span><span class="p">);</span>
-        <span class="n">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n_</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Index is out of bonds&quot;</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Index is negative&quot;</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n_</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Index is out of bonds&quot;</span><span class="p">);</span>
 <span class="cp">#endif</span>
         <span class="k">return</span> <span class="n">data_</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
-    <span class="p">}</span>
+    <span class="p">};</span>
 
     <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
     <span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span>

@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Template Class Array3D" href="class_t_n_t_1_1_array3_d.html" />
+    <link rel="next" title="Template Class i_refvec" href="class_t_n_t_1_1i__refvec.html" />
     <link rel="prev" title="Template Class Array1D" href="class_t_n_t_1_1_array1_d.html" /> 
 </head>
 
@@ -289,7 +289,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">B</span><span class="p">);</span> 
 </pre></div>
 </div>
- <dl class="simple">
+<dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
 </ul>
@@ -300,14 +300,33 @@
 </dd>
 </dl>
 </p>
+<p><p><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Array data is NOT copied, but shared.  Thus, in Array2D B(A), 
+subsequent changes to A will  be reflected in B.  
+For an indepent copy of A, use :
+&#64;code{cpp}
+Array2D B(A.copy())
+// or 
+B = A.copy(),
+&#64;endcode</p>
+</div>
+</p>
+ </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2DcvPP1TEv">
 <span id="_CPPv3N3TNT7Array2DcvPP1TEv"></span><span id="_CPPv2N3TNT7Array2DcvPP1TEv"></span><span id="TNT::Array2D::castto-TPP-operator"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ab0edc94ba076bb743ace676d7717260c"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">operator</span> <span class="pre">T**</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DcvPP1TEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Convert 2D array into a regular multidimensional C pointer. Most often called automatically when calling C interfaces that expect things like double** rather than Array2D&lt;double&gt;. </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>T** Regular multidimensional C pointer. </p>
+<p><p><p>..warning:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">reference</span> <span class="n">is</span> <span class="n">not</span> <span class="n">increased</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Array2D</span> <span class="n">is</span> <span class="n">destroyed</span><span class="p">,</span> <span class="n">the</span> <span class="n">raw</span> <span class="n">array</span> <span class="n">is</span> <span class="n">a</span> 
+<span class="n">dangling</span> <span class="n">pointer</span><span class="p">.</span> 
+</pre></div>
+</div>
+</p>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T** Regular multidimensional C pointer.</p>
 </dd>
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
@@ -336,8 +355,13 @@
 <dt id="_CPPv4N3TNT7Array2DaSERK1T">
 <span id="_CPPv3N3TNT7Array2DaSERK1T"></span><span id="_CPPv2N3TNT7Array2DaSERK1T"></span><span id="TNT::Array2D::assign-operator__TCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1abdbe60d7b48f6ab11c79099f3eb3e95d"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DaSERK1T" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Assign all elements of array the same value. </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt;&amp; *this, the same array with initialization </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt;&amp; *this, the same array with initialization</p>
 </dd>
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type </p></li>
@@ -392,22 +416,142 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2D4copyEv">
 <span id="_CPPv3NK3TNT7Array2D4copyEv"></span><span id="_CPPv2NK3TNT7Array2D4copyEv"></span><span id="TNT::Array2D::copyC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a19bbe91d984c88b68ab5d7e53be9e177"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <code class="sig-name descname"><span class="pre">copy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2D4copyEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Make a copy of the current <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a> to a different one. Avoid a cloning operation. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">copy</span><span class="p">());</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt; A copy of the Array</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D6injectERK7Array2D">
 <span id="_CPPv3N3TNT7Array2D6injectERK7Array2D"></span><span id="_CPPv2N3TNT7Array2D6injectERK7Array2D"></span><span id="TNT::Array2D::inject__Array2DCR"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a24f86f6bf4fd6436946c82e55a12af24"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">inject</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D6injectERK7Array2D" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Inject the values of an array2D A into another array2D B of the same size. The values are copied (not cloning). </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Reference array</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">m_</span><span class="p">,</span> <span class="n">n_</span><span class="p">,</span> <span class="n">init_value_</span><span class="p">);</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="n">m_</span><span class="p">,</span> <span class="n">n_</span><span class="p">);</span>
+<span class="n">B</span><span class="p">.</span><span class="n">inject</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>ArrayD&lt;T&gt;&amp; *this array 2D with the new values</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Data type of the array </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: Input <a class="reference internal" href="#class_t_n_t_1_1_array2_d"><span class="std std-ref">Array2D</span></a>, must be the same size of *this </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2DixEi">
 <span id="_CPPv3N3TNT7Array2DixEi"></span><span id="_CPPv2N3TNT7Array2DixEi"></span><span id="TNT::Array2D::subscript-operator__i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a472e0ff84ff7767033dc847a7a9c34cd"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DixEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Overload the acces operator []. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="kt">double</span> <span class="n">first_number</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="kt">double</span> <span class="n">last_number</span>  <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">41</span><span class="p">][</span><span class="mi">41</span><span class="p">];</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">row_0</span><span class="p">(</span><span class="n">n_</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// first row of A</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">row_1</span><span class="p">(</span><span class="n">n_</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// second row of A</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">row_2</span><span class="p">(</span><span class="n">n_</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// third row of A</span>
+<span class="c1">// or using raw arrays</span>
+<span class="kt">double</span> <span class="o">*</span><span class="n">p_row0</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kt">double</span> <span class="o">*</span><span class="n">p_row1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="kt">double</span> <span class="o">*</span><span class="n">p_row2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="kt">bool</span> <span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="n">row_0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span> <span class="c1">// must be true</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A pointer to the first element of the row (dimension dim2) (raw array)</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type fo data </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: index value for the row (must start at 0 and end at dim1-1) </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><p><p>..note:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">is</span> <span class="n">tricky</span><span class="p">,</span> <span class="n">the</span> <span class="n">acces</span> <span class="k">operator</span> <span class="p">[]</span> <span class="n">returns</span> <span class="n">a</span> <span class="n">one</span> <span class="n">dimensional</span> <span class="n">array</span><span class="p">.</span> <span class="n">When</span> <span class="n">creating</span> 
+<span class="n">a</span> <span class="n">two</span> <span class="n">dimensional</span> <span class="n">array</span><span class="p">,</span> <span class="n">TNT</span> <span class="n">builds</span> <span class="n">three</span> <span class="n">one</span> <span class="n">dimensional</span> <span class="n">array</span> <span class="k">for</span> <span class="n">each</span> <span class="n">line</span><span class="p">.</span>
+<span class="n">The</span> <span class="n">index</span> <span class="n">i</span> <span class="n">defines</span> <span class="n">which</span> <span class="n">row</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">returned</span><span class="p">.</span> <span class="n">After</span> <span class="n">that</span> <span class="n">the</span> <span class="n">second</span> <span class="p">[]</span> <span class="n">acces</span> <span class="n">the</span>
+<span class="n">second</span> <span class="n">member</span> <span class="n">of</span> <span class="n">that</span> <span class="n">array</span><span class="p">.</span> 
+
+<span class="n">M</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1">// A is returned with A[a] </span>
+<span class="n">M</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1">// B is returned with A[b] </span>
+<span class="n">M</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1">// C is returned with A[c] </span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2DixEi">
 <span id="_CPPv3NK3TNT7Array2DixEi"></span><span id="_CPPv2NK3TNT7Array2DixEi"></span><span id="TNT::Array2D::subscript-operator__iC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1ac1394cbc900adcec3233ff231d9eea4a"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2DixEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Overload the acces operator []. </p>
+<p><p>Example: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="n">first_number</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="n">last_number</span>  <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">41</span><span class="p">][</span><span class="mi">41</span><span class="p">];</span>
+<span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">row_0</span><span class="p">(</span><span class="n">n_</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// first row of A</span>
+<span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">row_1</span><span class="p">(</span><span class="n">n_</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// second row of A</span>
+<span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">row_2</span><span class="p">(</span><span class="n">n_</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// third row of A</span>
+<span class="c1">// or using raw arrays</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="o">*</span><span class="n">p_row0</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="o">*</span><span class="n">p_row1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="o">*</span><span class="n">p_row2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="kt">bool</span> <span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="n">row_0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span> <span class="c1">// must be true</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A constant pointer to the first element of the row (dimension dim2) (raw array)</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type fo data </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: index value for the row (must start at 0 and end at dim1-1) </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><p><p>..note:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">is</span> <span class="n">tricky</span><span class="p">,</span> <span class="n">the</span> <span class="n">acces</span> <span class="k">operator</span> <span class="p">[]</span> <span class="n">returns</span> <span class="n">a</span> <span class="n">one</span> <span class="n">dimensional</span> <span class="n">array</span><span class="p">.</span> <span class="n">When</span> <span class="n">creating</span> 
+<span class="n">a</span> <span class="n">two</span> <span class="n">dimensional</span> <span class="n">array</span><span class="p">,</span> <span class="n">TNT</span> <span class="n">builds</span> <span class="n">three</span> <span class="n">one</span> <span class="n">dimensional</span> <span class="n">array</span> <span class="k">for</span> <span class="n">each</span> <span class="n">line</span><span class="p">.</span>
+<span class="n">The</span> <span class="n">index</span> <span class="n">i</span> <span class="n">defines</span> <span class="n">which</span> <span class="n">row</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">returned</span><span class="p">.</span> <span class="n">After</span> <span class="n">that</span> <span class="n">the</span> <span class="n">second</span> <span class="p">[]</span> <span class="n">acces</span> <span class="n">the</span>
+<span class="n">second</span> <span class="n">member</span> <span class="n">of</span> <span class="n">that</span> <span class="n">array</span><span class="p">.</span> 
+
+<span class="n">M</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1">// A is returned with A[a] </span>
+<span class="n">M</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1">// B is returned with A[b] </span>
+<span class="n">M</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c1">// C is returned with A[c] </span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT7Array2D4dim1Ev">
@@ -465,7 +609,33 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D9ref_countEv">
 <span id="_CPPv3N3TNT7Array2D9ref_countEv"></span><span id="_CPPv2N3TNT7Array2D9ref_countEv"></span><span id="TNT::Array2D::ref_count"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a1669732a1a744a212c0c23b0cbafb1f1"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D9ref_countEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return the number of reference to *this array. </p>
+<p><p>Examples: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Definition des arrays</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">m_</span><span class="p">,</span> <span class="n">n_</span><span class="p">,</span> <span class="n">init_value_</span><span class="p">);</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">Z</span><span class="p">(</span><span class="n">m_</span><span class="p">,</span> <span class="n">n_</span><span class="p">,</span> <span class="n">init_value_</span><span class="p">);</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">init_value_</span><span class="p">);</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">C</span><span class="p">;</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">D</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// B and C must be now a reference to A.</span>
+<span class="n">B</span><span class="p">.</span><span class="n">ref</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="n">C</span><span class="p">.</span><span class="n">ref</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="n">D</span><span class="o">-&gt;</span><span class="n">ref</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">num_ref</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">ref_count</span><span class="p">()</span> <span class="c1">// equal to 4</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int The number of references</p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D14ref_count_dataEv">
@@ -480,7 +650,57 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D8subarrayEiiii">
 <span id="_CPPv3N3TNT7Array2D8subarrayEiiii"></span><span id="_CPPv2N3TNT7Array2D8subarrayEiiii"></span><span id="TNT::Array2D::subarray__i.i.i.i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1accf36569414a2570497d2a3f9fe68f52"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <code class="sig-name descname"><span class="pre">subarray</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i0</span></em>, <span class="pre">int</span> <em><span class="pre">i1</span></em>, <span class="pre">int</span> <em><span class="pre">j0</span></em>, <span class="pre">int</span> <em><span class="pre">j1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D8subarrayEiiii" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a new view to a subarray defined by the boundaries [i0][i0] and [i1][j1]. The size of the subarray is (i1-i0) by (j1-j0). If either of these lengths are zero or negative, the subarray view is null. </p>
+<dd><p>Create a new view to a subarray defined by the boundaries [i0][i0] and [i1][j1]. The size of the subarray is (i1-i0) by (j1-j0). If either of these lengths are zero or negative, the subarray view is null. Is a REFERENCE to a subarray of this. </p>
+<p><p>Examples: </p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">m_</span><span class="p">,</span> <span class="n">n_</span><span class="p">,</span> <span class="n">init_value_</span><span class="p">);</span>
+
+<span class="c1">// Create an array from a subarray A</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">subarray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="c1">// Scalar array</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">F</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">subarray</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>   
+<span class="c1">// Row array</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">G</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">subarray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Column array</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">H</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">subarray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt; A reference subarray. </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i0</span></code>: start index row </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i1</span></code>: end index row </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">j0</span></code>: start index column </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">j1</span></code>: end index column </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2D8subarrayERK7Array1DIiEii">
+<span id="_CPPv3N3TNT7Array2D8subarrayERK7Array1DIiEii"></span><span id="_CPPv2N3TNT7Array2D8subarrayERK7Array1DIiEii"></span><span id="TNT::Array2D::subarray__Array1D:i:CR.i.i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1aa8da768ef5c66b1f2403d1eca702f85c"></span><a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a> <code class="sig-name descname"><span class="pre">subarray</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><span class="pre">int</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">r</span></em>, <span class="pre">int</span> <em><span class="pre">j0</span></em>, <span class="pre">int</span> <em><span class="pre">j1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D8subarrayERK7Array1DIiEii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a subarray based on the row indices given on a <a class="reference internal" href="class_t_n_t_1_1_array1_d.html#class_t_n_t_1_1_array1_d"><span class="std std-ref">Array1D&lt;int&gt;</span></a> r and a range of columns [j0] [j1]. The size of the submatrix is r.dim() x (j1-j0). If either of these lengths are zero or negative, the submatrix view is null. Copy the values in a new array. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Array2D&lt;T&gt; A reference subarray. </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: Type of data </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i0</span></code>: start index row </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">j0</span></code>: start index column </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">j1</span></code>: end index column </p></li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 </div>
@@ -495,7 +715,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="class_t_n_t_1_1_array3_d.html" class="btn btn-neutral float-right" title="Template Class Array3D" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="class_t_n_t_1_1i__refvec.html" class="btn btn-neutral float-right" title="Template Class i_refvec" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="class_t_n_t_1_1_array1_d.html" class="btn btn-neutral float-left" title="Template Class Array1D" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

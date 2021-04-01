@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File jama_lu.h &mdash; TNT NIST 2021  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TNT NIST 2021
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TNT NIST 2021</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File jama_lu.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/program_listing_file_src_jama_jama_lu.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-jama-lu-h">
+<span id="program-listing-file-src-jama-jama-lu-h"></span><h1>Program Listing for File jama_lu.h<a class="headerlink" href="#program-listing-for-file-jama-lu-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_jama_jama_lu.h.html#file-src-jama-jama-lu-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/jama/jama_lu.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef JAMA_LU_H</span>
+<span class="cp">#define JAMA_LU_H</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;tnt.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">JAMA</span>
+<span class="p">{</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">LU</span>
+  <span class="p">{</span>
+  <span class="k">private</span><span class="o">:</span>
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">LU_</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">pivsign</span><span class="p">;</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">piv</span><span class="p">;</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">permute_copy</span><span class="p">(</span><span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">piv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">piv_length</span> <span class="o">=</span> <span class="n">piv</span><span class="p">.</span><span class="n">dim</span><span class="p">();</span>
+
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">X</span><span class="p">(</span><span class="n">piv_length</span><span class="p">,</span> <span class="n">j1</span> <span class="o">-</span> <span class="n">j0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">piv_length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">j0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">j1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+          <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">j0</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">piv</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">return</span> <span class="n">X</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">permute_copy</span><span class="p">(</span><span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">piv</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">piv_length</span> <span class="o">=</span> <span class="n">piv</span><span class="p">.</span><span class="n">dim</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">piv_length</span> <span class="o">!=</span> <span class="n">A</span><span class="p">.</span><span class="n">dim</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">(</span><span class="n">piv_length</span><span class="p">);</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">piv_length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">piv</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+
+      <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">LU</span><span class="p">(</span><span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="o">:</span> <span class="n">LU_</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">copy</span><span class="p">()),</span> <span class="n">m</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">dim1</span><span class="p">()),</span> <span class="n">n</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">dim2</span><span class="p">()),</span>
+                                   <span class="n">piv</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">dim1</span><span class="p">())</span>
+    <span class="p">{</span>
+
+      <span class="c1">// Use a &quot;left-looking&quot;, dot-product, Crout/Doolittle algorithm.</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">piv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="n">pivsign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">T</span> <span class="o">*</span><span class="n">LUrowi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">LUcolj</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+
+      <span class="c1">// Outer loop.</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// Make a copy of the j-th column to localize references.</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">LUcolj</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Apply previous transformations.</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">LUrowi</span> <span class="o">=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+          <span class="c1">// Most of the time is spent in the following dot product.</span>
+          <span class="kt">int</span> <span class="n">kmax</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+          <span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">kmax</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="n">LUrowi</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">LUcolj</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+          <span class="p">}</span>
+
+          <span class="n">LUrowi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">LUcolj</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Find pivot and exchange if necessary.</span>
+        <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">LUcolj</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">LUcolj</span><span class="p">[</span><span class="n">p</span><span class="p">]))</span>
+          <span class="p">{</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">j</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+            <span class="n">LU_</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+            <span class="n">LU_</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="n">k</span> <span class="o">=</span> <span class="n">piv</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>
+          <span class="n">piv</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">piv</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+          <span class="n">piv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+          <span class="n">pivsign</span> <span class="o">=</span> <span class="o">-</span><span class="n">pivsign</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Compute multipliers.</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">LU_</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">isNonsingular</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">LU_</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">getL</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">L_</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">L_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+          <span class="p">}</span>
+          <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">L_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">else</span>
+          <span class="p">{</span>
+            <span class="n">L_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">L_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">getU</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">U_</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">j</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">U_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+          <span class="p">}</span>
+          <span class="k">else</span>
+          <span class="p">{</span>
+            <span class="n">U_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">U_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">getPivot</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="n">piv</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">T</span> <span class="n">det</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">!=</span> <span class="n">n</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">T</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">T</span><span class="p">(</span><span class="n">pivsign</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">d</span> <span class="o">*=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">solve</span><span class="p">(</span><span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">B</span><span class="p">)</span>
+    <span class="p">{</span>
+
+      <span class="cm">/* Dimensions: A is mxn, X is nxk, B is mxk */</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">dim1</span><span class="p">()</span> <span class="o">!=</span> <span class="n">m</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isNonsingular</span><span class="p">())</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Copy right hand side with pivoting</span>
+      <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">dim2</span><span class="p">();</span>
+
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">X</span> <span class="o">=</span> <span class="n">permute_copy</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">piv</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+
+      <span class="c1">// Solve L*Y = B(piv,:)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nx</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="c1">// Solve U*X = Y;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">--</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nx</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nx</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">X</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">solve</span><span class="p">(</span><span class="k">const</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+
+      <span class="cm">/* Dimensions: A is mxn, X is nxk, B is mxk */</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">dim1</span><span class="p">()</span> <span class="o">!=</span> <span class="n">m</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isNonsingular</span><span class="p">())</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="n">TNT</span><span class="o">::</span><span class="n">Array1D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">permute_copy</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">piv</span><span class="p">);</span>
+
+      <span class="c1">// Solve L*Y = B(piv)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Solve U*X = Y;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">--</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">/=</span> <span class="n">LU_</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">LU_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+  <span class="p">};</span> <span class="cm">/* class LU */</span>
+
+<span class="p">}</span> <span class="cm">/* namespace JAMA */</span>
+
+<span class="cp">#endif</span>
+<span class="cm">/* JAMA_LU_H */</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

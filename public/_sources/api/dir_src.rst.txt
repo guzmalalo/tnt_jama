@@ -10,6 +10,7 @@ Directory src
 Subdirectories
 --------------
 
+- :ref:`dir_src_jama`
 - :ref:`dir_src_tnt`
 
 

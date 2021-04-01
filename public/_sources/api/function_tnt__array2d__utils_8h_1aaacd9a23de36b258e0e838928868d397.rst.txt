@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array2d__utils_8h_1aaacd9a23de36b258e0e838928868d397:
+
+Template Function TNT::mult_transpose
+=====================================
+
+- Defined in :ref:`file_src_tnt_tnt_array2d_utils.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::mult_transpose(const Array2D<T>&, const Array2D<T>&)
