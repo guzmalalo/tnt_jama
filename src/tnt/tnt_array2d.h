@@ -152,23 +152,34 @@ class Array2D
 
 
 /*
- * Change the reference of one array B to another array B,
- * if B has only one reference the data is destroyed, if not the
- * reference counter is decreased.
+  Change the reference of one array B to another array B,
+  if B has only one reference the data is destroyed, if not the
+  reference counter is decreased.
 */
-	inline Array2D & ref(const Array2D &A);
-	       Array2D copy() const;
-		   Array2D & inject(const Array2D & A);
-	inline T* operator[](int i);
-	inline const T* operator[](int i) const;
-	inline int dim1() const;
-	inline int dim2() const;
-     ~Array2D();
+  inline Array2D &ref(const Array2D &A);
 
-	/* extended interface (not part of the standard) */
+/*
+  Make a copy of the current Array2D to a different one. Avoid a 
+  cloning operation.
+*/
+  Array2D copy() const;
 
+/*
+  Inject the values of an array2D A into another array2D B
+  of the same size. The values are copied (not cloning).
+ */
+  Array2D &inject(const Array2D &A);
+  inline T *operator[](int i);
+  inline const T *operator[](int i) const;
+  inline int dim1() const;
+  inline int dim2() const;
+  ~Array2D();
 
-	inline int ref_count();
+  /* extended interface (not part of the standard) */
+
+  inline T &operator()(int i, int j);
+  inline const T &operator()(int i, int j) const;
+  inline int ref_count();
 	inline int ref_count_data();
 	inline int ref_count_dim1();
 	Array2D subarray(int i0, int i1, int j0, int j1);
@@ -608,6 +619,52 @@ inline Array2D<T>::operator const T**() const
 }
 
 /* ............... extended interface ............... */
+
+/**
+ * @brief Matlab like operator, return tha value at the position A(i, j)
+ * for i = 1 .. m and j = 1 .. n . This is equivalent to A[i-1][j-1]
+ * when using the brackets operator.
+ * 
+ * @tparam T data type
+ * @param i first index >= 1 and < m
+ * @param j second index >= 1 ans < n
+ * @return T& the value at A[i-1][j-1].
+ */
+template <class T>
+inline T &Array2D<T>::operator()(int i, int j)
+{
+#ifdef TNT_BOUNDS_CHECK
+  assert(i >= 1);
+  assert(i <= m_);
+  assert(j >= 1);
+  assert(j <= n_);
+#endif
+
+  return data_[(j - 1) * m_ + (i - 1)];
+}
+
+/**
+ * @brief Matlab like operator, return tha constant value at the 
+ * position A(i, j)  * for i = 1 .. m and j = 1 .. n . 
+ * This is equivalent to A[i-1][j-1] when using the brackets operator.
+ * 
+ * @tparam T data type
+ * @param i first index >= 1 and < m
+ * @param j second index >= 1 ans < n
+ * @return T& the *constant* value at A[i-1][j-1].
+ */
+template <class T>
+inline const T &Array2D<T>::operator()(int i, int j) const
+{
+#ifdef TNT_BOUNDS_CHECK
+  assert(i >= 1);
+  assert(i <= m_);
+  assert(j >= 1);
+  assert(j <= n_);
+#endif
+
+  return data_[(j - 1) * m_ + (i - 1)];
+}
 
 /**
  * @brief 	Create a new view to a subarray defined by the boundaries

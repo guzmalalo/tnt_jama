@@ -218,6 +218,33 @@ TEST_F(Array2D_test, bracket_operator_const)
 }
 
 /**
+* @brief Testing (i,j) operator
+*/
+TEST_F(Array2D_test, parenthesis_operators)
+{
+  double a_values[3][3] = {{0, 1, 2},
+                           {1, 2, 3},
+                           {2, 3, 4}};
+  TNT::Array2D<double> A(3, 3, *a_values);
+
+  // Verify the result
+  for (int i = 1; i <= m_; i++)
+    for (int j = 1; j <= n_; j++)
+    {
+      EXPECT_EQ(A(i, j), a_values[i-1][j-1])
+          << "A(i,j) is not equal to ref value";
+    }
+
+  // Modification
+  A(1, 1)= 42;
+
+  EXPECT_EQ(a_values[0][0], 42);
+
+  // If the Array2d is destroyed the raw array is preserved
+  // conserved
+}
+
+/**
 * @brief Testing the copy method
 */
 TEST_F(Array2D_test, copy)
