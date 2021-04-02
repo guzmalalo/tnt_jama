@@ -463,6 +463,30 @@ namespace TNT
   /* ........................ extended functions ......................*/
 
   /**
+ * @brief Sum of array elements
+ * 
+ * @tparam T Type od data
+ * @param A Input array 
+ * @return T Sum: the sum of the elements. 
+ * 
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(100,1.); 
+ * double res = TNT::sum(A); // Expected equal to 100
+ * @endcode
+ */
+  template <class T>
+  T sum(const Array1D<T> &A)
+  {
+    int n = A.dim1();
+
+    T sum = 0.;
+    for (int i = 0; i < n; i++)
+      sum += A[i] ;
+    return sum;
+  }
+
+  /**
  * @brief Computes the l2​-norm of an Array1d
  * 
  * @tparam T Type od data
@@ -550,6 +574,66 @@ namespace TNT
 
       return sum;
     }
+  }
+
+  /**
+ * @brief Finds the max element in an array1D A.
+ * 
+ * @tparam T Data type
+ * @param A an input Array1D
+ * @return <T> max  = \f$ max(A) \f$
+ *
+ * Example:
+ * @code{.cpp}
+ * double a_values[6] = {-2, 0, 3, 4,+100,1e5};
+ * TNT::Array1D<double> A(6, a_values);
+ * double C = TNT::max(A);
+ * @endcode
+ */
+  template <class T>
+  T max(const Array1D<T> &A)
+  {
+    int n = A.dim1();
+
+    if (n < 1)
+      return 0.;
+
+    T max_e = A[0];
+    for (int i = 0; i < n; i++)
+    {
+      max_e = std::max(max_e, A[i]);
+    }
+    return max_e;
+  }
+
+  /**
+ * @brief Finds the min element in an array1D A.
+ * 
+ * @tparam T Data type
+ * @param A an input Array1D
+ * @return <T> max  = \f$ min(A) \f$
+ *
+ * Example:
+ * @code{.cpp}
+ * double a_values[6] = {-2, 0, 3, 4,+100,1e5};
+ * TNT::Array1D<double> A(6, a_values);
+ * double C = TNT::max(A);
+ * @endcode
+ */
+  template <class T>
+  T min(const Array1D<T> &A)
+  {
+    int n = A.dim1();
+
+    if (n<1)
+      return 0.;
+
+    T min_e = A[0];
+    for (int i = 0; i < n; i++)
+    {
+      min_e = std::min(min_e, A[i]);
+    }
+    return min_e;
   }
 
 } // namespace TNT

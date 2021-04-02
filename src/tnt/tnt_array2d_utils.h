@@ -498,6 +498,79 @@ namespace TNT
   }
 
   /* ........................ extended functions ......................*/
+
+  /**
+ * @brief Returns an Array1D containing the sum of each column of the Array2D
+ * 
+ * @tparam T Type od data
+ * @param A Input array 
+ * @return T Array1D containing the sum of each column of the Array2D
+ * 
+ * Example:
+ * @code{.cpp}
+ * double a_values[3][3] = {{2, 7, 6},
+                           {9, 5, 1},
+                           {4, 3, 8}};
+ * TNT::Array2D<double> A(3, 3, *a_values);
+ *
+ * TNT::Array1D<double> sum_col = TNT::sum(A); // 15 x 3
+ * @endcode
+ */
+  template <class T>
+  Array1D<T> sum(const Array2D<T> &A)
+  {
+    int m = A.dim1();
+    int n = A.dim2();
+
+    if (n < 1 || m < 1)
+      return Array1D<T>();
+
+    Array1D<T> S(n, 0.);
+    for (int j = 0; j < n; j++)
+    {
+      for (int i = 0; i < m; i++)
+        S[j] += A[i][j];
+    }
+
+    return S;
+  }
+
+  /**
+ * @brief Returns an Array1D containing the sum in a given direction 
+ * of the Array2D
+ * 
+ * @tparam T Type od data
+ * @param A Input array 
+ * @return T Sum: the sum of the elements in the direction 1
+ * 
+ * Example:
+ * @code{.cpp}
+ * double a_values[3][3] = {{2, 7, 6},
+                           {9, 5, 1},
+                           {4, 3, 8}};
+ * TNT::Array2D<double> A(3, 3, *a_values);
+ *
+ * TNT::Array1D<double> sum_col = TNT::sum(A,2); // 15 x 3
+ * TNT::Array1D<double> sum_row = TNT::sum(A,1); // 15 x 3
+ * @endcode
+ */
+  template <class T>
+  Array1D<T> sum(const Array2D<T> &A, int i)
+  {
+    switch (i)
+    {
+    case 1:
+      return sum(transpose(A));
+      break;
+    case 2:
+      return sum(A);
+      break;
+    default:
+      return Array1D<T>();
+      break;
+    }
+  }
+
   /**
    * @brief Verify if the all the values of A are equal to the values of B
    * 
@@ -526,6 +599,42 @@ namespace TNT
       }
       return true;
     }
+  }
+
+  /**
+ * @brief Returns the trace of an Array1D
+ * 
+ * @tparam T Type od data
+ * @param A Input array 
+ * @return T Array1D containing the sum of diagonal fo the array
+ * 
+ * Example:
+ * @code{.cpp}
+ * TNT::Array1D<double> A(); // + Initialization 
+ * double res = TNT::trace(A);
+ * @endcode
+ */
+  template <class T>
+  T trace(const Array2D<T> &A)
+  {
+    int m = A.dim1();
+    int n = A.dim2();
+
+    if (n < 1 || m < 1)
+      return 0.;
+
+    T sum = 0.;
+
+    for (int i = 0; i < m; i++)
+    {
+      for (int j = 0; j < n; j++)
+      {
+        if (i == j)
+          sum += A[i][j];
+      }
+    }
+
+    return sum;
   }
 
   /**
@@ -765,7 +874,7 @@ namespace TNT
     switch (m)
     {
     case 1:
-      if(M[0][0] == 0)
+      if (M[0][0] == 0)
         return Array2D<T>();
       inv[0][0] = 1. / M[0][0];
       break;
@@ -789,9 +898,7 @@ namespace TNT
       C32 = M[2][1];
       C33 = M[2][2];
 
-      det_m = C11 * (C22 * C33 - C23 * C32)
-            - C12 * (C21 * C33 - C23 * C31)
-            + C13 * (C21 * C32 - C22 * C31);
+      det_m = C11 * (C22 * C33 - C23 * C32) - C12 * (C21 * C33 - C23 * C31) + C13 * (C21 * C32 - C22 * C31);
 
       if (det_m == 0)
         return Array2D<T>();
@@ -864,9 +971,7 @@ namespace TNT
       C32 = M[2][1];
       C33 = M[2][2];
 
-      det_m = C11 * (C22 * C33 - C23 * C32) 
-            - C12 * (C21 * C33 - C23 * C31) 
-            + C13 * (C21 * C32 - C22 * C31);
+      det_m = C11 * (C22 * C33 - C23 * C32) - C12 * (C21 * C33 - C23 * C31) + C13 * (C21 * C32 - C22 * C31);
       break;
     default:
       /* @todo

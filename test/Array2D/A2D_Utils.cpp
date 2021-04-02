@@ -257,6 +257,50 @@ TEST_F(Array2D_test, division_assignement_scalar)
 }
 
 /**
+* @brief Testing the sum method
+*/
+TEST_F(Array2D_test, sum)
+{
+  double a_values[3][3] = {{2, 7, 6},
+                           {9, 5, 1},
+                           {4, 3, 8}};
+  TNT::Array2D<double> A(3, 3, *a_values);
+
+  TNT::Array1D<double> sum = TNT::sum(A);
+  TNT::Array1D<double> sum_row = TNT::sum(A,1);
+  TNT::Array1D<double> sum_col = TNT::sum(A,2);
+
+  // Verify the result
+  for (int j = 0; j < 3; j++)
+  {
+    EXPECT_EQ(sum_col[j], 15.0)
+        << "Sum of magic matrix 3x3 is not 15";
+    EXPECT_EQ(sum_col[j], 15.0)
+        << "Sum of magic matrix col 3x3 is not 15";
+    EXPECT_EQ(sum_row[j], 15.0)
+        << "Sum of magic matrix row 3x3 is not 15";
+  }
+}
+
+/**
+* @brief Testing the sum method
+*/
+TEST_F(Array2D_test, trace)
+{
+  double a_values[3][3] = {{2, 7, 6},
+                           {9, 5, 1},
+                           {4, 3, 8}};
+  TNT::Array2D<double> A(3, 3, *a_values);
+
+  double tr = TNT::trace(A);
+
+  // Verify the result
+    EXPECT_EQ(tr, 15.0)
+        << "Trace of magic matrix 3x3 is not 15";
+
+}
+
+/**
 * @brief Testing the comparaison operator
 */
 TEST_F(Array2D_test, comparaison)

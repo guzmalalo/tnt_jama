@@ -232,6 +232,25 @@ TEST_F(Array1D_test, division_assignement_scalar)
 }
 
 /**
+* @brief Testing the sum method 
+*/
+TEST_F(Array1D_test, sum)
+{
+  int n = 100;
+  double a_values[n];
+
+  for (int i = 0; i < n; i++)
+  {
+    a_values[i] = i+1;
+  }
+
+  TNT::Array1D<double> A(n, a_values);
+
+  // Testing double values
+  EXPECT_EQ(TNT::sum(A), n*(n+1)/2.0);
+}
+
+/**
 * @brief Testing the l2 norm of an Array1D 
 */
 TEST_F(Array1D_test, l2_norm)
@@ -284,6 +303,32 @@ TEST_F(Array1D_test, dot_product)
 
   // Testing int values
   EXPECT_EQ(C, -8 + 18 + 28);
+}
+
+/**
+* @brief Testing the max element in array
+*/
+TEST_F(Array1D_test, max)
+{
+  double a_values[6] = {-2, 0, 3, 4,+100,1e5};
+  TNT::Array1D<double> A(6, a_values);
+  double C = TNT::max(A);
+
+  // Testing int values
+  EXPECT_EQ(C, 1e5);
+}
+
+/**
+* @brief Testing the max element in array
+*/
+TEST_F(Array1D_test, min)
+{
+  double a_values[6] = {-2, 0, 3, 4, +100, 1e5};
+  TNT::Array1D<double> A(6, a_values);
+  double C = TNT::min(A);
+
+  // Testing int values
+  EXPECT_EQ(C, -2);
 }
 
 /**

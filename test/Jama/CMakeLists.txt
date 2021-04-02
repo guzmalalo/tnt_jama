@@ -14,6 +14,7 @@ target_include_directories(${JAMA_TARGET} PRIVATE ${SOURCE_DIR}/jama)
 target_sources(${JAMA_TARGET} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Jama_Struct.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Jama_LU.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Jama_Eigen.cpp
 )
 
 ## Link libraries 

@@ -14,4 +14,5 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tnt_math_utils.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array1d.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array2d.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array1d_utils.h
-${CMAKE_CURRENT_SOURCE_DIR}/tnt_array2d_utils.h)
+${CMAKE_CURRENT_SOURCE_DIR}/tnt_array2d_utils.h
+${CMAKE_CURRENT_SOURCE_DIR}/tnt_tools.h)

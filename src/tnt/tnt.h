@@ -39,5 +39,7 @@
 #include "tnt_array2d.h"
 #include "tnt_array2d_utils.h"
 
+#include "tnt_tools.h"
+
 #endif
 // TNT_H
