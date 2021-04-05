@@ -15,6 +15,7 @@ target_sources(${A2D_TARGET} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/A2D_Basic.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/A2D_Utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/A2D_Tools.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/A2D_Linalg.cpp
 )
 
 ## Link libraries 

@@ -4,6 +4,7 @@
 
 #include <cmath> // std::abs(), std::sqrt()
 #include <algorithm> // std::min(), std=::max()
+#include <limits> //std::numerical_limits()
 
 namespace TNT
 {

@@ -8,6 +8,8 @@
 cmake_minimum_required(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 
 target_sources(${EXE_TARGET} PRIVATE 
+${CMAKE_CURRENT_SOURCE_DIR}/jama.h
 ${CMAKE_CURRENT_SOURCE_DIR}/jama_lu.h
 ${CMAKE_CURRENT_SOURCE_DIR}/jama_eig.h
+${CMAKE_CURRENT_SOURCE_DIR}/jama_cholesky.h
 )

@@ -11,6 +11,33 @@
 */
 
 /**
+* @brief Test Eigen symmetric positive matrix
+*/
+TEST_F(Jama_test, eigen_sym_pos)
+{
+  // epsilon standards double 
+  double eps = std::pow(2.0, -53.0);
+  // Symmetric positive Matrix test
+  double a_values[3][3] = {{4., 1., 1.},
+                           {1., 2., 3.},
+                           {1., 3., 6.}};
+  TNT::Array2D<double> A(3, 3, *a_values);
+  JAMA::Eigenvalue<double> B(A);
+
+  TNT::Array2D<double> D;
+  B.getD(D);
+
+  TNT::Array2D<double> V;
+  B.getV(V);
+
+  TNT::Array2D<double> AV = TNT::matmult(A, V);
+  TNT::Array2D<double> VD = TNT::matmult(V, D);
+
+  // Verify the result
+  EXPECT_TRUE(TNT::near(AV, VD));
+}
+
+/**
 * @brief Test Eigen 2x2
 */
 TEST_F(Jama_test, eigen_2x2)

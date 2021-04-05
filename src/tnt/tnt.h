@@ -36,8 +36,10 @@
 
 #include "tnt_array1d.h"
 #include "tnt_array1d_utils.h"
+#include "tnt_array1d_linalg.h"
 #include "tnt_array2d.h"
 #include "tnt_array2d_utils.h"
+#include "tnt_array2d_linalg.h"
 
 #include "tnt_tools.h"
 

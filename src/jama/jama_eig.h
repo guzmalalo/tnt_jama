@@ -886,8 +886,7 @@ public:
    */
 
    Eigenvalue(const TNT::Array2D<T> &A) {
-
-     std::cout << A;
+     
      n = A.dim2();
      V = TNT::Array2D<T>(n, n);
      d = TNT::Array1D<T>(n);

@@ -14,6 +14,7 @@ target_sources(${A1D_TARGET} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Struct.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Basic.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Utils.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/A1D_Linalg.cpp
 )
 
 ## Link libraries 

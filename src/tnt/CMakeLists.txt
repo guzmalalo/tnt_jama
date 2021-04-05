@@ -15,4 +15,6 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array1d.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array2d.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array1d_utils.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_array2d_utils.h
+${CMAKE_CURRENT_SOURCE_DIR}/tnt_array1d_linalg.h
+${CMAKE_CURRENT_SOURCE_DIR}/tnt_array2d_linalg.h
 ${CMAKE_CURRENT_SOURCE_DIR}/tnt_tools.h)

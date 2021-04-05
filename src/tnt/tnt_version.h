@@ -19,21 +19,14 @@
 
 #ifndef TNT_VERSION_H
 #define TNT_VERSION_H
-
-
 //---------------------------------------------------------------------
 //  current version 
 //---------------------------------------------------------------------
-
 
 #define TNT_MAJOR_VERSION    '3'
 #define TNT_MINOR_VERSION    '0'
 #define TNT_SUBMINOR_VERSION '12'
 #define TNT_VERSION_STRING "3.0.12"
-
-
-
-
 
 #endif
 // TNT_VERSION_H

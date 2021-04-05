@@ -2,8 +2,7 @@
 #define TEST_JAMA_H
 
 #include "tnt.h"
-#include "jama_lu.h"
-#include "jama_eig.h"
+#include "jama.h"
 #include <gtest/gtest.h>
 #include <fstream>
 #include <iostream>

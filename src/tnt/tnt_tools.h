@@ -2,6 +2,7 @@
 #define TNT_TOOLS_H
 
 #include "tnt_array2d.h"
+#include <random>
 
 namespace TNT
 {
@@ -29,6 +30,34 @@ namespace TNT
       for (int i = 0; i < n; i++)
       {
         A[i][i] = 1.;
+      }
+
+      return A;
+    }
+
+    /**
+   * @brief Returns an random square matrix of mxn dimension.
+   * Members are in the range 1 -10
+   * 
+   * @tparam T data typa
+   * @param m dimension rows
+   * @param n dimension columns
+   * @return Array2D<T> 
+   */
+    static inline Array2D<T> random(int m, int n)
+    {
+      std::random_device rd;  //Will be used to obtain a seed for the random number engine
+      std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+      std::uniform_real_distribution<> dis(0, 10);
+
+      Array2D<T> A(m, n);
+
+      for (int j = 0; j < n; j++)
+      {
+        for (int i = 0; i < m; i++)
+        {
+          A[i][j] = static_cast<T> (dis(gen));
+        }
       }
 
       return A;

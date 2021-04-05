@@ -106,5 +106,38 @@ TEST_F(Jama_test, LU_solve)
 }
 
 /**
+* @brief Test LU inverse of hilbert matrix
+*/
+TEST_F(Jama_test, LU_hilbert)
+{
+  /// H holds the n-by-n Hilbert matrix
+  TNT::Array2D<double> H(n_, n_);
+
+  // Fill in the entries in H
+  for (int i = 0; i < n_; i++)
+  {
+    for (int j = 0; j < n_; j++)
+    {
+      H[i][j] = 1. / (i + j + 1);
+    }
+  }
+  // Set up identity matrix
+  TNT::Array2D<double> eye(n_, n_, 0.);
+  for (int i = 0; i < n_; i++)
+    eye[i][i] = 1;
+
+  JAMA::LU<double> HLU(H);
+  TNT::Array2D<double> Hinv = HLU.solve(eye);
+
+  // Verify the result
+  EXPECT_TRUE(TNT::near(Hinv,TNT::invert(H)))
+      << "H inv is not equal invert(H)";
+
+  // Verify the result
+  EXPECT_NEAR(HLU.det(), TNT::det(H),1e-12)
+      << "H inv is not equal invert(H)";
+}
+
+/**
 * @}
 */

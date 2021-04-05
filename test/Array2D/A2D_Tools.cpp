@@ -26,6 +26,17 @@ TEST_F(Array2D_test, eye)
 }
 
 /**
+* @brief Testing the random tool
+*/
+TEST_F(Array2D_test, random)
+{
+  TNT::Array2D<double> A = TNT::Tools<double>::random(m_,n_);
+
+  TNT::Array2D<int> B = TNT::Tools<int>::random(m_, n_);
+
+}
+
+/**
 * @brief Testing the magic matrix
 */
 TEST_F(Array2D_test, magic)
