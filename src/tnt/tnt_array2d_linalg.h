@@ -652,7 +652,15 @@ namespace TNT
     if (B.dim1() != m || B.dim2() != n)
       return false;
 
-    if (TNT::norm_1(A - B) > 1000. * eps * std::max(TNT::norm_1(A), TNT::norm_1(B)))
+    T norm_A = norm_1(A);
+    T norm_B = norm_1(B);
+
+    if (norm_A == 0. && norm_B < 10. * eps)
+      return false;
+    if (norm_B == 0. && norm_A < 10. * eps)
+      return false;
+
+    if (TNT::norm_1(A - B) > 1000. * eps * std::max(norm_A, norm_B))
       return false;
     else
       return true;

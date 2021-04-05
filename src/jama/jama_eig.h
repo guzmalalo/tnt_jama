@@ -216,7 +216,7 @@ class Eigenvalue
    
       T f = 0.0;
       T tst1 = 0.0;
-      T eps = pow(2.0,-52.0);
+      T eps = std::numeric_limits<T>::epsilon();
       for (int l = 0; l < n; l++) {
 
          // Find small subdiagonal element
