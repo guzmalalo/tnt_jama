@@ -29,9 +29,19 @@ Includes
 --------
 
 
-- ``tnt.h`` (:ref:`file_src_tnt_tnt.h`)
+- ``tnt_array1d.h`` (:ref:`file_src_tnt_tnt_array1d.h`)
+
+- ``tnt_array2d.h`` (:ref:`file_src_tnt_tnt_array2d.h`)
+
+- ``tnt_math_utils.h`` (:ref:`file_src_tnt_tnt_math_utils.h`)
 
 
+
+Included By
+-----------
+
+
+- :ref:`file_src_jama_jama.h`
 
 
 

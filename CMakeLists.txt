@@ -63,6 +63,6 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/test)
 #-----------------------------------------------------------------------------
 # Add source for doc generation
 #-----------------------------------------------------------------------------
-if(0)
+if(1)
 add_subdirectory(${DOC_DIR})
 endif()

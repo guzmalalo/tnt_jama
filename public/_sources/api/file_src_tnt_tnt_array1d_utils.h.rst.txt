@@ -53,12 +53,6 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_tnt__array1d__utils_8h_1acf8b9922b7d26007417d0b1382845edf`
-
-- :ref:`exhale_function_tnt__array1d__utils_8h_1a936df530f86dcc7e41baa242734da049`
-
-- :ref:`exhale_function_tnt__array1d__utils_8h_1af23aa59cc4c98541d7bbb341cf42de37`
-
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a631669334b75ebb846723bf079fd2c8d`
 
 - :ref:`exhale_function_tnt__array1d__utils_8h_1a610be2a4084be71cd11f955e457f4444`

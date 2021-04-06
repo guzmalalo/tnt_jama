@@ -39,9 +39,23 @@ Included By
 -----------
 
 
+- :ref:`file_src_jama_jama_cholesky.h`
+
+- :ref:`file_src_jama_jama_eig.h`
+
+- :ref:`file_src_jama_jama_lu.h`
+
+- :ref:`file_src_jama_jama_qr.h`
+
+- :ref:`file_src_jama_jama_svd.h`
+
 - :ref:`file_src_tnt_tnt.h`
 
+- :ref:`file_src_tnt_tnt_array2d_linalg.h`
+
 - :ref:`file_src_tnt_tnt_array2d_utils.h`
+
+- :ref:`file_src_tnt_tnt_tools.h`
 
 
 

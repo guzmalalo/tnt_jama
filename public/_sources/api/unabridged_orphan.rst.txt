@@ -30,7 +30,32 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_jama_jama.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_jama_jama_cholesky.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_jama_jama_eig.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_jama_jama_lu.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_jama_jama_qr.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_jama_jama_svd.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -50,12 +75,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_tnt_tnt_array1d_linalg.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_tnt_tnt_array1d_utils.h.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_src_tnt_tnt_array2d.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_tnt_tnt_array2d_linalg.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -71,6 +106,11 @@ Files
    :maxdepth: 5
 
    file_src_tnt_tnt_math_utils.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_tnt_tnt_tools.h.rst
 
 .. toctree::
    :maxdepth: 5

@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array1d__linalg_8h_1a46d43ba7c455694726f24a8f3802d02a:
+
+Template Function TNT::abs
+==========================
+
+- Defined in :ref:`file_src_tnt_tnt_array1d_linalg.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::abs(const Array1D<T>&)

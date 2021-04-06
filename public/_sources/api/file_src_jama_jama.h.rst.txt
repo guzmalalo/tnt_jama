@@ -1,0 +1,45 @@
+
+.. _file_src_jama_jama.h:
+
+File jama.h
+===========
+
+|exhale_lsh| :ref:`Parent directory <dir_src_jama>` (``src/jama``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/jama/jama.h``)
+--------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_jama_jama.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``jama_cholesky.h`` (:ref:`file_src_jama_jama_cholesky.h`)
+
+- ``jama_eig.h`` (:ref:`file_src_jama_jama_eig.h`)
+
+- ``jama_lu.h`` (:ref:`file_src_jama_jama_lu.h`)
+
+- ``jama_qr.h`` (:ref:`file_src_jama_jama_qr.h`)
+
+- ``jama_svd.h`` (:ref:`file_src_jama_jama_svd.h`)
+
+
+
+
+

@@ -742,7 +742,7 @@ Array2D<T> Array2D<T>::subarray(int i0, int i1, int j0, int j1)
  * null. Copy the values in a new array
  * 
  * @tparam T Type of data
- * @param i0 start index row
+ * @param r array1d with the row index
  * @param j0 start index column
  * @param j1 end index column
  * @return Array2D<T> A reference subarray.  
@@ -802,12 +802,24 @@ inline int Array2D<T>::ref_count()
 	return ref_count_data();
 }
 
+/**
+ * @brief Return the references to the data_ array1d member
+ * 
+ * @tparam T data type
+ * @return int the number of references to data_
+ */
 template <class T>
 inline int Array2D<T>::ref_count_data()
 {
 	return data_.ref_count();
 }
 
+/**
+ * @brief Return the references to the v_ array1d member
+ * 
+ * @tparam T data type
+ * @return int the number of references to v_
+ */
 template <class T>
 inline int Array2D<T>::ref_count_dim1()
 {

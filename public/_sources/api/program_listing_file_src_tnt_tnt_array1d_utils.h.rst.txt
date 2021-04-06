@@ -265,55 +265,6 @@ Program Listing for File tnt_array1d_utils.h
        return A;
      }
    
-     /* ........................ extended functions ......................*/
-   
-     template <class T>
-     T norm(const Array1D<T> &A)
-     {
-       int n = A.dim1();
-   
-       T sum = 0.;
-       for (int i = 0; i < n; i++)
-         sum += A[i] * A[i];
-       return std::sqrt(sum);
-     }
-   
-     template <class T>
-     Array1D<T> cross(const Array1D<T> &A, const Array1D<T> &B)
-     {
-       int n = A.dim1();
-       int m = B.dim1();
-   
-       if (n != 3 || m != 3)
-         return Array1D<T>();
-       else
-       {
-         Array1D<T> C(n);
-         C[0] = A[1] * B[2] - A[2] * B[1];
-         C[1] = A[2] * B[0] - A[0] * B[2];
-         C[2] = A[0] * B[1] - A[1] * B[0];
-         return C;
-       }
-     }
-   
-     template <class T>
-     T dot_product(const Array1D<T> &A, const Array1D<T> &B)
-     {
-       int n = A.dim1();
-       int m = B.dim1();
-   
-       if (n != 3 || m != 3)
-         return 0;
-       else
-       {
-         T sum = 0;
-         for (int i = 0; i < n; i++)
-           sum += A[i] * B[i];
-   
-         return sum;
-       }
-     }
-   
    } // namespace TNT
    
    #endif

@@ -1,0 +1,187 @@
+
+.. _program_listing_file_src_tnt_tnt_array1d_linalg.h:
+
+Program Listing for File tnt_array1d_linalg.h
+=============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_tnt_tnt_array1d_linalg.h>` (``src/tnt/tnt_array1d_linalg.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /*
+   *
+   * Template Numerical Toolkit (TNT)
+   *
+   * Mathematical and Computational Sciences Division
+   * National Institute of Technology,
+   * Gaithersburg, MD USA
+   *
+   *
+   * This software was developed at the National Institute of Standards and
+   * Technology (NIST) by employees of the Federal Government in the course
+   * of their official duties. Pursuant to title 17 Section 105 of the
+   * United States Code, this software is not subject to copyright protection
+   * and is in the public domain. NIST assumes no responsibility whatsoever for
+   * its use by other parties, and makes no guarantees, expressed or implied,
+   * about its quality, reliability, or any other characteristic.
+   *
+   */
+   
+   #ifndef TNT_ARRAY1D_LINALG_H
+   #define TNT_ARRAY1D_LINALG_H
+   
+   // local includes
+   #include "tnt_array1d.h"
+   
+   namespace TNT
+   {
+   
+     template <class T>
+     T max(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+   
+       if (n < 1)
+         return 0.;
+   
+       T max_e = A[0];
+       for (int i = 0; i < n; i++)
+       {
+         max_e = std::max(max_e, A[i]);
+       }
+       return max_e;
+     }
+   
+     template <class T>
+     T min(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+   
+       if (n < 1)
+         return 0.;
+   
+       T min_e = A[0];
+       for (int i = 0; i < n; i++)
+       {
+         min_e = std::min(min_e, A[i]);
+       }
+       return min_e;
+     }
+   
+     template <class T>
+     Array1D<T> abs(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+       Array1D<T> C(n);
+   
+       for (int i = 0; i < n; i++)
+       {
+         C[i] = std::abs(A[i]);
+       }
+       return C;
+     }
+   
+     template <class T>
+     T sum(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+   
+       T sum = 0.;
+       for (int i = 0; i < n; i++)
+         sum += A[i] ;
+       return sum;
+     }
+   
+     template <class T>
+     T norm_inf(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+   
+       if (n < 1)
+         return 0.;
+   
+       T max_e = std::abs(A[0]);
+       for (int i = 0; i < n; i++)
+       {
+         max_e = std::max(max_e, std::abs(A[i]));
+       }
+       return max_e;
+     }
+   
+     template <class T>
+     T norm(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+   
+       T sum = 0.;
+       for (int i = 0; i < n; i++)
+         sum += A[i] * A[i];
+       return std::sqrt(sum);
+     }
+   
+     template <class T>
+     T norm_1(const Array1D<T> &A)
+     {
+       int n = A.dim1();
+   
+       T sum = 0.;
+       for (int i = 0; i < n; i++)
+         sum += std::abs(A[i]);
+       return sum;
+     }
+   
+     template <class T>
+     T norm_p(const Array1D<T> &A, int p)
+     {
+       int n = A.dim1();
+   
+       T sum = 0.;
+       for (int i = 0; i < n; i++)
+         sum += std::pow(A[i],p);
+       return std::pow(sum,1.0/p);
+     }
+   
+     
+     template <class T>
+     Array1D<T> cross(const Array1D<T> &A, const Array1D<T> &B)
+     {
+       int n = A.dim1();
+       int m = B.dim1();
+   
+       if (n != 3 || m != 3)
+         return Array1D<T>();
+       else
+       {
+         Array1D<T> C(n);
+         C[0] = A[1] * B[2] - A[2] * B[1];
+         C[1] = A[2] * B[0] - A[0] * B[2];
+         C[2] = A[0] * B[1] - A[1] * B[0];
+         return C;
+       }
+     }
+   
+     template <class T>
+     T dot_product(const Array1D<T> &A, const Array1D<T> &B)
+     {
+       int n = A.dim1();
+       int m = B.dim1();
+   
+       if (n != 3 || m != 3)
+         return 0;
+       else
+       {
+         T sum = 0;
+         for (int i = 0; i < n; i++)
+           sum += A[i] * B[i];
+   
+         return sum;
+       }
+     }
+   
+   
+   
+   } // namespace TNT
+   
+   #endif

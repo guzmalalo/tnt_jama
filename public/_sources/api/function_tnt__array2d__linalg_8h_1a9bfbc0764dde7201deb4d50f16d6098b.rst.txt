@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array2d__linalg_8h_1a9bfbc0764dde7201deb4d50f16d6098b:
+
+Template Function TNT::near(const Array2D<T>&, const Array2D<T>&)
+=================================================================
+
+- Defined in :ref:`file_src_tnt_tnt_array2d_linalg.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::near(const Array2D<T>&, const Array2D<T>&)

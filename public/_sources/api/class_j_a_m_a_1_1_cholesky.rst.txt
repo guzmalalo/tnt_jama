@@ -1,0 +1,16 @@
+.. _exhale_class_class_j_a_m_a_1_1_cholesky:
+
+Template Class Cholesky
+=======================
+
+- Defined in :ref:`file_src_jama_jama_cholesky.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: JAMA::Cholesky
+   :members:
+   :protected-members:
+   :undoc-members:

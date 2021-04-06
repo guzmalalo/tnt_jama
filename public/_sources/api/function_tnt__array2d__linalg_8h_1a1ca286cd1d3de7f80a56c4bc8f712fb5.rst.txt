@@ -1,0 +1,13 @@
+.. _exhale_function_tnt__array2d__linalg_8h_1a1ca286cd1d3de7f80a56c4bc8f712fb5:
+
+Template Function TNT::trace
+============================
+
+- Defined in :ref:`file_src_tnt_tnt_array2d_linalg.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TNT::trace(const Array2D<T>&)

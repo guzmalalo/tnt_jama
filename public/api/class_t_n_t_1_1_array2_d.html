@@ -238,7 +238,12 @@
 <span id="_CPPv3N3TNT7Array2D7Array2DEiiP1T"></span><span id="_CPPv2N3TNT7Array2D7Array2DEiiP1T"></span><span id="TNT::Array2D::Array2D__i.i.TP"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a7447ecfb709ce78db3c78ff21104f6f2"></span><code class="sig-name descname"><span class="pre">Array2D</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">m</span></em>, <span class="pre">int</span> <em><span class="pre">n</span></em>, <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D7Array2DEiiP1T" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a new (m x n) array, as a view of an existing one-dimensional array stored in row-major order, i.e. right-most dimension varying fastest. This means that all of row 0’s elements are first, followed by all of row 1’s,.. Note that the storage for this pre-existing array will never be destroyed by TNT. </p>
 <p><p>Example: </p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using a pre existing array</span>
+<span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+
+<span class="kt">double</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}};</span>
+<span class="n">TNT</span><span class="o">::</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">);</span>
 </pre></div>
 </div>
  <dl class="simple">
@@ -607,6 +612,46 @@ B = A.copy(),
 </dd></dl>
 
 <dl class="cpp function">
+<dt id="_CPPv4N3TNT7Array2DclEii">
+<span id="_CPPv3N3TNT7Array2DclEii"></span><span id="_CPPv2N3TNT7Array2DclEii"></span><span id="TNT::Array2D::call-operator__i.i"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a1abfb046d9195afe006bfb31e38434a4"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator()</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em>, <span class="pre">int</span> <em><span class="pre">j</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2DclEii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Matlab like operator, return tha value at the position A(i, j) for i = 1 .. m and j = 1 .. n . This is equivalent to A[i-1][j-1] when using the brackets operator. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T&amp; the value at A[i-1][j-1]. </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: first index &gt;= 1 and &lt; m </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">j</span></code>: second index &gt;= 1 ans &lt; n </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK3TNT7Array2DclEii">
+<span id="_CPPv3NK3TNT7Array2DclEii"></span><span id="_CPPv2NK3TNT7Array2DclEii"></span><span id="TNT::Array2D::call-operator__i.iC"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a5a72ff5cee7ae8234bad8d70b282a836"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator()</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em>, <span class="pre">int</span> <em><span class="pre">j</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT7Array2DclEii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Matlab like operator, return tha constant value at the position A(i, j) * for i = 1 .. m and j = 1 .. n . This is equivalent to A[i-1][j-1] when using the brackets operator. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T&amp; the <em>constant</em> value at A[i-1][j-1]. </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: first index &gt;= 1 and &lt; m </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">j</span></code>: second index &gt;= 1 ans &lt; n </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D9ref_countEv">
 <span id="_CPPv3N3TNT7Array2D9ref_countEv"></span><span id="_CPPv2N3TNT7Array2D9ref_countEv"></span><span id="TNT::Array2D::ref_count"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a1669732a1a744a212c0c23b0cbafb1f1"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D9ref_countEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the number of reference to *this array. </p>
@@ -640,12 +685,32 @@ B = A.copy(),
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D14ref_count_dataEv">
 <span id="_CPPv3N3TNT7Array2D14ref_count_dataEv"></span><span id="_CPPv2N3TNT7Array2D14ref_count_dataEv"></span><span id="TNT::Array2D::ref_count_data"></span><span class="target" id="class_t_n_t_1_1_array2_d_1adb80c979d57de1fc4422a683703027b9"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D14ref_count_dataEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return the references to the data_ array1d member. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int the number of references to data_ </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D14ref_count_dim1Ev">
 <span id="_CPPv3N3TNT7Array2D14ref_count_dim1Ev"></span><span id="_CPPv2N3TNT7Array2D14ref_count_dim1Ev"></span><span id="TNT::Array2D::ref_count_dim1"></span><span class="target" id="class_t_n_t_1_1_array2_d_1a8f4e8eca39d733e01642f35df5b4484b"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count_dim1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT7Array2D14ref_count_dim1Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return the references to the v_ array1d member. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int the number of references to v_ </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT7Array2D8subarrayEiiii">
@@ -694,7 +759,7 @@ B = A.copy(),
 </ul>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">i0</span></code>: start index row </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code>: array1d with the row index </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">j0</span></code>: start index column </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">j1</span></code>: end index column </p></li>
 </ul>

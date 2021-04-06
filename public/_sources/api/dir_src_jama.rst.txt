@@ -15,6 +15,11 @@ Directory jama
 Files
 -----
 
+- :ref:`file_src_jama_jama.h`
+- :ref:`file_src_jama_jama_cholesky.h`
+- :ref:`file_src_jama_jama_eig.h`
 - :ref:`file_src_jama_jama_lu.h`
+- :ref:`file_src_jama_jama_qr.h`
+- :ref:`file_src_jama_jama_svd.h`
 
 

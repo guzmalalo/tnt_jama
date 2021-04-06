@@ -31,7 +31,7 @@ namespace TNT
  * 
  * @tparam T Data type
  * @param A an input Array1D
- * @return <T> max  = \f$ max(A) \f$
+ * @return T max  = \f$ max(A) \f$
  *
  * Example:
  * @code{.cpp}
@@ -61,7 +61,7 @@ namespace TNT
  * 
  * @tparam T Data type
  * @param A an input Array1D
- * @return <T> max  = \f$ min(A) \f$
+ * @return T max  = \f$ min(A) \f$
  *
  * Example:
  * @code{.cpp}
@@ -281,7 +281,7 @@ namespace TNT
  * @tparam T Data type
  * @param A an input Array1D
  * @param B an input Array1D
- * @return <T> C  = \f$ A \cdot B \f$
+ * @return T C  = \f$ A \cdot B \f$
  *
  * Example:
  * @code{.cpp}

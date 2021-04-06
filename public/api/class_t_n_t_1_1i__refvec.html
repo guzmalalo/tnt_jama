@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Function main" href="function__main__tnt_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4.html" />
+    <link rel="next" title="Template Class Tools" href="class_t_n_t_1_1_tools.html" />
     <link rel="prev" title="Template Class Array2D" href="class_t_n_t_1_1_array2_d.html" /> 
 </head>
 
@@ -176,53 +176,172 @@
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec8i_refvecEv">
 <span id="_CPPv3N3TNT8i_refvec8i_refvecEv"></span><span id="_CPPv2N3TNT8i_refvec8i_refvecEv"></span><span id="TNT::i_refvec::i_refvec"></span><span class="target" id="class_t_n_t_1_1i__refvec_1a83b19a5a8ae088c4996579f1f5e03578"></span><code class="sig-name descname"><span class="pre">i_refvec</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec8i_refvecEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Construct a new i_refvec&lt;T&gt; object without initialization. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec8i_refvecEi">
 <span id="_CPPv3N3TNT8i_refvec8i_refvecEi"></span><span id="_CPPv2N3TNT8i_refvec8i_refvecEi"></span><span id="TNT::i_refvec::i_refvec__i"></span><span class="target" id="class_t_n_t_1_1i__refvec_1af331cca09a3d6ec6ba51cff9fd4a3c1f"></span><em class="property"><span class="pre">explicit</span></em> <code class="sig-name descname"><span class="pre">i_refvec</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec8i_refvecEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>In case n is 0 or negative, it does NOT call new. </p>
+<dd><p>Construct a new i_refvec&lt;T&gt; and allocate memory In case n is 0 or negative, it does NOT call new. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec8i_refvecEP1T">
 <span id="_CPPv3N3TNT8i_refvec8i_refvecEP1T"></span><span id="_CPPv2N3TNT8i_refvec8i_refvecEP1T"></span><span id="TNT::i_refvec::i_refvec__TP"></span><span class="target" id="class_t_n_t_1_1i__refvec_1a53d5023955c537c1c2e112506c89714f"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">i_refvec</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec8i_refvecEP1T" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Construct a new i_refvec&lt;T&gt; object from a raw array. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: input array data </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec8i_refvecERK8i_refvec">
 <span id="_CPPv3N3TNT8i_refvec8i_refvecERK8i_refvec"></span><span id="_CPPv2N3TNT8i_refvec8i_refvecERK8i_refvec"></span><span id="TNT::i_refvec::i_refvec__i_refvecCR"></span><span class="target" id="class_t_n_t_1_1i__refvec_1af9b07aed8d397737c5bceada825b8ada"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">i_refvec</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N3TNT8i_refvec8i_refvecERK8i_refvec" title="TNT::i_refvec::i_refvec"><span class="pre">i_refvec</span></a> <span class="pre">&amp;</span><em><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec8i_refvecERK8i_refvec" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Copy constructor. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code>: Array to be copied </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec5beginEv">
 <span id="_CPPv3N3TNT8i_refvec5beginEv"></span><span id="_CPPv2N3TNT8i_refvec5beginEv"></span><span id="TNT::i_refvec::begin"></span><span class="target" id="class_t_n_t_1_1i__refvec_1a254ea4b6909abc147991b0f3d58d77a7"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">begin</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec5beginEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return a pointer to the first element of the array data. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T* pointer to data[0] </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT8i_refvec5beginEv">
 <span id="_CPPv3NK3TNT8i_refvec5beginEv"></span><span id="_CPPv2NK3TNT8i_refvec5beginEv"></span><span id="TNT::i_refvec::beginC"></span><span class="target" id="class_t_n_t_1_1i__refvec_1ad804687b0ece34c37104629467cae2db"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">begin</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT8i_refvec5beginEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return a pointer to the first element of the array data. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>const T* pointer to data[0] </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvecixEi">
 <span id="_CPPv3N3TNT8i_refvecixEi"></span><span id="_CPPv2N3TNT8i_refvecixEi"></span><span id="TNT::i_refvec::subscript-operator__i"></span><span class="target" id="class_t_n_t_1_1i__refvec_1ae72a1576302f9bbecd64cfc273c885c2"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvecixEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Overload the operator []. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T&amp; reference to data_[i] </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: index </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT8i_refvecixEi">
 <span id="_CPPv3NK3TNT8i_refvecixEi"></span><span id="_CPPv2NK3TNT8i_refvecixEi"></span><span id="TNT::i_refvec::subscript-operator__iC"></span><span class="target" id="class_t_n_t_1_1i__refvec_1a9e3ce316bf77e4297206dff1122305ad"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT8i_refvecixEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Overload the operator []. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>T&amp; constant reference to data_[i] </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: index </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvecaSERK8i_refvecI1TE">
 <span id="_CPPv3N3TNT8i_refvecaSERK8i_refvecI1TE"></span><span id="_CPPv2N3TNT8i_refvecaSERK8i_refvecI1TE"></span><span id="TNT::i_refvec::assign-operator__i_refvec:T:CR"></span><span class="target" id="class_t_n_t_1_1i__refvec_1a9957dd1544849ec1241fb9b7356daff0"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec"><span class="pre">i_refvec</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec"><span class="pre">i_refvec</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">V</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvecaSERK8i_refvecI1TE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>change the reference of this object given to reference V </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>i_refvec&lt;T&gt;&amp; new refvec with the reference of V </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code>: new reference array </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec5copy_EP1TPK1TPK1T">
 <span id="_CPPv3N3TNT8i_refvec5copy_EP1TPK1TPK1T"></span><span id="_CPPv2N3TNT8i_refvec5copy_EP1TPK1TPK1T"></span><span id="TNT::i_refvec::copy___TP.TCP.TCP"></span><span class="target" id="class_t_n_t_1_1i__refvec_1ad8f94f1699e8f34dcfd7579be9121022"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">copy_</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">p</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">q</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN3TNT8i_refvecE" title="TNT::i_refvec::T"><span class="pre">T</span></a> <span class="pre">*</span><em><span class="pre">e</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec5copy_EP1TPK1TPK1T" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Copies q into t from q.begin to q.end. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span></code>: input array </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">q</span></code>: index to the first element to be copied </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code>: index to the last element to be copied </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec4set_EP1TPK1TPK1T">
@@ -232,22 +351,58 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT8i_refvec9ref_countEv">
 <span id="_CPPv3NK3TNT8i_refvec9ref_countEv"></span><span id="_CPPv2NK3TNT8i_refvec9ref_countEv"></span><span id="TNT::i_refvec::ref_countC"></span><span class="target" id="class_t_n_t_1_1i__refvec_1af2d6f32ba752f836bd08bcad0d0b72b6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">ref_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT8i_refvec9ref_countEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Returns -1 if data is external, returns 0 if a is NULL array, otherwise returns the positive number of vectors sharing this data space. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int references to this refvec </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK3TNT8i_refvec7is_nullEv">
 <span id="_CPPv3NK3TNT8i_refvec7is_nullEv"></span><span id="_CPPv2NK3TNT8i_refvec7is_nullEv"></span><span id="TNT::i_refvec::is_nullC"></span><span class="target" id="class_t_n_t_1_1i__refvec_1af8d1a8ae488bd686ad6b563d6fc06e3a"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">is_null</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK3TNT8i_refvec7is_nullEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>return 1 is vector is empty, 0 otherwise, if <a class="reference internal" href="#class_t_n_t_1_1i__refvec_1af8d1a8ae488bd686ad6b563d6fc06e3a"><span class="std std-ref">is_null()</span></a> is false and <a class="reference internal" href="#class_t_n_t_1_1i__refvec_1af2d6f32ba752f836bd08bcad0d0b72b6"><span class="std std-ref">ref_count()</span></a> is 0. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int 0 or 1 </p>
+</dd>
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvec7destroyEv">
 <span id="_CPPv3N3TNT8i_refvec7destroyEv"></span><span id="_CPPv2N3TNT8i_refvec7destroyEv"></span><span id="TNT::i_refvec::destroy"></span><span class="target" id="class_t_n_t_1_1i__refvec_1ae92db69e3b80c46a51a14d8403df4c15"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvec7destroyEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>destroy the data array </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N3TNT8i_refvecD0Ev">
 <span id="_CPPv3N3TNT8i_refvecD0Ev"></span><span id="_CPPv2N3TNT8i_refvecD0Ev"></span><span id="TNT::i_refvec::~i_refvec"></span><span class="target" id="class_t_n_t_1_1i__refvec_1a4d43f30694d7ab2ce1a62331cff62279"></span><code class="sig-name descname"><span class="pre">~i_refvec</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3TNT8i_refvecD0Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Destroy the i refvec&lt;T&gt;::i refvec object. </p>
+<p><dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 </div>
 </dd></dl>
@@ -261,7 +416,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="function__main__tnt_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4.html" class="btn btn-neutral float-right" title="Function main" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="class_t_n_t_1_1_tools.html" class="btn btn-neutral float-right" title="Template Class Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="class_t_n_t_1_1_array2_d.html" class="btn btn-neutral float-left" title="Template Class Array2D" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

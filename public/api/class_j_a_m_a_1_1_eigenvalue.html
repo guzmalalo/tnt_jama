@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Template Class Eigenvalue &mdash; TNT NIST 2021  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Template Class LU" href="class_j_a_m_a_1_1_l_u.html" />
+    <link rel="prev" title="Template Class Cholesky" href="class_j_a_m_a_1_1_cholesky.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TNT NIST 2021
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TNT NIST 2021</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="library_root.html">Library API</a> &raquo;</li>
+        
+      <li>Template Class Eigenvalue</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/class_j_a_m_a_1_1_eigenvalue.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="template-class-eigenvalue">
+<span id="exhale-class-class-j-a-m-a-1-1-eigenvalue"></span><h1>Template Class Eigenvalue<a class="headerlink" href="#template-class-eigenvalue" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_src_jama_jama_eig.h.html#file-src-jama-jama-eig-h"><span class="std std-ref">File jama_eig.h</span></a></p></li>
+</ul>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN4JAMA10EigenvalueE">
+<span id="_CPPv3I0EN4JAMA10EigenvalueE"></span><span id="_CPPv2I0EN4JAMA10EigenvalueE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">T</span></code><span class="pre">&gt;</span><br /><span class="target" id="class_j_a_m_a_1_1_eigenvalue"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">JAMA</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Eigenvalue</span></code><a class="headerlink" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Computes eigenvalues and eigenvectors of a T (non-complex) matrix. </p>
+<p>If A is symmetric, then A = V*D*V’ where the eigenvalue matrix D is diagonal and the eigenvector matrix V is orthogonal. That is,the diagonal values of D are the eigenvalues, and V*V’ = I, where I is the identity matrix. The columns of V represent the eigenvectors in the sense that A*V = V*D.</p>
+<p>If A is not symmetric, then the eigenvalue matrix D is block diagonal with the T eigenvalues in 1-by-1 blocks and any complex eigenvalues, a + i*b, in 2-by-2 blocks, [a, b; -b, a]. That is, if the complex eigenvalues look like=</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">+</span> <span class="n">iv</span>     <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>      <span class="n">u</span> <span class="o">-</span> <span class="n">iv</span>     <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>      <span class="n">a</span> <span class="o">+</span> <span class="n">ib</span>       <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>        <span class="n">a</span> <span class="o">-</span> <span class="n">ib</span>   <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="n">x</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="n">y</span>
+</pre></div>
+</div>
+ then D looks like <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">u</span>        <span class="n">v</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+<span class="o">-</span><span class="n">v</span>        <span class="n">u</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span> 
+ <span class="p">.</span>        <span class="p">.</span>        <span class="n">a</span>          <span class="n">b</span>      <span class="p">.</span>    <span class="p">.</span>
+ <span class="p">.</span>        <span class="p">.</span>       <span class="o">-</span><span class="n">b</span>          <span class="n">a</span>      <span class="p">.</span>    <span class="p">.</span>
+ <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="n">x</span>    <span class="p">.</span>
+ <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="n">y</span>
+</pre></div>
+</div>
+</p>
+<p>This keeps V a T matrix in both symmetric and non-symmetric cases, and A*V = V*D.</p>
+<p>The matrix V may be badly conditioned, or even singular, so the validity of the equation A = V*D*inverse(V) depends upon the condition number of V.</p>
+<p><p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adapted from JAMA, a Java Matrix Library, developed by jointly 
+by the Mathworks and NIST; see  <a class="reference external" href="http://math.nist.gov/javanumerics/jama">http://math.nist.gov/javanumerics/jama</a>.</p>
+</div>
+</p>
+ <dl class="simple">
+<dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: data type </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N4JAMA10Eigenvalue10EigenvalueERKN3TNT7Array2DI1TEE">
+<span id="_CPPv3N4JAMA10Eigenvalue10EigenvalueERKN3TNT7Array2DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue10EigenvalueERKN3TNT7Array2DI1TEE"></span><span id="JAMA::Eigenvalue::Eigenvalue__TNT::Array2D:T:CR"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a5b0f547810140a2395ae661125158482"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">Eigenvalue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue10EigenvalueERKN3TNT7Array2DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Check for symmetry, then construct the eigenvalue decomposition. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: Square T (non-complex) matrix </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE">
+<span id="_CPPv3N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE"></span><span id="JAMA::Eigenvalue::getV__TNT::Array2D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a78349b1e6f34c330b001fee2ef49c8e8"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getV</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">V_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the eigen vectors as a matrix. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V_</span></code>: eigen vector matrix </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE">
+<span id="_CPPv3N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="JAMA::Eigenvalue::getTEigenvalues__TNT::Array1D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a9ccfb59df79e0146e605be58600de7c9"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getTEigenvalues</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">d_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the T parts of the eigenvalues. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">d_</span></code>: T(diag(D)) </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE">
+<span id="_CPPv3N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="JAMA::Eigenvalue::getImagEigenvalues__TNT::Array1D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a73c11db9c35d35c91f1420ec707557f5"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getImagEigenvalues</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">e_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the imaginary parts of the eigenvalues in parameter e_. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">e_</span></code>: new matrix with imaginary parts of the eigenvalues. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE">
+<span id="_CPPv3N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE"></span><span id="JAMA::Eigenvalue::getD__TNT::Array2D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1ae5ef85b2c7687068ac82b1214bfaabd6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getD</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">D</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Computes the block diagonal eigenvalue matrix.If the original matrix A is not symmetric, then the eigenvalue matrix D is block diagonal with the T eigenvalues in 1-by-1 blocks and any complex eigenvalues, a + i*b, in 2-by-2 blocks, [a, b; -b, a]. That is, if the complex eigenvalues look like: </p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">+</span> <span class="n">iv</span>     <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>      <span class="n">u</span> <span class="o">-</span> <span class="n">iv</span>     <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>      <span class="n">a</span> <span class="o">+</span> <span class="n">ib</span>       <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>        <span class="n">a</span> <span class="o">-</span> <span class="n">ib</span>   <span class="p">.</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="n">x</span>    <span class="p">.</span>
+  <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="n">y</span>
+</pre></div>
+</div>
+ Then D looks like: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">u</span>        <span class="n">v</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
+<span class="o">-</span><span class="n">v</span>        <span class="n">u</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span> 
+ <span class="p">.</span>        <span class="p">.</span>        <span class="n">a</span>          <span class="n">b</span>      <span class="p">.</span>    <span class="p">.</span>
+ <span class="p">.</span>        <span class="p">.</span>       <span class="o">-</span><span class="n">b</span>          <span class="n">a</span>      <span class="p">.</span>    <span class="p">.</span>
+ <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="n">x</span>    <span class="p">.</span>
+ <span class="p">.</span>        <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="n">y</span>
+</pre></div>
+</div>
+ This keeps V a T matrix in both symmetric and non-symmetric cases, and A*V = V*D.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="class_j_a_m_a_1_1_l_u.html" class="btn btn-neutral float-right" title="Template Class LU" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="class_j_a_m_a_1_1_cholesky.html" class="btn btn-neutral float-left" title="Template Class Cholesky" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

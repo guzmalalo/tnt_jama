@@ -270,23 +270,34 @@
 
 
 <span class="cm">/*</span>
-<span class="cm"> * Change the reference of one array B to another array B,</span>
-<span class="cm"> * if B has only one reference the data is destroyed, if not the</span>
-<span class="cm"> * reference counter is decreased.</span>
+<span class="cm">  Change the reference of one array B to another array B,</span>
+<span class="cm">  if B has only one reference the data is destroyed, if not the</span>
+<span class="cm">  reference counter is decreased.</span>
 <span class="cm">*/</span>
-    <span class="kr">inline</span> <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="n">ref</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">);</span>
-           <span class="n">Array2D</span> <span class="nf">copy</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-           <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="nf">inject</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span> <span class="n">A</span><span class="p">);</span>
-    <span class="kr">inline</span> <span class="n">T</span><span class="o">*</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">);</span>
-    <span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span><span class="o">*</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-    <span class="kr">inline</span> <span class="kt">int</span> <span class="n">dim1</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-    <span class="kr">inline</span> <span class="kt">int</span> <span class="n">dim2</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-     <span class="o">~</span><span class="n">Array2D</span><span class="p">();</span>
+  <span class="kr">inline</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">ref</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">);</span>
 
-    <span class="cm">/* extended interface (not part of the standard) */</span>
+<span class="cm">/*</span>
+<span class="cm">  Make a copy of the current Array2D to a different one. Avoid a</span>
+<span class="cm">  cloning operation.</span>
+<span class="cm">*/</span>
+  <span class="n">Array2D</span> <span class="nf">copy</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
+<span class="cm">/*</span>
+<span class="cm">  Inject the values of an array2D A into another array2D B</span>
+<span class="cm">  of the same size. The values are copied (not cloning).</span>
+<span class="cm"> */</span>
+  <span class="n">Array2D</span> <span class="o">&amp;</span><span class="nf">inject</span><span class="p">(</span><span class="k">const</span> <span class="n">Array2D</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">);</span>
+  <span class="kr">inline</span> <span class="n">T</span> <span class="o">*</span><span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">);</span>
+  <span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span> <span class="o">*</span><span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kr">inline</span> <span class="kt">int</span> <span class="n">dim1</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kr">inline</span> <span class="kt">int</span> <span class="n">dim2</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="o">~</span><span class="n">Array2D</span><span class="p">();</span>
 
-    <span class="kr">inline</span> <span class="kt">int</span> <span class="n">ref_count</span><span class="p">();</span>
+  <span class="cm">/* extended interface (not part of the standard) */</span>
+
+  <span class="kr">inline</span> <span class="n">T</span> <span class="o">&amp;</span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">);</span>
+  <span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span> <span class="o">&amp;</span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kr">inline</span> <span class="kt">int</span> <span class="n">ref_count</span><span class="p">();</span>
     <span class="kr">inline</span> <span class="kt">int</span> <span class="n">ref_count_data</span><span class="p">();</span>
     <span class="kr">inline</span> <span class="kt">int</span> <span class="n">ref_count_dim1</span><span class="p">();</span>
     <span class="n">Array2D</span> <span class="nf">subarray</span><span class="p">(</span><span class="kt">int</span> <span class="n">i0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j1</span><span class="p">);</span>
@@ -451,6 +462,32 @@
 <span class="p">}</span>
 
 <span class="cm">/* ............... extended interface ............... */</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef TNT_BOUNDS_CHECK</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m_</span><span class="p">);</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n_</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+  <span class="k">return</span> <span class="n">data_</span><span class="p">[(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">m_</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span> <span class="o">&amp;</span><span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+<span class="cp">#ifdef TNT_BOUNDS_CHECK</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m_</span><span class="p">);</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n_</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+  <span class="k">return</span> <span class="n">data_</span><span class="p">[(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">m_</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="p">}</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Array2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">subarray</span><span class="p">(</span><span class="kt">int</span> <span class="n">i0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j1</span><span class="p">)</span>

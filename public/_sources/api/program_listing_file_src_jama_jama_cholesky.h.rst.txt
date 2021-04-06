@@ -1,0 +1,169 @@
+
+.. _program_listing_file_src_jama_jama_cholesky.h:
+
+Program Listing for File jama_cholesky.h
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_jama_jama_cholesky.h>` (``src/jama/jama_cholesky.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef JAMA_CHOLESKY_H
+   #define JAMA_CHOLESKY_H
+   
+   #include "tnt_math_utils.h"
+   #include "tnt_array1d.h"
+   #include "tnt_array2d.h"
+   
+   namespace JAMA
+   {
+     template <class T>
+     class Cholesky
+     {
+       TNT::Array2D<T> L_; // lower triangular factor
+   
+       int isspd; // 1 if matrix to be factored was SPD
+   
+     public:
+       // Default Cholesky constructor
+       Cholesky();
+   
+       // Cholesky algorithm for symmetric and positive definite matrix.
+       Cholesky(const TNT::Array2D<T> &A);
+   
+       // Triangular factor
+       TNT::Array2D<T> getL() const;
+   
+       TNT::Array1D<T> solve(const TNT::Array1D<T> &B);
+       TNT::Array2D<T> solve(const TNT::Array2D<T> &B);
+   
+       // is the matrix symmetric and positive definite?
+       int is_spd() const;
+     };
+   
+     template <class T>
+     Cholesky<T>::Cholesky() : L_(0, 0), isspd(0) {}
+   
+     template <class T>
+     int Cholesky<T>::is_spd() const
+     {
+       return isspd;
+     }
+   
+     template <class T>
+     TNT::Array2D<T> Cholesky<T>::getL() const
+     {
+       return L_;
+     }
+   
+     template <class T>
+     Cholesky<T>::Cholesky(const TNT::Array2D<T> &A)
+     {
+       int m = A.dim1();
+       int n = A.dim2();
+   
+       isspd = (m == n);
+   
+       if (m != n)
+       {
+         L_ = TNT::Array2D<T>();
+         return;
+       }
+   
+       L_ = TNT::Array2D<T>(n, n);
+   
+       // Main loop.
+       for (int j = 0; j < n; j++)
+       {
+         T d(0.0);
+         for (int k = 0; k < j; k++)
+         {
+           T s(0.0);
+           for (int i = 0; i < k; i++)
+           {
+             s += L_[k][i] * L_[j][i];
+           }
+           L_[j][k] = s = (A[j][k] - s) / L_[k][k];
+           d = d + s * s;
+           isspd = isspd && (A[k][j] == A[j][k]);
+         }
+         d = A[j][j] - d;
+         isspd = (isspd && (d > 0.0));
+         L_[j][j] = std::sqrt(d > 0.0 ? d : 0.0);
+         for (int k = j + 1; k < n; k++)
+         {
+           L_[j][k] = 0.0;
+         }
+       }
+     }
+   
+     template <class T>
+     TNT::Array1D<T> Cholesky<T>::solve(const TNT::Array1D<T> &b)
+     {
+       int n = L_.dim1();
+       if (b.dim1() != n)
+         return TNT::Array1D<T>();
+   
+       TNT::Array1D<T> x = b.copy();
+   
+       // Solve L*y = b;
+       for (int k = 0; k < n; k++)
+       {
+         for (int i = 0; i < k; i++)
+           x[k] -= x[i] * L_[k][i];
+         x[k] /= L_[k][k];
+       }
+   
+       // Solve L'*X = Y;
+       for (int k = n - 1; k >= 0; k--)
+       {
+         for (int i = k + 1; i < n; i++)
+           x[k] -= x[i] * L_[i][k];
+         x[k] /= L_[k][k];
+       }
+   
+       return x;
+     }
+   
+     template <class T>
+     TNT::Array2D<T> Cholesky<T>::solve(const TNT::Array2D<T> &B)
+     {
+       int n = L_.dim1();
+       if (B.dim1() != n)
+         return TNT::Array2D<T>();
+   
+       TNT::Array2D<T> X = B.copy();
+       int nx = B.dim2();
+   
+       // Solve L*y = b;
+       for (int j = 0; j < nx; j++)
+       {
+         for (int k = 0; k < n; k++)
+         {
+           for (int i = 0; i < k; i++)
+             X[k][j] -= X[i][j] * L_[k][i];
+           X[k][j] /= L_[k][k];
+         }
+       }
+   
+       // Solve L'*X = Y;
+       for (int j = 0; j < nx; j++)
+       {
+         for (int k = n - 1; k >= 0; k--)
+         {
+           for (int i = k + 1; i < n; i++)
+             X[k][j] -= X[i][j] * L_[i][k];
+           X[k][j] /= L_[k][k];
+         }
+       }
+   
+       return X;
+     }
+   
+   }
+   // namespace JAMA
+   
+   #endif
+   // JAMA_CHOLESKY_H

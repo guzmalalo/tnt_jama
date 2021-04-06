@@ -182,6 +182,7 @@ namespace TNT
  * 
  * @tparam T Type od data
  * @param A Input array 
+ * @param i direction 1: rows, 2: columns.
  * @return T Sum: the sum of the elements in the direction 1
  * 
  * Example:

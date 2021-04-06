@@ -1,0 +1,16 @@
+.. _exhale_class_class_j_a_m_a_1_1_s_v_d:
+
+Template Class SVD
+==================
+
+- Defined in :ref:`file_src_jama_jama_svd.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: JAMA::SVD
+   :members:
+   :protected-members:
+   :undoc-members:

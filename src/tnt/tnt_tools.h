@@ -38,8 +38,20 @@ namespace TNT
     /**
    * @brief Returns an Hilbert matrix of n dimension. The components are given 
    * by:
+   * \f[
+   * H_{ij} = \frac{1}{i+j-1}.
+   * \f]
    * 
-   * : <math> H_{ij} = \frac{1}{i+j-1}. </math>
+   * Exemple:
+   * 
+   * \f[
+   * \mathcal{B} = \begin{pmatrix} 
+   * 1 & \frac{1}{2} & \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\[4pt]
+   * \frac{1}{2} & \frac{1}{3} & \frac{1}{4} & \frac{1}{5} & \frac{1}{6} \\[4pt]
+   * \frac{1}{3} & \frac{1}{4} & \frac{1}{5} & \frac{1}{6} & \frac{1}{7} \\[4pt]
+   * \frac{1}{4} & \frac{1}{5} & \frac{1}{6} & \frac{1}{7} & \frac{1}{8} \\[4pt]
+   * \frac{1}{5} & \frac{1}{6} & \frac{1}{7} & \frac{1}{8} & \frac{1}{9} \end{pmatrix}.  
+   * \f]
    * 
    * @tparam T data typa
    * @param n dimension
