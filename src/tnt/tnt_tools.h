@@ -36,6 +36,33 @@ namespace TNT
     }
 
     /**
+   * @brief Returns an Hilbert matrix of n dimension. The components are given 
+   * by:
+   * 
+   * : <math> H_{ij} = \frac{1}{i+j-1}. </math>
+   * 
+   * @tparam T data typa
+   * @param n dimension
+   * @return Array2D<T> 
+   */
+    static inline Array2D<T> hilbert(int n)
+    {
+      /// H holds the n-by-n Hilbert matrix
+      TNT::Array2D<double> H(n, n);
+
+      // Fill in the entries in H
+      for (int i = 0; i < n; i++)
+      {
+        for (int j = 0; j < n; j++)
+        {
+          H[i][j] = 1. / (i + j + 1);
+        }
+      }
+
+      return H;
+    }
+
+    /**
    * @brief Returns an random square matrix of mxn dimension.
    * Members are in the range 1 -10
    * 
@@ -56,7 +83,7 @@ namespace TNT
       {
         for (int i = 0; i < m; i++)
         {
-          A[i][j] = static_cast<T> (dis(gen));
+          A[i][j] = static_cast<T>(dis(gen));
         }
       }
 

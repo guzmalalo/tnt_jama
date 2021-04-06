@@ -17,6 +17,7 @@ target_sources(${JAMA_TARGET} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Jama_Eigen.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Jama_Cholesky.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Jama_QR.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Jama_SVD.cpp
 )
 
 ## Link libraries 

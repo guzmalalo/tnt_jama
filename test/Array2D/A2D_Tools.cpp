@@ -26,6 +26,23 @@ TEST_F(Array2D_test, eye)
 }
 
 /**
+* @brief Testing the hilbert matrix tool
+*/
+TEST_F(Array2D_test, hilbert)
+{
+  TNT::Array2D<double> A = TNT::Tools<double>::hilbert(n_);
+
+  // Check the matrix
+  for (int i = 0; i < n_; i++)
+  {
+    for (int j = 0; j < n_; j++)
+    {
+      EXPECT_EQ(A[i][j], 1. / (i + j + 1));
+    }
+  }
+}
+
+/**
 * @brief Testing the random tool
 */
 TEST_F(Array2D_test, random)

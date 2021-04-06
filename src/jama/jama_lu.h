@@ -1,7 +1,9 @@
 #ifndef JAMA_LU_H
 #define JAMA_LU_H
 
-#include "tnt.h"
+#include "tnt_math_utils.h"
+#include "tnt_array1d.h"
+#include "tnt_array2d.h"
 
 namespace JAMA
 {

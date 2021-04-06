@@ -9,6 +9,7 @@ add_executable(${A2D_TARGET} "")
 
 # Add the sources to this test
 target_include_directories(${A2D_TARGET} PRIVATE ${SOURCE_DIR}/tnt)
+target_include_directories(${A2D_TARGET} PRIVATE ${SOURCE_DIR}/jama)
 
 target_sources(${A2D_TARGET} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/A2D_Struct.hpp

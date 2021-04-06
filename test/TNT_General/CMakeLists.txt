@@ -9,6 +9,7 @@ add_executable(${TNT_GEN_TARGET} "")
 
 # Add the sources to this test
 target_include_directories(${TNT_GEN_TARGET} PRIVATE ${SOURCE_DIR}/tnt)
+target_include_directories(${TNT_GEN_TARGET} PRIVATE ${SOURCE_DIR}/jama)
 
 target_sources(${TNT_GEN_TARGET} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/TNT_General.cpp

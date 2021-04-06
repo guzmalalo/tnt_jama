@@ -88,15 +88,36 @@ TEST_F(Array2D_test, init_assignation_values)
 
 /**
 * @brief Testing initialization using a preexisting 
-* bi-dimensional array
+* raw array
 */
 TEST_F(Array2D_test, init_raw_array)
+{
+  // Using a pre existing array
+  double ad[6] = {0, 1, 2, 3, 4, 5};
+  TNT::Array2D<double> C(3, 2, ad);
+
+  for (int i = 0; i < 3; i++)
+    for (int j = 0; j < 2; j++)
+      EXPECT_EQ(C[j][i], ad[i+j*2])
+          << "C is not equal to init values [][]";
+
+  EXPECT_TRUE(&ad[0] == &C[0][0])
+      << "C point to the same address of raw array";
+
+  // If the Array2d is destroyed the raw array is preserved
+  // conserved
+}
+
+/**
+* @brief Testing initialization using a preexisting 
+* bi-dimensional array
+*/
+TEST_F(Array2D_test, init_raw_array_multi)
 {
     // Using a pre existing array
     double ad[3][2] = {{0, 1}, {2, 3}, {4, 5}};
     TNT::Array2D<double> C(3, 2, *ad);
 
-    double a = C[2][1];
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 2; j++)
             EXPECT_EQ(C[i][j], ad[i][j])

@@ -314,7 +314,12 @@ Array2D<T>::Array2D(int m, int n, const T &val) : data_(m*n), v_(m),
  *
  * Example:
  * @code{.cpp}
- * TNT::Array2D<double> A(3,3,1.0);
+  // Using a pre existing array
+  double a[6] = {0, 1, 2, 3, 4, 5};
+  TNT::Array2D<double> A(3, 2, a);
+
+  double b[3][2] = {{0, 1}, {2, 3}, {4, 5}};
+  TNT::Array2D<double> B(3, 2, *b);
  * @endcode
  */
 template <class T>
