@@ -220,47 +220,53 @@ by the Mathworks and NIST; see  <a class="reference external" href="http://math.
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE">
-<span id="_CPPv3N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE"></span><span id="JAMA::Eigenvalue::getV__TNT::Array2D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a78349b1e6f34c330b001fee2ef49c8e8"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getV</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">V_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue4getVERN3TNT7Array2DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4JAMA10Eigenvalue4getVEv">
+<span id="_CPPv3N4JAMA10Eigenvalue4getVEv"></span><span id="_CPPv2N4JAMA10Eigenvalue4getVEv"></span><span id="JAMA::Eigenvalue::getV"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1aa46f72d5d474cb0d1e9e7794770d6df4"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">getV</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue4getVEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the eigen vectors as a matrix. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">V_</span></code>: eigen vector matrix </p></li>
-</ul>
+<p><p><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The values are cloned, i.e, same reference.
+We need to evaluate if a copy operation is necessary</p>
+</div>
+</p>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>V eigen vector matrix</p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE">
-<span id="_CPPv3N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="JAMA::Eigenvalue::getTEigenvalues__TNT::Array1D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a9ccfb59df79e0146e605be58600de7c9"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getTEigenvalues</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">d_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue15getTEigenvaluesERN3TNT7Array1DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the T parts of the eigenvalues. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">d_</span></code>: T(diag(D)) </p></li>
-</ul>
+<dt id="_CPPv4N4JAMA10Eigenvalue15getTEigenvaluesEv">
+<span id="_CPPv3N4JAMA10Eigenvalue15getTEigenvaluesEv"></span><span id="_CPPv2N4JAMA10Eigenvalue15getTEigenvaluesEv"></span><span id="JAMA::Eigenvalue::getTEigenvalues"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a02a960f85a36c1e88c1d0369cc47bd7a"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">getTEigenvalues</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue15getTEigenvaluesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the real parts of the eigenvalues. </p>
+<p><p><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The values are cloned, i.e, same reference.
+We need to evaluate if a copy operation is necessary</p>
+</div>
+</p>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>d_ array1D with real parts of the eigenvalues.</p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE">
-<span id="_CPPv3N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE"></span><span id="JAMA::Eigenvalue::getImagEigenvalues__TNT::Array1D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a73c11db9c35d35c91f1420ec707557f5"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getImagEigenvalues</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">e_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue18getImagEigenvaluesERN3TNT7Array1DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4JAMA10Eigenvalue18getImagEigenvaluesEv">
+<span id="_CPPv3N4JAMA10Eigenvalue18getImagEigenvaluesEv"></span><span id="_CPPv2N4JAMA10Eigenvalue18getImagEigenvaluesEv"></span><span id="JAMA::Eigenvalue::getImagEigenvalues"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a64f80fc3ece096db5caf17f2a50a6671"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array1_d.html#_CPPv4I0EN3TNT7Array1DE" title="TNT::Array1D"><span class="pre">Array1D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">getImagEigenvalues</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue18getImagEigenvaluesEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the imaginary parts of the eigenvalues in parameter e_. </p>
 <p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">e_</span></code>: new matrix with imaginary parts of the eigenvalues. </p></li>
-</ul>
+<dt><strong>Return</strong></dt><dd><p>e_ array1D with imaginary parts of the eigenvalues. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE">
-<span id="_CPPv3N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE"></span><span id="_CPPv2N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE"></span><span id="JAMA::Eigenvalue::getD__TNT::Array2D:T:R"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1ae5ef85b2c7687068ac82b1214bfaabd6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">getD</span></code><span class="sig-paren">(</span><span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">D</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue4getDERN3TNT7Array2DI1TEE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4JAMA10Eigenvalue4getDEv">
+<span id="_CPPv3N4JAMA10Eigenvalue4getDEv"></span><span id="_CPPv2N4JAMA10Eigenvalue4getDEv"></span><span id="JAMA::Eigenvalue::getD"></span><span class="target" id="class_j_a_m_a_1_1_eigenvalue_1a178d4a6527d98ffeeb57e0f2eb55296d"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">TNT</span><span class="pre">::</span><a class="reference internal" href="class_t_n_t_1_1_array2_d.html#_CPPv4I0EN3TNT7Array2DE" title="TNT::Array2D"><span class="pre">Array2D</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN4JAMA10EigenvalueE" title="JAMA::Eigenvalue::T"><span class="pre">T</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">getD</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4JAMA10Eigenvalue4getDEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Computes the block diagonal eigenvalue matrix.If the original matrix A is not symmetric, then the eigenvalue matrix D is block diagonal with the T eigenvalues in 1-by-1 blocks and any complex eigenvalues, a + i*b, in 2-by-2 blocks, [a, b; -b, a]. That is, if the complex eigenvalues look like: </p>
 <p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">+</span> <span class="n">iv</span>     <span class="p">.</span>        <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>
   <span class="p">.</span>      <span class="n">u</span> <span class="o">-</span> <span class="n">iv</span>     <span class="p">.</span>          <span class="p">.</span>      <span class="p">.</span>    <span class="p">.</span>

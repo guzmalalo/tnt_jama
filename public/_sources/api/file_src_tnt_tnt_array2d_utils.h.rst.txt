@@ -53,15 +53,15 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_tnt__array2d__utils_8h_1a96071349bb182069d12392430b5113fe`
-
 - :ref:`exhale_function_tnt__array2d__utils_8h_1a561152525a9dd5bbf531fc602fe0871f`
 
 - :ref:`exhale_function_tnt__array2d__utils_8h_1a66b47a64b61ab674ef97e70389f50b34`
 
-- :ref:`exhale_function_tnt__array2d__utils_8h_1a296a56d7de5cc2d1281437309cbeb680`
+- :ref:`exhale_function_tnt__array2d__utils_8h_1a96071349bb182069d12392430b5113fe`
 
 - :ref:`exhale_function_tnt__array2d__utils_8h_1a5d9f342f2de5edc0fce4481982924e44`
+
+- :ref:`exhale_function_tnt__array2d__utils_8h_1a296a56d7de5cc2d1281437309cbeb680`
 
 - :ref:`exhale_function_tnt__array2d__utils_8h_1a410445519880e60d6110b1678e701b20`
 

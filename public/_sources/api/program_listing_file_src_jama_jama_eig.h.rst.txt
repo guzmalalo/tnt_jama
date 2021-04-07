@@ -1038,27 +1038,24 @@ Program Listing for File jama_eig.h
          }
        }
    
-       void getV(TNT::Array2D<T> &V_)
+       TNT::Array2D<T> getV()
        {
-         V_ = V;
-         return;
+         return V;
        }
    
-       void getTEigenvalues(TNT::Array1D<T> &d_)
+       TNT::Array1D<T> getTEigenvalues()
        {
-         d_ = d;
-         return;
+         return d;
        }
    
-       void getImagEigenvalues(TNT::Array1D<T> &e_)
+       TNT::Array1D<T> getImagEigenvalues()
        {
-         e_ = e;
-         return;
+         return e;
        }
    
-       void getD(TNT::Array2D<T> &D)
+       TNT::Array2D<T> getD()
        {
-         D = TNT::Array2D<T>(n, n);
+         TNT::Array2D<T> D(n, n);
          for (int i = 0; i < n; i++)
          {
            for (int j = 0; j < n; j++)
@@ -1075,6 +1072,7 @@ Program Listing for File jama_eig.h
              D[i][i - 1] = e[i];
            }
          }
+         return D;
        }
      };
    
