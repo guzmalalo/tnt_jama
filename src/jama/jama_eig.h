@@ -1086,35 +1086,44 @@ namespace JAMA
     /**
  * @brief Get the eigen vectors as a matrix 
  * 
- * @param V_ eigen vector matrix
+ * @return V eigen vector matrix
+ * 
+ * @rst
+ * .. warning::
+ *    The values are cloned, i.e, same reference.
+ *    We need to evaluate if a copy operation is necessary
+ * @endrst
  */
-    void getV(TNT::Array2D<T> &V_)
+    TNT::Array2D<T> getV()
     {
-      V_ = V;
-      return;
+      return V;
     }
 
     /**
- * @brief Return the T parts of the eigenvalues
+ * @brief Return the real parts of the eigenvalues
  * 
- * @param d_ T(diag(D))
+ * @return d_ array1D with real parts of the eigenvalues.
+ * 
+ * @rst
+ * .. warning::
+ *    The values are cloned, i.e, same reference.
+ *    We need to evaluate if a copy operation is necessary
+ * @endrst
  */
-    void getTEigenvalues(TNT::Array1D<T> &d_)
+    TNT::Array1D<T> getTEigenvalues()
     {
-      d_ = d;
-      return;
+      return d;
     }
 
     /**
   * @brief Return the imaginary parts of the eigenvalues
    in parameter e_.
   * 
-  * @param e_ new matrix with imaginary parts of the eigenvalues.
+  * @return e_ array1D with imaginary parts of the eigenvalues.
   */
-    void getImagEigenvalues(TNT::Array1D<T> &e_)
+    TNT::Array1D<T> getImagEigenvalues()
     {
-      e_ = e;
-      return;
+      return e;
     }
 
  /**
@@ -1146,9 +1155,9 @@ namespace JAMA
  * 
  * @param D 
  */
-    void getD(TNT::Array2D<T> &D)
+    TNT::Array2D<T> getD()
     {
-      D = TNT::Array2D<T>(n, n);
+      TNT::Array2D<T> D(n, n);
       for (int i = 0; i < n; i++)
       {
         for (int j = 0; j < n; j++)
@@ -1165,6 +1174,7 @@ namespace JAMA
           D[i][i - 1] = e[i];
         }
       }
+      return D;
     }
   };
 

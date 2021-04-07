@@ -22,11 +22,9 @@ TEST_F(Jama_test, eigen_sym_pos)
   TNT::Array2D<double> A(3, 3, *a_values);
   JAMA::Eigenvalue<double> B(A);
 
-  TNT::Array2D<double> D;
-  B.getD(D);
+  TNT::Array2D<double> D = B.getD();
 
-  TNT::Array2D<double> V;
-  B.getV(V);
+  TNT::Array2D<double> V = B.getV();
 
   TNT::Array2D<double> AV = TNT::matmult(A, V);
   TNT::Array2D<double> VD = TNT::matmult(V, D);
@@ -49,11 +47,8 @@ TEST_F(Jama_test, eigen_nonsym)
   TNT::Array2D<double> A(4, 4, *a_values);
   JAMA::Eigenvalue<double> B(A);
 
-  TNT::Array2D<double> D;
-  B.getD(D);
-
-  TNT::Array2D<double> V;
-  B.getV(V);
+  TNT::Array2D<double> D = B.getD();
+  TNT::Array2D<double> V = B.getV();
 
   TNT::Array2D<double> AV = TNT::matmult(A, V);
   TNT::Array2D<double> VD = TNT::matmult(V, D);
@@ -73,11 +68,9 @@ TEST_F(Jama_test, eigen_2x2)
 
   JAMA::Eigenvalue<double> B(A);
 
-  TNT::Array2D<double> D;
-  B.getD(D);
+  TNT::Array2D<double> D = B.getD();
 
-  TNT::Array2D<double> V;
-  B.getV(V);
+  TNT::Array2D<double> V = B.getV();
 
   TNT::Array2D<double> AV = TNT::matmult(A, V);
   TNT::Array2D<double> VD = TNT::matmult(V, D);
@@ -106,8 +99,7 @@ TEST_F(Jama_test, max_eig)
       B((M + TNT::transpose(M)) * 0.5);
 
   // Get the real eigenvalues 
-  TNT::Array1D<double> d;
-  B.getTEigenvalues(d);
+  TNT::Array1D<double> d =  B.getTEigenvalues();
 
   // Find the max eigen value
   double max_value = TNT::max(d);
