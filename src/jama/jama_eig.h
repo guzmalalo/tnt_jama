@@ -249,7 +249,7 @@ namespace JAMA
         // Original while-loop from Java code
         while (m < n)
         {
-          if (abs(e[m]) <= eps * tst1)
+          if (std::abs(e[m]) <= eps * tst1)
           {
             break;
           }

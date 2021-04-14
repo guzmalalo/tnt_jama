@@ -29,6 +29,9 @@ TEST_F(Jama_test, eigen_sym_pos)
   TNT::Array2D<double> AV = TNT::matmult(A, V);
   TNT::Array2D<double> VD = TNT::matmult(V, D);
 
+  std::cout << AV;
+  std::cout << VD;
+
   // Verify the result
   EXPECT_TRUE(TNT::near(AV, VD));
 }

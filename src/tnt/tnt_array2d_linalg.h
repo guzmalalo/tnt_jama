@@ -661,7 +661,7 @@ namespace TNT
     if (norm_B == 0. && norm_A < 10. * eps)
       return false;
 
-    if (TNT::norm_1(A - B) > 1000. * eps * std::max(norm_A, norm_B))
+    if (TNT::norm_1(A - B) > 100. * eps * std::max(norm_A, norm_B))
       return false;
     else
       return true;
