@@ -1,5 +1,30 @@
 # This file is a template, and might need editing before it works on your project.
 # Full project: https://gitlab.com/pages/plain-html
+
+stages:
+  - build
+  - test
+  - deploy 
+
+image: gcc
+before_script:
+ - apt-get update --yes
+ - apt-get install --yes cmake
+
+# Build and test after a commit 
+build_TNT:
+  stage: build
+  script: 
+     - | 
+       mkdir build && cd build
+       cmake ..
+       cmake --build .
+  
+test_TNT:
+  stage: test
+  script: 
+     - cd build && ctest .
+
 pages:
   stage: deploy
   script:
@@ -11,3 +36,4 @@ pages:
       - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
