@@ -23,7 +23,7 @@ build_TNT:
 test_TNT:
   stage: test
   script: 
-     - ctest .
+     - echo ls
 
 pages:
   stage: deploy
