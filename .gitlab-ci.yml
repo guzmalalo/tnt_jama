@@ -8,12 +8,17 @@ stages:
 
 image: gcc
 
+
 # Build and test after a commit 
 build_TNT:
   stage: build
   before_script:
     - apt-get update --yes
     - apt-get install --yes cmake
+    - pip install -U sphinx
+    - pip install -U sphinx_rtd_theme
+    - pip install -U breathe
+    - pip install -U exhale
   script: 
      - | 
        mkdir build && cd build
