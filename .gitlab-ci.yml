@@ -22,8 +22,15 @@ build_TNT:
   
 test_TNT:
   stage: test
+  before_script:
+    - apt-get update --yes
+    - apt-get install --yes cmake
   script: 
-     - echo ls
+     - | 
+       mkdir build && cd build
+       cmake ..
+       cmake --build .
+       ctest .
 
 pages:
   stage: deploy
