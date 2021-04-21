@@ -10,7 +10,7 @@ image: gcc
 
 
 # Build and test after a commit 
-build_TNT:
+build:
   stage: build
   before_script:
     - apt-get update --yes
@@ -27,17 +27,11 @@ build_TNT:
        cmake ..
        cmake --build .
   
-test_TNT:
+test:
   stage: test
-  before_script:
-    - apt-get update --yes
-    - apt-get install --yes cmake
-  script: 
-     - | 
-       mkdir build && cd build
-       cmake ..
-       cmake --build .
-       ctest .
+  script:
+    - ls 
+    - ctest .
 
 pages:
   stage: deploy
