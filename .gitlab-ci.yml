@@ -33,6 +33,7 @@ build:
     key: build-cache
     paths:
       - build/
+      - bin/
   
 test:
   stage: test
@@ -43,6 +44,7 @@ test:
     key: build-cache
     paths:
       - build/
+      - bin/
   script:
     - ls 
     - cd build
