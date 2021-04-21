@@ -33,11 +33,15 @@ build:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - build/
+      - bin/
   
 test:
   stage: test
   cache:
     key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - build/
+      - bin/
   script:
     - ls 
     - ctest .
