@@ -22,10 +22,14 @@ build:
     - pip3 install -U breathe
     - pip3 install -U exhale
   script: 
-     - | 
-       mkdir build && cd build
-       cmake ..
-       cmake --build .
+    - | 
+      mkdir build && cd build
+      cmake ..
+      cmake --build .
+  artifacts:
+    paths:
+      - build
+    expire_in: 30 mins
   
 test:
   stage: test
