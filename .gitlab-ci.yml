@@ -30,7 +30,7 @@ build:
     paths:
       - public
   cache:
-    key: build-cache
+    key: ${CI_COMMIT_REF_SLUG}
     paths:
       - build/
       - Bin/
@@ -41,7 +41,7 @@ test:
     - apt-get update --yes
     - apt-get install --yes cmake
   cache:
-    key: build-cache
+    key: ${CI_COMMIT_REF_SLUG}
     paths:
       - build/
       - Bin/
