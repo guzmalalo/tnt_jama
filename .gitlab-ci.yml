@@ -30,20 +30,22 @@ build:
     paths:
       - public
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: build-cache
     paths:
       - build/
-      - bin/
   
 test:
   stage: test
+  before_script:
+    - apt-get update --yes
+    - apt-get install --yes cmake
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: build-cache
     paths:
       - build/
-      - bin/
   script:
     - ls 
+    - cd build
     - ctest .
 
 pages:
