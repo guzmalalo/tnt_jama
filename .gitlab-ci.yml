@@ -15,13 +15,11 @@ build_TNT:
   before_script:
     - apt-get update --yes
     - apt-get install --yes cmake
-    - apt-get install --yes python-pip
-    - python -V
-    - python3 -V 
-    - pip install -U sphinx
-    - pip install -U sphinx_rtd_theme
-    - pip install -U breathe
-    - pip install -U exhale
+    - apt-get install --yes python3-pip
+    - pip3 install -U sphinx
+    - pip3 install -U sphinx_rtd_theme
+    - pip3 install -U breathe
+    - pip3 install -U exhale
   script: 
      - | 
        mkdir build && cd build
