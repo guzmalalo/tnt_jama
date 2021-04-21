@@ -28,11 +28,16 @@ build:
       cmake --build .
   artifacts:
     paths:
-      - build
-    expire_in: 30 mins
+      - public
+    cache:
+      key: ${CI_COMMIT_REF_SLUG}
+      paths:
+      - build/
   
 test:
   stage: test
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
   script:
     - ls 
     - ctest .
