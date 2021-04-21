@@ -16,7 +16,8 @@ build_TNT:
     - apt-get update --yes
     - apt-get install --yes cmake
     - apt-get install --yes python-pip
-    - pip install --upgrade setuptool
+    - python -V
+    - python3 -V 
     - pip install -U sphinx
     - pip install -U sphinx_rtd_theme
     - pip install -U breathe
@@ -26,8 +27,6 @@ build_TNT:
        mkdir build && cd build
        cmake ..
        cmake --build .
-       python -V
-       python3 -V 
   
 test_TNT:
   stage: test
