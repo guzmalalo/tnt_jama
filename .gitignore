@@ -50,5 +50,8 @@ debug
 *.xcodeproj
 XCBuildData/
 
+# Doc
+public/
+
 #Other
 .DS_Store
