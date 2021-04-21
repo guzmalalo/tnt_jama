@@ -16,6 +16,7 @@ build_TNT:
     - apt-get update --yes
     - apt-get install --yes cmake
     - apt-get install --yes python3-pip
+    - apt-get install --yes doxygen
     - pip3 install -U sphinx
     - pip3 install -U sphinx_rtd_theme
     - pip3 install -U breathe
