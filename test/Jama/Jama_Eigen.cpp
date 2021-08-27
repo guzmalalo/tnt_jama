@@ -101,8 +101,8 @@ TEST_F(Jama_test, max_eig)
   JAMA::Eigenvalue<double>
       B((M + TNT::transpose(M)) * 0.5);
 
-  // Get the real eigenvalues 
-  TNT::Array1D<double> d =  B.getTEigenvalues();
+  // Get the real eigenvalues
+  TNT::Array1D<double> d = B.getRealEigenvalues();
 
   // Find the max eigen value
   double max_value = TNT::max(d);

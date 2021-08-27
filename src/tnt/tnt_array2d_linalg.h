@@ -474,7 +474,10 @@ namespace TNT
   TNT::Array2D<T> invert(const TNT::Array2D<T> &M)
   {
     // square matrices only
-    assert(M.dim1() == M.dim2());
+#ifdef TNT_BOUNDS_CHECK
+  assert(M.dim1() == M.dim2());
+#endif
+      
     int m = M.dim1();
 
     T det_m;

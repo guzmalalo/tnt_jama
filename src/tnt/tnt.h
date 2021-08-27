@@ -20,6 +20,10 @@
 #ifndef TNT_H
 #define TNT_H
 
+/// @brief Template Numerical Toolkit (TNT): Linear Algebra Module
+namespace TNT
+{    
+}
 //---------------------------------------------------------------------
 // Define this macro if you want  TNT to track some of the out-of-bounds
 // indexing. This can incurs a small run-time overhead, but is recommended 

@@ -1110,7 +1110,7 @@ namespace JAMA
  *    We need to evaluate if a copy operation is necessary
  * @endrst
  */
-    TNT::Array1D<T> getTEigenvalues()
+    TNT::Array1D<T> getRealEigenvalues()
     {
       return d;
     }
