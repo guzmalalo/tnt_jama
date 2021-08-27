@@ -8,25 +8,7 @@
 namespace JAMA
 {
 
-  /** Singular Value Decomposition.
-   <P>
-   For an m-by-n matrix A with m >= n, the singular value decomposition is
-   an m-by-n orthogonal matrix U, an n-by-n diagonal matrix S, and
-   an n-by-n orthogonal matrix V so that A = U*S*V'.
-   <P>
-   The singular values, sigma[k] = S[k][k], are ordered so that
-   sigma[0] >= sigma[1] >= ... >= sigma[n-1].
-   <P>
-   The singular value decomposition always exists, so the constructor will
-   never fail.  The matrix condition number and the effective numerical
-   rank can be computed from this decomposition.
-
-   <p>
-	(Adapted from JAMA, a Java Matrix Library, developed by jointly 
-	by the Mathworks and NIST; see  http://math.nist.gov/javanumerics/jama).
-   */
-
-  /**
+  /** 
  * @brief Singular Value Decomposition.
  * 
  * For an m-by-n matrix A with m >= n, the singular value decomposition is

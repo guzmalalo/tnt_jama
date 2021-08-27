@@ -7,5 +7,9 @@
 #include "jama_qr.h"
 #include "jama_svd.h"
 
-#endif
-// TNT_H
+/// @brief C++ version of JAMA is a basic linear algebra package for Java.
+namespace JAMA
+{
+}
+
+#endif // JAMA_H
