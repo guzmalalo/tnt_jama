@@ -100,8 +100,9 @@ namespace TNT
 		/* ... extended interface ... */
 
 		inline int ref_count() const;
-		inline Array1D<T> subarray(int i0, int i1);
-	};
+		//inline Array1D<T> subarray(int i0, int i1);
+    Array1D subarray(int i0, int i1);
+  };
 
 	/**
  * @brief Construct a new Array 1D<T> without initialization.
@@ -569,16 +570,15 @@ namespace TNT
  * @endcode
  */
 	template <class T>
-	inline Array1D<T> Array1D<T>::subarray(int i0, int i1)
+ Array1D<T> Array1D<T>::subarray(int i0, int i1)
 	{
 		if ((i0 >= 0) && (i1 < n_) && (i0 <= i1))
 		{
-			Array1D<T> X(*this); /* create a new instance of this array. */
-			X.n_ = i1 - i0 + 1;
-			X.data_ += i0;
-
+      int n = i1 - i0 + 1;
+      Array1D X(n);
+      copy_(X.data_, data_+i0, n);
 			return X;
-		}
+    }
 		else
 		{
 			return Array1D<T>();

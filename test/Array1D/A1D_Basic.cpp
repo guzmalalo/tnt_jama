@@ -430,10 +430,10 @@ TEST_F(Array1D_test, subarray_method)
 
     EXPECT_EQ(B.dim(), 10);
 
-    // Verify the address
+    // Verify the values
     for (int i = 0; i < 10; i++)
     {
-        EXPECT_EQ(&A[i], &B[i])
+        EXPECT_EQ(A[i], B[i])
             << "B is not equal to A";
     }
 
