@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.12)
 #-------------------------------------------------------------------------------
 set(NUM_VERSION_MAJOR "3")
 set(NUM_VERSION_MINOR "0")
-set(NUM_VERSION_PATCH "2")
+set(NUM_VERSION_PATCH "3")
 set(NUM_VERSION  "${NUM_VERSION_MAJOR}.${NUM_VERSION_MINOR}.${NUM_VERSION_PATCH}" 
     CACHE INTERNAL "Software version number")
 
